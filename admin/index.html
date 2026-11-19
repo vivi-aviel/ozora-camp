@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Ozora Camp – ניהול</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#1E3A8A;--primary-2:#2D4FB0;--on-primary:#fff;
+  --accent:#A16207;--accent-bg:#FEF3C7;
+  --bg:#F5F7FB;--card:#fff;--fg:#0F172A;--muted:#475569;--muted-bg:#EEF2F7;--border:#DCE3EE;
+  --ok:#15803D;--ok-bg:#DCFCE7;--warn:#B45309;--warn-bg:#FEF3C7;--bad:#B91C1C;--bad-bg:#FEE2E2;
+  --room2:#DBEAFE;--room2-b:#2563EB;--room3:#E0E7FF;--room3-b:#4F46E5;--car:#FCE7F3;--car-b:#BE185D;
+  --r:14px;--r-sm:10px;--s1:8px;--s2:12px;--s3:16px;--s4:24px;
+  --shadow:0 1px 2px rgba(15,23,42,.06),0 2px 8px rgba(15,23,42,.05);
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0;background:var(--bg);color:var(--fg);font-family:"IBM Plex Sans Hebrew",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5;-webkit-text-size-adjust:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid #93C5FD;outline-offset:2px;border-radius:6px}
+.num{font-variant-numeric:tabular-nums;direction:ltr;unicode-bidi:isolate;display:inline-block}
+header.top{position:sticky;top:0;z-index:20;background:var(--primary);color:var(--on-primary);padding:10px var(--s3);display:flex;align-items:center;gap:var(--s2)}
+header.top h1{font-size:17px;margin:0;font-weight:700;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+header.top select{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:8px;padding:6px 8px;min-height:36px}
+header.top select option{color:var(--fg)}
+.iconbtn{background:transparent;border:0;color:inherit;width:44px;height:44px;display:inline-grid;place-items:center;border-radius:10px}
+.iconbtn:hover{background:rgba(255,255,255,.12)}
+svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.sub{background:#fff;border-bottom:1px solid var(--border);padding:8px var(--s3);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.chips{display:inline-flex;background:var(--muted-bg);border-radius:999px;padding:3px}
+.chips button{border:0;background:transparent;padding:6px 12px;border-radius:999px;min-height:34px;font-weight:600;color:var(--muted)}
+.chips button[aria-pressed=true]{background:#fff;color:var(--primary);box-shadow:var(--shadow)}
+main{max-width:1100px;margin:0 auto;padding:var(--s3) var(--s3) 110px}
+h2{font-size:20px;margin:4px 0 var(--s3)}
+h3{font-size:16px;margin:0 0 var(--s2)}
+.grid{display:grid;gap:var(--s2)}
+@media(min-width:720px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:var(--s3);box-shadow:var(--shadow)}
+.kpi{display:flex;flex-direction:column;gap:2px;text-align:start;width:100%;border:1px solid var(--border);background:#fff;border-radius:var(--r);padding:14px var(--s3);box-shadow:var(--shadow);transition:border-color .15s}
+button.kpi:hover{border-color:var(--primary-2)}
+.kpi .l{font-size:13px;color:var(--muted);font-weight:500;display:flex;align-items:center;gap:6px}
+.kpi .v{font-size:24px;font-weight:700}
+.kpi .h{font-size:12.5px;color:var(--muted)}
+.kpi.hero{background:linear-gradient(135deg,var(--primary),#274BB5);color:#fff;border:0}
+.kpi.hero .l,.kpi.hero .h{color:#DBE4FF}
+.bar{height:10px;background:rgba(255,255,255,.25);border-radius:99px;overflow:hidden;margin-top:8px}
+.bar>i{display:block;height:100%;background:#FCD34D;border-radius:99px}
+.banner{display:flex;gap:10px;align-items:flex-start;border-radius:var(--r-sm);padding:12px 14px;margin-bottom:var(--s3);font-size:14.5px}
+.banner.warn{background:var(--warn-bg);color:#78350F;border:1px solid #FCD34D}
+.banner.info{background:#EFF6FF;color:#1E3A8A;border:1px solid #BFDBFE}
+.banner button{margin-inline-start:auto}
+.btn{border:1px solid var(--border);background:#fff;border-radius:10px;padding:10px 14px;min-height:44px;font-weight:600;display:inline-flex;align-items:center;gap:6px;justify-content:center;transition:background .15s}
+.btn:hover{background:var(--muted-bg)}
+.btn.p{background:var(--primary);border-color:var(--primary);color:#fff}
+.btn.p:hover{background:var(--primary-2)}
+.btn.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.btn.bad{color:var(--bad);border-color:#FCA5A5}
+.btn.sm{min-height:36px;padding:6px 10px;font-size:14px}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.spacer{flex:1}
+.list{display:grid;gap:10px}
+.item{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:12px 14px;display:grid;gap:6px;text-align:start;width:100%;box-shadow:var(--shadow)}
+button.item:hover{border-color:var(--primary-2)}
+.item .t{display:flex;gap:8px;align-items:center;font-weight:600}
+.item .meta{font-size:13.5px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap}
+.money{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:6px;font-size:13.5px}
+.money div{background:var(--muted-bg);border-radius:8px;padding:6px 8px}
+.money b{display:block;font-size:15px}
+.tag{font-size:12px;font-weight:600;border-radius:999px;padding:2px 8px;white-space:nowrap}
+.tag.room2{background:var(--room2);color:#1E40AF}.tag.room3{background:var(--room3);color:#3730A3}.tag.caravan{background:var(--car);color:#9D174D}
+.tag.ok{background:var(--ok-bg);color:var(--ok)}.tag.warn{background:var(--warn-bg);color:var(--warn)}.tag.bad{background:var(--bad-bg);color:var(--bad)}.tag.mut{background:var(--muted-bg);color:var(--muted)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:8px 6px;border-bottom:1px solid var(--border);text-align:start;vertical-align:top}
+th{font-size:12.5px;color:var(--muted);font-weight:600}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-inline:-4px}
+.tw table.wide{min-width:560px}
+.tw td:first-child{white-space:nowrap}
+tfoot td{font-weight:700;border-top:2px solid var(--fg)}
+/* board */
+.board{overflow-x:auto;border:1px solid var(--border);border-radius:var(--r);background:#fff}
+.board table{width:auto;border-collapse:separate;border-spacing:0}
+.board th,.board td{padding:0;border-bottom:1px solid var(--border);border-inline-start:1px solid #EEF2F7;height:46px;min-width:38px;text-align:center}
+.board th{height:44px;font-size:11.5px;line-height:1.15;background:#FAFBFD;position:sticky;top:0}
+.board .u{position:sticky;inset-inline-start:0;background:#fff;z-index:2;min-width:96px;padding:0 8px;text-align:start;font-weight:600;font-size:13.5px;white-space:nowrap}
+.board th.u{z-index:3;background:#FAFBFD}
+.board td.c{cursor:pointer}
+.board td.c:hover{background:#F1F5FF}
+.board td.bk{font-size:12px;font-weight:600;cursor:pointer;color:#0F172A;text-align:start;padding:0 6px}
+.board td.bk .nm{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.board td.bk.room2{background:var(--room2);box-shadow:inset 0 -3px 0 var(--room2-b)}
+.board td.bk.room3{background:var(--room3);box-shadow:inset 0 -3px 0 var(--room3-b)}
+.board td.bk.caravan{background:var(--car);box-shadow:inset 0 -3px 0 var(--car-b)}
+.board td.na{background:repeating-linear-gradient(45deg,#F1F5F9,#F1F5F9 6px,#E2E8F0 6px,#E2E8F0 12px)}
+.board .wk{color:var(--muted);font-weight:500}
+/* nav */
+nav.bottom{position:fixed;bottom:0;inset-inline:0;z-index:30;background:#fff;border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(5,1fr);padding-bottom:env(safe-area-inset-bottom)}
+nav.bottom a{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 2px 10px;text-decoration:none;color:var(--muted);font-size:11.5px;font-weight:600;min-height:56px;position:relative}
+nav.bottom a[aria-current=page]{color:var(--primary)}
+nav.bottom a[aria-current=page]::before{content:"";position:absolute;top:0;inset-inline:25%;height:3px;border-radius:0 0 3px 3px;background:var(--primary)}
+.badge{position:absolute;top:4px;inset-inline-end:calc(50% - 22px);background:var(--bad);color:#fff;border-radius:99px;font-size:10.5px;min-width:18px;height:18px;display:grid;place-items:center;padding:0 4px}
+.fab{position:fixed;bottom:78px;inset-inline-end:16px;z-index:31;width:56px;height:56px;border-radius:18px;border:0;background:var(--accent);color:#fff;display:grid;place-items:center;box-shadow:0 6px 18px rgba(161,98,7,.35)}
+/* modal */
+.ov{position:fixed;inset:0;background:rgba(15,23,42,.45);z-index:50;display:flex;align-items:flex-end;justify-content:center}
+@media(min-width:720px){.ov{align-items:center}}
+.dlg{background:#fff;width:100%;max-width:620px;max-height:92vh;overflow:auto;border-radius:18px 18px 0 0;padding:var(--s3) var(--s3) calc(var(--s4) + env(safe-area-inset-bottom))}
+@media(min-width:720px){.dlg{border-radius:18px}}
+.dlg .hd{display:flex;align-items:center;gap:8px;margin-bottom:var(--s2);position:sticky;top:calc(-1 * var(--s3));background:#fff;padding-top:4px;z-index:1}
+.dlg .hd h3{flex:1;margin:0;font-size:18px}
+.dlg .hd .iconbtn{color:var(--muted)}
+.f{display:grid;gap:12px}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label.fl{display:grid;gap:4px;font-size:13.5px;font-weight:600;color:#334155}
+label.fl small{font-weight:400;color:var(--muted)}
+.in{width:100%;border:1px solid #CBD5E1;border-radius:10px;padding:10px 12px;min-height:44px;background:#fff}
+.in:focus{border-color:var(--primary-2);outline:none;box-shadow:0 0 0 3px #DBEAFE}
+.chk{display:flex;gap:10px;align-items:center;font-size:14.5px;min-height:44px}
+.chk input{width:20px;height:20px}
+.calc{background:#F8FAFC;border:1px dashed #CBD5E1;border-radius:12px;padding:12px;font-size:14px;display:grid;gap:4px}
+.calc .ln{display:flex;justify-content:space-between;gap:10px}
+.calc .ln span:first-child{color:var(--muted)}
+.calc .fx{font-size:12.5px;color:var(--muted);direction:ltr;text-align:end}
+.err{color:var(--bad);font-size:13.5px;font-weight:600}
+.warnt{color:var(--warn);font-size:13.5px;font-weight:600}
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#0F172A;color:#fff;padding:10px 16px;border-radius:10px;z-index:60;font-size:14px;max-width:90vw}
+.empty{text-align:center;color:var(--muted);padding:32px 12px}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.pos{color:var(--ok)}.neg{color:var(--bad)}
+.sec{margin-top:var(--s4)}
+details summary{cursor:pointer;font-weight:600;color:var(--primary);min-height:36px;display:flex;align-items:center}
+textarea.in{min-height:80px}
+pre.rep{white-space:pre-wrap;background:#F8FAFC;border:1px solid var(--border);border-radius:10px;padding:12px;font-size:13px;font-family:inherit;max-height:300px;overflow:auto}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <h1 id="ttl">Ozora Camp</h1>
+  <select id="seasonSel" aria-label="season"></select>
+  <select id="langSel" aria-label="language"><option value="he">עב</option><option value="en">EN</option><option value="hu">HU</option></select>
+  <a class="iconbtn" href="#setup" id="setupBtn" aria-label="settings"><svg class="i" viewBox="0 0 24 24"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg></a>
+</header>
+<div class="sub" id="subbar"></div>
+<main id="app"><div class="empty" id="loading">…</div></main>
+<button class="fab" id="fab" aria-label="new" hidden><svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+<nav class="bottom" id="nav"></nav>
+<div id="modalRoot"></div>
+<input type="file" id="restoreFile" accept=".json,application/json" hidden>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL='https://agihjbqthsdcnandfxmm.supabase.co';
+const SUPABASE_KEY='sb_publishable_ACfHU3z5UXEioXVqwsK4DQ_XGJyfDTx';
+/* ===================== i18n ===================== */
+const T={
+he:{app:"Ozora Camp – ניהול",dash:"לוח ראשי",board:"תפוסה",bookings:"הזמנות",requests:"בקשות",katalin:"קטלין",setup:"הגדרות",
+loading:"טוען נתונים…",noDb:"אין חיבור לבסיס הנתונים. פתח את העמוד מתוך Claude כשאתה מחובר.",slow:"הנתונים עדיין לא הגיעו. ייתכן שאין חיבור – מה שמוצג עשוי להיות לא מעודכן.",
+noSeason:"אין עונה עדיין. צור עונה בהגדרות.",createSeason:"צור עונה",
+rateMissing:"לא הוגדר שער יורו→שקל לעונה. סכומים במטבעות שונים מוצגים בנפרד ולא מומרים.",setRate:"הגדר שער",
+hufMissing:"לא הוגדר שער יורו→פורינט, לכן אין תצוגה בפורינט.",
+profit:"רווח העונה",target:"יעד עונתי (כל העסקים)",ofTarget:"מהיעד",revenue:"הכנסות (התקבל)",katOwed:"מגיע לקטלין",katPaid:"שולם לקטלין",katBal:"יתרה לתשלום לקטלין",
+outCust:"חוב לקוחות פתוח",occupancy:"תפוסה",pending:"בקשות ממתינות",byActivity:"רווח לפי תחום",accom:"מתחם – חדרים וקרוואנים",cars:"תיווך רכבים",equip:"ציוד קמפינג",broker:"תיווך קרוואנים ודירות",soon:"בהמשך",
+tapExplain:"לחץ על מספר כדי לראות איך הוא חושב",perBooking:"פירוט לפי הזמנה",unit:"יחידה",guests:"אורחים",nights:"לילות",nightsAct:"לילות בפועל",billable:"לילות לחיוב",charged:"סכום שסוכם",received:"התקבל",outstanding:"יתרה",katShort:"קטלין",profitShort:"רווח",total:"סה״כ",
+room:"חדר",caravan:"קרוואן",room2:"חדר ל־2",room3:"חדר ל־3",personal:"פרטי – לא מסחרי",
+newBooking:"הזמנה חדשה",editBooking:"עריכת הזמנה",names:"שמות האורחים",phone:"טלפון",checkIn:"כניסה",checkOut:"יציאה",noShow:"לא הגיע בכלל (קטלין מקבלת 0)",
+currency:"מטבע",paidDate:"תאריך תשלום",method:"אמצעי תשלום",bit:"ביט",transfer:"העברה",cash:"מזומן",other:"אחר",note:"הערה",save:"שמור",cancel:"ביטול",del:"מחק",delQ:"למחוק את ההזמנה? אי אפשר לבטל.",
+rates:"תעריפים להזמנה הזו",listRate:"מחיר מחירון לאדם ללילה (€)",katRate:"תעריף קטלין (€)",perPerson:"לאדם ללילה",perUnit:"ליחידה ללילה",
+calc:"חישוב",listPrice:"מחיר מחירון",vsList:"מול מחירון",discount:"הנחה",premium:"תוספת",
+errDates:"תאריך היציאה חייב להיות אחרי הכניסה.",errUnit:"בחר יחידה.",errGuests:"מספר אורחים לא תקין.",errAmount:"סכום לא תקין.",
+warnCap:"יותר אורחים מהקיבולת של היחידה",warnOverlap:"היחידה כבר תפוסה בחלק מהתאריכים האלה:",saveAnyway:"שמור בכל זאת",warnNonCom:"יחידה לא מסחרית – לא תיכנס לחישובים",
+saved:"נשמר",deleted:"נמחק",saveErr:"השמירה נכשלה",
+newReq:"בקשה חדשה",reqType:"סוג",approve:"אישור (שולם)",decline:"דחייה",reqWaiting:"ממתינה",hoursAgo:"לפני {n} שעות",over24:"עברו יותר מ־24 שעות",freeUnits:"פנויות בסוג הזה: {n}",noFree:"אין יחידה פנויה מתאימה",
+approveTitle:"אישור בקשה – לקוח שילם",assignUnit:"שבץ ליחידה",declined:"נדחתה",showDeclined:"הצג דחויות",noReq:"אין בקשות ממתינות.",created:"התקבלה",
+noBookings:"אין הזמנות בעונה הזו.",filterAll:"הכל",
+katTitle:"התחשבנות עם קטלין",katRules:"קטלין מקבלת רק על לילות בפועל: €{r} לאדם ללילה בחדרים, €{c} לקרוואן ללילה.",payouts:"תשלומים לקטלין",addPayout:"רשום תשלום לקטלין",amountEur:"סכום (€)",date:"תאריך",
+copyRep:"העתק דוח לוואטסאפ",dlCsv:"הורד CSV",copied:"הועתק",repLang:"שפת הדוח",inclNames:"כלול שמות אורחים",repNote:"הדוח לקטלין כולל רק לילות ותעריפים שלה – בלי מחירי מכירה, הכנסות או רווח.",copyFail:"ההעתקה נחסמה – סמן את הטקסט והעתק ידנית.",
+season:"עונה",seasonName:"שם העונה",start:"תחילת טווח",end:"סוף טווח",eurIls:"שער 1 € = ₪",eurHuf:"שער 1 € = Ft",targetIls:"יעד רווח (₪)",minNights:"מינימום לילות ללקוח",priceRoom:"מחיר חדר לאדם ללילה (€)",priceCar:"מחיר קרוואן לאדם ללילה (€)",katRoom:"קטלין – חדר לאדם ללילה (€)",katCar:"קטלין – קרוואן ליחידה ללילה (€)",
+rateNote:"השער משמש להמרה בלבד. כל תשלום נשמר במטבע שבו התקבל.",newSeason:"עונה חדשה",units:"יחידות",capacity:"קיבולת",commercial:"מסחרי",type:"סוג",
+data:"נתונים וגיבוי",backup:"הורד גיבוי מלא (JSON)",restore:"שחזור מגיבוי",restoreQ:"השחזור יכתוב את כל הרשומות מהקובץ (ויחליף רשומות עם אותו מזהה). להמשיך?",restored:"שוחזרו {n} רשומות",exportBookings:"ייצוא הזמנות (CSV לאקסל)",dlNA:"הורדת קבצים לא זמינה בתצוגה הזו.",dlDeclined:"ההורדה בוטלה",
+explain:"איך זה חושב",close:"סגור",rateOf:"בשער",mixedNote:"מוצג בנפרד לפי מטבע כי לא הוגדר שער.",
+lang:"שפה",dispCur:"הצג ב",
+ruleLine:"מחירון: אורחים × מקסימום(7, לילות) × מחיר. קטלין: לילות בפועל בלבד.",
+},
+en:{app:"Ozora Camp – Manager",dash:"Dashboard",board:"Occupancy",bookings:"Bookings",requests:"Requests",katalin:"Katalin",setup:"Settings",
+loading:"Loading…",noDb:"No database connection. Open this page inside Claude while signed in.",slow:"Data hasn't arrived yet. You may be offline – what you see may be out of date.",
+noSeason:"No season yet. Create one in Settings.",createSeason:"Create season",
+rateMissing:"No EUR→ILS rate set for this season. Amounts in different currencies are shown separately, not converted.",setRate:"Set rate",
+hufMissing:"No EUR→HUF rate set, so HUF view is unavailable.",
+profit:"Season profit",target:"Season target (all businesses)",ofTarget:"of target",revenue:"Revenue (received)",katOwed:"Owed to Katalin",katPaid:"Paid to Katalin",katBal:"Balance due to Katalin",
+outCust:"Customer balances open",occupancy:"Occupancy",pending:"Pending requests",byActivity:"Profit by activity",accom:"Accommodation – rooms & caravans",cars:"Car rental brokerage",equip:"Camping equipment",broker:"Caravan & apartment brokerage",soon:"Later",
+tapExplain:"Tap a number to see how it was calculated",perBooking:"Per booking",unit:"Unit",guests:"Guests",nights:"Nights",nightsAct:"Actual nights",billable:"Billable nights",charged:"Agreed price",received:"Received",outstanding:"Balance",katShort:"Katalin",profitShort:"Profit",total:"Total",
+room:"Room",caravan:"Caravan",room2:"Room for 2",room3:"Room for 3",personal:"Private – non-commercial",
+newBooking:"New booking",editBooking:"Edit booking",names:"Guest names",phone:"Phone",checkIn:"Check-in",checkOut:"Check-out",noShow:"No-show (Katalin gets 0)",
+currency:"Currency",paidDate:"Payment date",method:"Payment method",bit:"Bit",transfer:"Transfer",cash:"Cash",other:"Other",note:"Note",save:"Save",cancel:"Cancel",del:"Delete",delQ:"Delete this booking? This can't be undone.",
+rates:"Rates for this booking",listRate:"List price per person per night (€)",katRate:"Katalin rate (€)",perPerson:"per person per night",perUnit:"per unit per night",
+calc:"Calculation",listPrice:"List price",vsList:"vs list",discount:"Discount",premium:"Premium",
+errDates:"Check-out must be after check-in.",errUnit:"Choose a unit.",errGuests:"Invalid guest count.",errAmount:"Invalid amount.",
+warnCap:"More guests than the unit's capacity",warnOverlap:"The unit is already booked on some of these dates:",saveAnyway:"Save anyway",warnNonCom:"Non-commercial unit – excluded from finances",
+saved:"Saved",deleted:"Deleted",saveErr:"Save failed",
+newReq:"New request",reqType:"Type",approve:"Approve (paid)",decline:"Decline",reqWaiting:"Waiting",hoursAgo:"{n} hours ago",over24:"Over 24 hours",freeUnits:"Free of this type: {n}",noFree:"No suitable free unit",
+approveTitle:"Approve request – customer paid",assignUnit:"Assign to unit",declined:"Declined",showDeclined:"Show declined",noReq:"No pending requests.",created:"Received",
+noBookings:"No bookings this season.",filterAll:"All",
+katTitle:"Settlement with Katalin",katRules:"Katalin is paid for actual nights only: €{r} per person per night in rooms, €{c} per caravan per night.",payouts:"Payments to Katalin",addPayout:"Record payment to Katalin",amountEur:"Amount (€)",date:"Date",
+copyRep:"Copy report for WhatsApp",dlCsv:"Download CSV",copied:"Copied",repLang:"Report language",inclNames:"Include guest names",repNote:"Katalin's report shows only nights and her rates – no selling prices, revenue or profit.",copyFail:"Copy was blocked – select the text and copy it manually.",
+season:"Season",seasonName:"Season name",start:"Range start",end:"Range end",eurIls:"Rate 1 € = ₪",eurHuf:"Rate 1 € = Ft",targetIls:"Profit target (₪)",minNights:"Customer minimum nights",priceRoom:"Room price per person per night (€)",priceCar:"Caravan price per person per night (€)",katRoom:"Katalin – room per person per night (€)",katCar:"Katalin – caravan per unit per night (€)",
+rateNote:"The rate is only for conversion. Every payment is stored in the currency it was received in.",newSeason:"New season",units:"Units",capacity:"Capacity",commercial:"Commercial",type:"Type",
+data:"Data & backup",backup:"Download full backup (JSON)",restore:"Restore from backup",restoreQ:"Restore writes every record in the file (replacing records with the same id). Continue?",restored:"Restored {n} records",exportBookings:"Export bookings (CSV for Excel)",dlNA:"File downloads aren't available in this view.",dlDeclined:"Download cancelled",
+explain:"How it's calculated",close:"Close",rateOf:"at rate",mixedNote:"Shown per currency because no rate is set.",
+lang:"Language",dispCur:"Show in",
+ruleLine:"List: guests × max(7, nights) × price. Katalin: actual nights only.",
+},
+hu:{app:"Ozora Camp – Kezelő",dash:"Áttekintés",board:"Foglaltság",bookings:"Foglalások",requests:"Kérések",katalin:"Katalin",setup:"Beállítások",
+loading:"Betöltés…",noDb:"Nincs adatbázis-kapcsolat. Nyisd meg az oldalt a Claude-ban bejelentkezve.",slow:"Az adatok még nem érkeztek meg. Lehet, hogy nincs kapcsolat.",
+noSeason:"Még nincs szezon. Hozz létre egyet a Beállításokban.",createSeason:"Szezon létrehozása",
+rateMissing:"Nincs megadva EUR→ILS árfolyam. A különböző pénznemek külön jelennek meg, átváltás nélkül.",setRate:"Árfolyam megadása",
+hufMissing:"Nincs EUR→HUF árfolyam, ezért forintban nem látható.",
+profit:"Szezon nyereség",target:"Szezon cél (minden üzlet)",ofTarget:"a célból",revenue:"Bevétel (beérkezett)",katOwed:"Katalinnak jár",katPaid:"Katalinnak kifizetve",katBal:"Katalinnak fizetendő",
+outCust:"Nyitott vendégtartozás",occupancy:"Foglaltság",pending:"Függő kérések",byActivity:"Nyereség tevékenységenként",accom:"Szállás – szobák és lakókocsik",cars:"Autóbérlés közvetítés",equip:"Kemping felszerelés",broker:"Lakókocsi és lakás közvetítés",soon:"Később",
+tapExplain:"Koppints egy számra a számítás megtekintéséhez",perBooking:"Foglalásonként",unit:"Egység",guests:"Vendég",nights:"Éj",nightsAct:"Tényleges éjek",billable:"Számlázott éjek",charged:"Megállapodott ár",received:"Beérkezett",outstanding:"Egyenleg",katShort:"Katalin",profitShort:"Nyereség",total:"Összesen",
+room:"Szoba",caravan:"Lakókocsi",room2:"2 fős szoba",room3:"3 fős szoba",personal:"Privát – nem kereskedelmi",
+newBooking:"Új foglalás",editBooking:"Foglalás szerkesztése",names:"Vendégek neve",phone:"Telefon",checkIn:"Érkezés",checkOut:"Távozás",noShow:"Nem jött el (Katalin 0-t kap)",
+currency:"Pénznem",paidDate:"Fizetés dátuma",method:"Fizetési mód",bit:"Bit",transfer:"Átutalás",cash:"Készpénz",other:"Egyéb",note:"Megjegyzés",save:"Mentés",cancel:"Mégse",del:"Törlés",delQ:"Törlöd a foglalást? Nem vonható vissza.",
+rates:"Díjak ehhez a foglaláshoz",listRate:"Listaár/fő/éj (€)",katRate:"Katalin díja (€)",perPerson:"fő/éj",perUnit:"egység/éj",
+calc:"Számítás",listPrice:"Listaár",vsList:"listaárhoz képest",discount:"Kedvezmény",premium:"Felár",
+errDates:"A távozásnak az érkezés után kell lennie.",errUnit:"Válassz egységet.",errGuests:"Érvénytelen vendégszám.",errAmount:"Érvénytelen összeg.",
+warnCap:"Több vendég, mint az egység kapacitása",warnOverlap:"Az egység ezeken a napokon már foglalt:",saveAnyway:"Mentés mégis",warnNonCom:"Nem kereskedelmi egység – kimarad a pénzügyekből",
+saved:"Mentve",deleted:"Törölve",saveErr:"A mentés sikertelen",
+newReq:"Új kérés",reqType:"Típus",approve:"Jóváhagyás (fizetve)",decline:"Elutasítás",reqWaiting:"Vár",hoursAgo:"{n} órája",over24:"Több mint 24 óra",freeUnits:"Szabad ebből a típusból: {n}",noFree:"Nincs megfelelő szabad egység",
+approveTitle:"Kérés jóváhagyása – vendég fizetett",assignUnit:"Egység kiosztása",declined:"Elutasítva",showDeclined:"Elutasítottak mutatása",noReq:"Nincs függő kérés.",created:"Beérkezett",
+noBookings:"Nincs foglalás ebben a szezonban.",filterAll:"Mind",
+katTitle:"Elszámolás Katalinnal",katRules:"Katalin csak a tényleges éjekért kap: szobában €{r}/fő/éj, lakókocsiban €{c}/lakókocsi/éj.",payouts:"Kifizetések Katalinnak",addPayout:"Kifizetés rögzítése",amountEur:"Összeg (€)",date:"Dátum",
+copyRep:"Jelentés másolása WhatsApphoz",dlCsv:"CSV letöltése",copied:"Másolva",repLang:"Jelentés nyelve",inclNames:"Vendégnevekkel",repNote:"Katalin jelentése csak az éjeket és az ő díjait tartalmazza – eladási ár, bevétel és nyereség nélkül.",copyFail:"A másolás le van tiltva – jelöld ki és másold kézzel.",
+season:"Szezon",seasonName:"Szezon neve",start:"Időszak kezdete",end:"Időszak vége",eurIls:"Árfolyam 1 € = ₪",eurHuf:"Árfolyam 1 € = Ft",targetIls:"Nyereségcél (₪)",minNights:"Minimum éjszaka",priceRoom:"Szoba ár/fő/éj (€)",priceCar:"Lakókocsi ár/fő/éj (€)",katRoom:"Katalin – szoba/fő/éj (€)",katCar:"Katalin – lakókocsi/egység/éj (€)",
+rateNote:"Az árfolyam csak átváltásra szolgál. Minden fizetés az eredeti pénznemben van tárolva.",newSeason:"Új szezon",units:"Egységek",capacity:"Kapacitás",commercial:"Kereskedelmi",type:"Típus",
+data:"Adatok és mentés",backup:"Teljes mentés letöltése (JSON)",restore:"Visszaállítás mentésből",restoreQ:"A visszaállítás minden rekordot beír a fájlból. Folytatod?",restored:"{n} rekord visszaállítva",exportBookings:"Foglalások exportja (CSV)",dlNA:"Letöltés nem elérhető ebben a nézetben.",dlDeclined:"Letöltés megszakítva",
+explain:"Hogyan számoltuk",close:"Bezár",rateOf:"árfolyamon",mixedNote:"Pénznemenként külön, mert nincs árfolyam.",
+lang:"Nyelv",dispCur:"Megjelenítés",
+ruleLine:"Lista: vendég × max(7, éj) × ár. Katalin: csak tényleges éjek.",
+}};
+Object.assign(T.he,{noDb:'אין חיבור לשרת. בדוק את האינטרנט ונסה לרענן.',login:'כניסה למערכת',email:'מייל',password:'סיסמה',signIn:'כניסה',signOut:'יציאה מהמערכת',loginErr:'המייל או הסיסמה שגויים.',notAdmin:'המשתמש הזה מחובר, אבל אין לו הרשאת מנהל. הרץ ב־Supabase את שורת ההרשאה מקובץ ההגדרה.',pubSeason:'העונה שמוצגת באתר ללקוחות',fromWebsite:'מהאתר',site:'האתר ללקוחות',loadErr:'טעינת הנתונים נכשלה',retry:'נסה שוב',account:'חשבון'});
+Object.assign(T.en,{noDb:'Cannot reach the server. Check your internet and refresh.',login:'Sign in',email:'Email',password:'Password',signIn:'Sign in',signOut:'Sign out',loginErr:'Wrong email or password.',notAdmin:'This user is signed in but is not an administrator. Run the admin line from the setup file in Supabase.',pubSeason:'Season shown on the customer website',fromWebsite:'website',site:'Customer website',loadErr:'Loading data failed',retry:'Retry',account:'Account'});
+Object.assign(T.hu,{login:'Bejelentkezés',email:'E-mail',password:'Jelszó',signIn:'Belépés',signOut:'Kijelentkezés',loginErr:'Hibás e-mail vagy jelszó.',notAdmin:'Ez a felhasználó nem adminisztrátor.',pubSeason:'A weboldalon megjelenő szezon',fromWebsite:'weboldal',site:'Ügyféloldal',loadErr:'Az adatok betöltése sikertelen',retry:'Újra',account:'Fiók'});
+function lsGet(k,d){try{return localStorage.getItem(k)||d}catch(e){return d}}
+function lsSet(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+let lang=lsGet('oz_lang','he');
+const t=(k,vars)=>{let s=(T[lang]&&T[lang][k])||T.en[k]||k;if(vars)for(const v in vars)s=s.replace('{'+v+'}',vars[v]);return s};
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/*CALC-START*/
+const DAY=86400000;
+function pd(s){if(!s||typeof s!=='string')return null;const p=s.split('-').map(Number);if(p.length!==3||p.some(isNaN))return null;return Date.UTC(p[0],p[1]-1,p[2])}
+function nightsBetween(a,b){const x=pd(a),y=pd(b);if(x==null||y==null)return 0;return Math.max(0,Math.round((y-x)/DAY))}
+function addDays(s,n){const d=new Date(pd(s)+n*DAY);return d.toISOString().slice(0,10)}
+function r2(n){return Math.round(n*100)/100}
+function addMix(m,cur,v){v=Number(v);if(!isFinite(v)||!v)return m;m[cur]=r2((m[cur]||0)+v);return m}
+function sumMix(a,b,sign){const o={...a};for(const c in b)addMix(o,c,(sign||1)*b[c]);return o}
+function rates(s){return {EUR:1,ILS:+(s&&s.eurIls)||0,HUF:+(s&&s.eurHuf)||0}}
+/* convert a {cur:amount} mix into one currency; null when a needed rate is missing (never assumes a rate) */
+function convert(m,target,s){const r=rates(s);let tot=0;for(const c in m){const v=m[c];if(!v)continue;if(c===target){tot+=v;continue}if(!r[c]||!r[target])return null;tot+=v/r[c]*r[target]}return r2(tot)}
+function unitKind(u){if(!u)return 'room2';return u.type==='caravan'?'caravan':(+u.capacity>=3?'room3':'room2')}
+function calcBooking(b,u,s){
+  const minN=+(s&&s.minNights)||7;
+  const planned=nightsBetween(b.checkIn,b.checkOut);
+  const actual=b.noShow?0:planned;
+  const billable=Math.max(minN,planned);
+  const g=+b.guests||0;
+  const listRate=+b.listRate||0, katRate=+b.katRate||0;
+  const listEUR=r2(g*billable*listRate);
+  const katEUR=r2(b.katBasis==='unit'?actual*katRate:g*actual*katRate);
+  const cur=b.currency||'EUR';
+  const charged=addMix({},cur,b.charged), received=addMix({},cur,b.received);
+  const outstanding=addMix({},cur,(+b.charged||0)-(+b.received||0));
+  const profit=sumMix(received,{EUR:katEUR},-1);
+  const chargedEUR=convert(charged,'EUR',s);
+  const diffEUR=chargedEUR==null?null:r2(chargedEUR-listEUR);
+  const commercial=!u||u.commercial!==false;
+  return {planned,actual,billable,g,listRate,katRate,listEUR,katEUR,cur,charged,received,outstanding,profit,chargedEUR,diffEUR,commercial,minN};
+}
+function overlaps(a,b){return pd(a.checkIn)<pd(b.checkOut)&&pd(b.checkIn)<pd(a.checkOut)}
+function seasonTotals(bookings,units,payouts,s){
+  const um=Object.fromEntries(units.map(u=>[u.id,u]));
+  const rows=[];let rev={},chg={},out={},kat=0,profit={},occ=0;
+  for(const b of bookings){if(b.status!=='confirmed')continue;const u=um[b.unitId];const c=calcBooking(b,u,s);if(!c.commercial)continue;
+    rows.push({b,u,c});rev=sumMix(rev,c.received);chg=sumMix(chg,c.charged);out=sumMix(out,c.outstanding);kat=r2(kat+c.katEUR);profit=sumMix(profit,c.profit);occ+=c.actual;}
+  const paid=r2(payouts.reduce((a,p)=>a+(+p.amountEUR||0),0));
+  const comUnits=units.filter(u=>u.commercial!==false).length;
+  const days=s?nightsBetween(s.start,s.end):0;
+  return {rows,rev,chg,out,kat,paid,katBal:r2(kat-paid),profit,occNights:occ,capNights:comUnits*days};
+}
+/*CALC-END*/
+
+/* ===================== state ===================== */
+const S={seasons:[],units:[],bookings:[],payouts:[],got:{},err:null,slow:false};
+let sb=null,session=null,isAdmin=null,booting=true;
+let curSeasonId=lsGet('oz_season','');
+let dispCur=lsGet('oz_cur','ILS');
+let showDeclined=false, bookFilter='all';
+const route=()=>{const h=location.hash.replace('#','');return ['dash','board','bookings','requests','katalin','setup'].includes(h)?h:'dash'};
+const season=()=>S.seasons.find(s=>s.id===curSeasonId)||null;
+const unitsSorted=()=>[...S.units].sort((a,b)=>(+a.order||0)-(+b.order||0));
+const unitById=id=>S.units.find(u=>u.id===id);
+const sBookings=()=>S.bookings.filter(b=>b.seasonId===curSeasonId);
+const sPayouts=()=>S.payouts.filter(p=>p.seasonId===curSeasonId);
+const locale=()=>({he:'he-IL',en:'en-GB',hu:'hu-HU'}[lang]);
+const SYM={EUR:'€',ILS:'₪',HUF:'Ft'};
+function fmtNum(v,dec){return new Intl.NumberFormat(locale(),{maximumFractionDigits:dec==null?2:dec,minimumFractionDigits:0}).format(v)}
+function money(v,cur,dec){if(v==null)return '—';const n=fmtNum(Math.abs(v),dec==null?(cur==='EUR'?2:0):dec);const sg=v<0?'−':'';return `<span class="num">${sg}${cur==='HUF'?n+' Ft':SYM[cur]+n}</span>`}
+function moneyTxt(v,cur){if(v==null)return '—';const n=fmtNum(Math.abs(v),cur==='EUR'?2:0);return (v<0?'-':'')+(cur==='HUF'?n+' Ft':SYM[cur]+n)}
+/* show a mix in display currency, or per-currency when the rate is missing */
+function showMix(m,s,cur){cur=cur||dispCur;const v=convert(m,cur,s);if(v!=null)return money(v,cur);const parts=Object.entries(m).filter(([,x])=>x).map(([c,x])=>money(x,c));return parts.length?parts.join(' <span class="muted">+</span> '):money(0,cur)}
+function fmtDate(s){if(!s)return '';const [y,m,d]=s.split('-');return `${d}/${m}`}
+function today(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+
+/* ===================== icons ===================== */
+const IC={
+dash:'<path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/>',
+board:'<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
+bookings:'<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>',
+requests:'<path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/>',
+katalin:'<path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/>',
+x:'<path d="M18 6 6 18M6 6l12 12"/>',info:'<circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>',
+alert:'<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4M12 17h.01"/>',
+copy:'<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>',
+dl:'<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>',
+check:'<path d="M20 6 9 17l-5-5"/>',plus:'<path d="M12 5v14M5 12h14"/>',up:'<path d="M17 8V3h-5M17 3 9 11M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6"/>'
+};
+const icon=n=>`<svg class="i" viewBox="0 0 24 24" aria-hidden="true">${IC[n]}</svg>`;
+
+/* ===================== shell ===================== */
+function applyLang(){document.documentElement.lang=lang;document.documentElement.dir=lang==='he'?'rtl':'ltr';document.title=t('app');document.getElementById('langSel').value=lang}
+function renderNav(){
+  document.getElementById('setupBtn').hidden=false;
+  const r=route();const pend=sBookings().filter(b=>b.status==='request').length;
+  document.getElementById('nav').innerHTML=['dash','board','bookings','requests','katalin'].map(k=>`<a href="#${k}" ${r===k?'aria-current="page"':''}>${icon(k)}<span>${t(k)}</span>${k==='requests'&&pend?`<span class="badge">${pend}</span>`:''}</a>`).join('');
+  const ss=document.getElementById('seasonSel');
+  ss.innerHTML=[...S.seasons].sort((a,b)=>(b.start||'').localeCompare(a.start||'')).map(s=>`<option value="${esc(s.id)}" ${s.id===curSeasonId?'selected':''}>${esc(s.name)}</option>`).join('');
+  ss.hidden=!S.seasons.length;
+  document.getElementById('ttl').textContent=t(r);
+  const s=season();
+  const sub=document.getElementById('subbar');
+  if(['dash','bookings','katalin'].includes(r)&&s){
+    sub.hidden=false;
+    sub.innerHTML=`<span class="small muted">${t('dispCur')}:</span><div class="chips" role="group">${['ILS','EUR','HUF'].map(c=>`<button data-cur="${c}" aria-pressed="${dispCur===c}">${SYM[c]}</button>`).join('')}</div>${s.eurIls?`<span class="small muted num">1€ = ₪${esc(s.eurIls)}${s.eurHuf?' · '+esc(s.eurHuf)+' Ft':''}</span>`:''}`;
+  } else sub.hidden=true;
+  const fab=document.getElementById('fab');
+  fab.hidden=!(s&&['bookings','board','requests'].includes(r));
+}
+function render(){
+  applyLang();renderNav();
+  const app=document.getElementById('app');
+  if(S.err==='nodb'){app.innerHTML=`<div class="banner warn">${icon('alert')}<span>${t('noDb')}</span></div>`;return}
+  if(booting){app.innerHTML=`<div class="empty">${t('loading')}</div>`;return}
+  if(!session){vLogin(app);return}
+  if(isAdmin===false){app.innerHTML=`<div class="banner warn">${icon('alert')}<span>${t('notAdmin')}<br><span class="small num">${esc(session.user.email)}</span></span></div><button class="btn" id="so2">${t('signOut')}</button>`;document.getElementById('so2').onclick=async()=>{await sb.auth.signOut();location.reload()};return}
+  if(S.err==='load'){app.innerHTML=`<div class="banner warn">${icon('alert')}<span>${t('loadErr')}</span><button class="btn sm" id="rt">${t('retry')}</button></div>`;document.getElementById('rt').onclick=reload;return}
+  if(!S.got.seasons||!S.got.units||!S.got.bookings||!S.got.payouts){app.innerHTML=`<div class="empty">${t('loading')}</div>${S.slow?`<div class="banner warn">${icon('alert')}<span>${t('slow')}</span></div>`:''}`;return}
+  const r=route();
+  if(!season()&&r!=='setup'){app.innerHTML=`<div class="empty"><p>${t('noSeason')}</p><a class="btn p" href="#setup">${t('createSeason')}</a></div>`;return}
+  ({dash:vDash,board:vBoard,bookings:vBookings,requests:vRequests,katalin:vKatalin,setup:vSetup})[r](app);
+}
+
+/* ===================== views ===================== */
+function rateBanner(s){
+  let h='';
+  if(!s.eurIls)h+=`<div class="banner warn">${icon('alert')}<span>${t('rateMissing')}</span><a class="btn sm" href="#setup">${t('setRate')}</a></div>`;
+  else if(dispCur==='HUF'&&!s.eurHuf)h+=`<div class="banner info">${icon('info')}<span>${t('hufMissing')}</span></div>`;
+  return h;
+}
+function vDash(app){
+  const s=season();const tot=seasonTotals(sBookings(),S.units,sPayouts(),s);
+  const profIls=convert(tot.profit,'ILS',s);const target=+s.targetIls||0;
+  const pct=profIls!=null&&target?Math.min(100,profIls/target*100):null;
+  const pend=sBookings().filter(b=>b.status==='request').length;
+  const occPct=tot.capNights?Math.round(tot.occNights/tot.capNights*100):null;
+  app.innerHTML=`${rateBanner(s)}
+  <div class="grid g2">
+    <button class="kpi hero" data-x="profit"><span class="l">${t('profit')} · ${t('accom')}</span><span class="v">${showMix(tot.profit,s)}</span>
+      <span class="h">${t('target')}: ${money(target,'ILS')}${pct!=null?` · <b class="num">${fmtNum(pct,0)}%</b> ${t('ofTarget')}`:''}</span>
+      <span class="bar" aria-hidden="true"><i style="width:${pct||0}%"></i></span></button>
+    <div class="grid g2">
+      <button class="kpi" data-x="rev"><span class="l">${t('revenue')}</span><span class="v">${showMix(tot.rev,s)}</span></button>
+      <button class="kpi" data-x="kat"><span class="l">${t('katBal')}</span><span class="v">${showMix({EUR:tot.katBal},s)}</span><span class="h">${t('katOwed')} ${money(tot.kat,'EUR')} · ${t('katPaid')} ${money(tot.paid,'EUR')}</span></button>
+      <button class="kpi" data-x="out"><span class="l">${t('outCust')}</span><span class="v">${showMix(tot.out,s)}</span></button>
+      <a class="kpi" href="#requests" style="text-decoration:none;color:inherit"><span class="l">${t('pending')}</span><span class="v num">${pend}</span><span class="h">${t('occupancy')}: ${occPct!=null?`<span class="num">${occPct}%</span> (${tot.occNights}/${tot.capNights})`:'—'}</span></a>
+    </div>
+  </div>
+  <p class="small muted" style="margin:10px 2px">${icon('info').replace('class="i"','class="i" style="width:15px;height:15px;vertical-align:-3px"')} ${t('tapExplain')}</p>
+  <div class="card sec"><h3>${t('byActivity')}</h3>
+    <table><tbody>
+    <tr><td>${t('accom')}</td><td style="text-align:end">${showMix(tot.profit,s)}</td></tr>
+    ${['cars','equip','broker'].map(k=>`<tr><td class="muted">${t(k)}</td><td style="text-align:end"><span class="tag mut">${t('soon')}</span></td></tr>`).join('')}
+    </tbody></table></div>
+  <div class="card sec"><h3>${t('perBooking')}</h3>${perBookingTable(tot,s)}</div>`;
+  app.querySelectorAll('[data-x]').forEach(b=>b.onclick=()=>explainTotal(b.dataset.x));
+}
+function perBookingTable(tot,s){
+  if(!tot.rows.length)return `<p class="muted">${t('noBookings')}</p>`;
+  const rows=[...tot.rows].sort((a,b)=>(+a.u?.order||0)-(+b.u?.order||0));
+  return `<div class="tw"><table class="wide"><thead><tr><th>${t('unit')}</th><th>${t('guests')}</th><th>${t('nightsAct')}</th><th>${t('received')}</th><th>${t('katShort')}</th><th>${t('profitShort')}</th></tr></thead><tbody>
+  ${rows.map(({b,u,c})=>`<tr data-b="${esc(b.id)}" style="cursor:pointer"><td>${esc(u?.name||'?')}</td><td class="num">${c.g}</td><td class="num">${c.actual}${c.billable!==c.actual?` <span class="muted">/${c.billable}</span>`:''}</td><td>${showMix(c.received,s)}</td><td>${money(c.katEUR,'EUR')}</td><td><b>${showMix(c.profit,s)}</b></td></tr>`).join('')}
+  </tbody><tfoot><tr><td>${t('total')}</td><td></td><td class="num">${tot.occNights}</td><td>${showMix(tot.rev,s)}</td><td>${money(tot.kat,'EUR')}</td><td>${showMix(tot.profit,s)}</td></tr></tfoot></table></div>`;
+}
+function vBoard(app){
+  const s=season();const start=s.start,end=s.end;const n=nightsBetween(start,end);
+  if(!n){app.innerHTML=`<div class="banner warn">${icon('alert')}<span>${t('start')} / ${t('end')}</span><a class="btn sm" href="#setup">${t('setup')}</a></div>`;return}
+  const days=[...Array(n)].map((_,i)=>addDays(start,i));
+  const conf=sBookings().filter(b=>b.status==='confirmed');
+  const wk=lang==='he'?['א','ב','ג','ד','ה','ו','ש']:lang==='hu'?['V','H','K','Sze','Cs','P','Szo']:['Su','Mo','Tu','We','Th','Fr','Sa'];
+  let h=`<div class="board"><table><thead><tr><th class="u">${t('unit')}</th>${days.map(d=>`<th><span class="num">${fmtDate(d)}</span><br><span class="wk">${wk[new Date(pd(d)).getUTCDay()]}</span></th>`).join('')}</tr></thead><tbody>`;
+  for(const u of unitsSorted()){
+    const k=unitKind(u);h+=`<tr><td class="u">${esc(u.name)}<br><span class="tag ${k}" style="font-size:10.5px">${u.commercial===false?t('personal'):t(k)}</span></td>`;
+    for(let i=0;i<days.length;i++){const d=days[i];
+      if(u.commercial===false){h+=`<td class="na"></td>`;continue}
+      const b=conf.find(b=>b.unitId===u.id&&pd(b.checkIn)<=pd(d)&&pd(d)<pd(b.checkOut));
+      if(b){let span=1;while(i+span<days.length&&pd(days[i+span])<pd(b.checkOut))span++;
+        h+=`<td class="bk ${k}" colspan="${span}" data-b="${esc(b.id)}" title="${esc(b.names)}"><span class="nm" style="max-width:${span*38-12}px">${esc(b.names||'')} · ${b.guests}</span></td>`;i+=span-1;}
+      else h+=`<td class="c" data-u="${esc(u.id)}" data-d="${d}" aria-label="${esc(u.name)} ${d}"></td>`;}
+    h+='</tr>'}
+  h+='</tbody></table></div>';
+  app.innerHTML=h;
+  app.querySelectorAll('td[data-u]').forEach(td=>td.onclick=()=>bookingForm(null,{unitId:td.dataset.u,checkIn:td.dataset.d,checkOut:addDays(td.dataset.d,7)}));
+}
+function bookingCard(b,s){
+  const u=unitById(b.unitId);const c=calcBooking(b,u,s);const k=unitKind(u);
+  const diff=c.diffEUR;const dtag=diff==null||Math.abs(diff)<0.5?'':`<span class="tag ${diff<0?'warn':'ok'}">${diff<0?t('discount'):t('premium')} ${money(Math.abs(diff),'EUR')}</span>`;
+  const outV=Object.values(c.outstanding).some(v=>v>0.004);
+  return `<button class="item" data-b="${esc(b.id)}"><div class="t"><span class="tag ${k}">${esc(u?.name||'?')}</span><span>${esc(b.names||'—')}</span><span class="spacer"></span>${dtag}${!c.commercial?`<span class="tag mut">${t('personal')}</span>`:''}${b.noShow?`<span class="tag bad">no-show</span>`:''}</div>
+  <div class="meta"><span class="num">${fmtDate(b.checkIn)} → ${fmtDate(b.checkOut)}</span><span>${c.g} ${t('guests')}</span><span>${c.actual} ${t('nightsAct')}${c.billable!==c.actual?` · ${c.billable} ${t('billable')}`:''}</span></div>
+  <div class="money"><div>${t('charged')}<b>${money(+b.charged||0,c.cur)}</b></div><div>${t('received')}<b>${money(+b.received||0,c.cur)}</b></div>${outV?`<div style="background:var(--bad-bg)">${t('outstanding')}<b>${showMix(c.outstanding,s,c.cur)}</b></div>`:''}<div>${t('katShort')}<b>${money(c.katEUR,'EUR')}</b></div><div style="background:var(--ok-bg)">${t('profitShort')}<b>${showMix(c.profit,s)}</b></div></div></button>`;
+}
+function vBookings(app){
+  const s=season();let list=sBookings().filter(b=>b.status==='confirmed');
+  if(bookFilter!=='all')list=list.filter(b=>unitKind(unitById(b.unitId))===bookFilter);
+  list.sort((a,b)=>(+unitById(a.unitId)?.order||0)-(+unitById(b.unitId)?.order||0)||(a.checkIn||'').localeCompare(b.checkIn||''));
+  app.innerHTML=`${rateBanner(s)}<div class="row" style="margin-bottom:12px"><div class="chips" role="group">${['all','room2','room3','caravan'].map(f=>`<button data-f="${f}" aria-pressed="${bookFilter===f}">${f==='all'?t('filterAll'):t(f)}</button>`).join('')}</div><span class="spacer"></span><button class="btn sm" id="expB">${icon('dl')}${t('dlCsv')}</button></div>
+  <div class="list">${list.length?list.map(b=>bookingCard(b,s)).join(''):`<div class="empty">${t('noBookings')}</div>`}</div>`;
+  app.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{bookFilter=b.dataset.f;render()});
+  document.getElementById('expB').onclick=exportBookingsCsv;
+}
+function freeUnitsFor(type,guests,ci,co,excludeId){
+  const conf=S.bookings.filter(b=>b.status==='confirmed'&&b.id!==excludeId);
+  return unitsSorted().filter(u=>{if(u.commercial===false)return false;
+    if(type==='caravan'){if(u.type!=='caravan')return false}else{if(u.type==='caravan')return false;if(+u.capacity<(type==='room3'?3:2))return false}
+    if(guests&&+u.capacity&&+guests>+u.capacity)return false;
+    return !conf.some(b=>b.unitId===u.id&&overlaps(b,{checkIn:ci,checkOut:co}))});
+}
+function vRequests(app){
+  const s=season();const all=sBookings().filter(b=>b.status==='request'||(showDeclined&&b.status==='declined'));
+  all.sort((a,b)=>(a.createdAt||'').localeCompare(b.createdAt||''));
+  app.innerHTML=`<div class="row" style="margin-bottom:12px"><label class="chk"><input type="checkbox" id="shD" ${showDeclined?'checked':''}>${t('showDeclined')}</label></div>
+  <div class="list">${all.length?all.map(b=>{
+    const hrs=b.createdAt?Math.floor((Date.now()-new Date(b.createdAt).getTime())/3600000):null;
+    const free=freeUnitsFor(b.reqType,b.guests,b.checkIn,b.checkOut);
+    const p=nightsBetween(b.checkIn,b.checkOut);
+    return `<div class="item"><div class="t"><span class="tag ${esc(b.reqType)}">${t(b.reqType)}</span><span>${esc(b.names||'—')}</span><span class="spacer"></span>${b.status==='declined'?`<span class="tag mut">${t('declined')}</span>`:hrs!=null?`<span class="tag ${hrs>=24?'bad':'warn'}">${hrs>=24?t('over24'):t('hoursAgo',{n:hrs})}</span>`:''}</div>
+    <div class="meta"><span class="num">${fmtDate(b.checkIn)} → ${fmtDate(b.checkOut)}</span><span>${b.guests} ${t('guests')} · ${p} ${t('nights')}</span>${b.phone?`<a class="num" href="https://wa.me/${esc(String(b.phone).replace(/\D/g,''))}" target="_blank" rel="noopener">${esc(b.phone)}</a>`:''}${b.email?`<span class="num">${esc(b.email)}</span>`:''}${b.source==='website'?`<span class="tag ok">${t('fromWebsite')}</span>`:''}</div>
+    ${b.note?`<div class="small">${esc(b.note)}</div>`:''}
+    ${b.status==='request'?`<div class="small ${free.length?'muted':'err'}">${free.length?t('freeUnits',{n:free.length}):t('noFree')}</div>
+    <div class="row"><button class="btn ok sm" data-ap="${esc(b.id)}" ${free.length?'':'disabled'}>${icon('check')}${t('approve')}</button><button class="btn bad sm" data-dc="${esc(b.id)}">${t('decline')}</button><button class="btn sm" data-ed="${esc(b.id)}">${t('editBooking')}</button></div>`:''}</div>`}).join(''):`<div class="empty">${t('noReq')}</div>`}</div>`;
+  document.getElementById('shD').onchange=e=>{showDeclined=e.target.checked;render()};
+  app.querySelectorAll('[data-ap]').forEach(x=>x.onclick=()=>approveForm(S.bookings.find(b=>b.id===x.dataset.ap)));
+  app.querySelectorAll('[data-dc]').forEach(x=>x.onclick=async()=>{const b=S.bookings.find(b=>b.id===x.dataset.dc);await saveDoc('bookings',b.id,{...strip(b),status:'declined'})});
+  app.querySelectorAll('[data-ed]').forEach(x=>x.onclick=()=>requestForm(S.bookings.find(b=>b.id===x.dataset.ed)));
+}
+let repLang=lsGet('oz_replang','hu'),repNames=true;
+function katalinRows(){
+  const s=season();return sBookings().filter(b=>b.status==='confirmed').map(b=>({b,u:unitById(b.unitId),c:calcBooking(b,unitById(b.unitId),s)})).filter(r=>r.c.commercial).sort((a,b)=>(+a.u?.order||0)-(+b.u?.order||0));
+}
+function katalinReport(L){
+  const tl=(k,v)=>{const o=lang;lang=L;const r=t(k,v);lang=o;return r};
+  const s=season();const rows=katalinRows();const tot=seasonTotals(sBookings(),S.units,sPayouts(),s);
+  let out=`${tl('katTitle')} – ${s.name}\n\n`;
+  for(const {b,u,c} of rows){
+    const basis=b.katBasis==='unit'?`${c.actual} × €${c.katRate}`:`${c.g} × ${c.actual} × €${c.katRate}`;
+    const un=(u?.name||'').match(/\d+/);out+=`${tl(u?.type==='caravan'?'caravan':'room')} ${un?un[0]:''}${repNames&&b.names?' – '+b.names:''}\n${fmtDate(b.checkIn)}–${fmtDate(b.checkOut)} · ${c.actual} ${tl('nights')}${b.katBasis==='unit'?'':' · '+c.g+' '+tl('guests')}\n${basis} = €${fmtNum(c.katEUR)}\n\n`;}
+  out+=`${tl('katOwed')}: €${fmtNum(tot.kat)}\n${tl('katPaid')}: €${fmtNum(tot.paid)}\n${tl('katBal')}: €${fmtNum(tot.katBal)}`;
+  return out;
+}
+function vKatalin(app){
+  const s=season();const rows=katalinRows();const tot=seasonTotals(sBookings(),S.units,sPayouts(),s);
+  const pays=sPayouts().sort((a,b)=>(a.date||'').localeCompare(b.date||''));
+  app.innerHTML=`<div class="banner info">${icon('info')}<span>${t('katRules',{r:esc(s.katRoom),c:esc(s.katCar)})}</span></div>
+  <div class="grid g3"><div class="kpi"><span class="l">${t('katOwed')}</span><span class="v">${money(tot.kat,'EUR')}</span>${dispCur!=='EUR'&&convert({EUR:1},dispCur,s)!=null?`<span class="h">${showMix({EUR:tot.kat},s)}</span>`:''}</div>
+  <div class="kpi"><span class="l">${t('katPaid')}</span><span class="v">${money(tot.paid,'EUR')}</span></div>
+  <div class="kpi" style="border-color:${tot.katBal>0?'#FCA5A5':'var(--border)'}"><span class="l">${t('katBal')}</span><span class="v">${money(tot.katBal,'EUR')}</span>${dispCur!=='EUR'&&convert({EUR:1},dispCur,s)!=null?`<span class="h">${showMix({EUR:tot.katBal},s)}</span>`:''}</div></div>
+  <div class="card sec"><div class="tw"><table class="wide"><thead><tr><th>${t('unit')}</th><th>${t('names')}</th><th>${t('checkIn')}–${t('checkOut')}</th><th>${t('guests')}</th><th>${t('nightsAct')}</th><th>${t('katRate')}</th><th>€</th></tr></thead><tbody>
+  ${rows.map(({b,u,c})=>`<tr><td>${esc(u?.name)}</td><td>${esc(b.names)}</td><td class="num">${fmtDate(b.checkIn)}–${fmtDate(b.checkOut)}</td><td class="num">${b.katBasis==='unit'?'—':c.g}</td><td class="num">${c.actual}</td><td class="small">€${esc(c.katRate)} ${b.katBasis==='unit'?t('perUnit'):t('perPerson')}</td><td>${money(c.katEUR,'EUR')}</td></tr>`).join('')}
+  </tbody><tfoot><tr><td colspan="6">${t('total')}</td><td>${money(tot.kat,'EUR')}</td></tr></tfoot></table></div></div>
+  <div class="card sec"><div class="row" style="margin-bottom:8px"><h3 style="margin:0">${t('payouts')}</h3><span class="spacer"></span><button class="btn sm p" id="addPay">${icon('plus')}${t('addPayout')}</button></div>
+  ${pays.length?`<table><tbody>${pays.map(p=>`<tr><td class="num">${esc(p.date)}</td><td>${money(+p.amountEUR,'EUR')}</td><td class="small muted">${esc(p.note||'')}</td><td style="text-align:end"><button class="btn sm bad" data-dp="${esc(p.id)}" aria-label="${t('del')}">${icon('x')}</button></td></tr>`).join('')}</tbody></table>`:`<p class="muted small">—</p>`}</div>
+  <div class="card sec"><h3>${t('copyRep')}</h3><p class="small muted">${t('repNote')}</p>
+  <div class="row"><label class="fl" style="min-width:140px">${t('repLang')}<select class="in" id="repL">${['hu','en','he'].map(l=>`<option value="${l}" ${repLang===l?'selected':''}>${{hu:'Magyar',en:'English',he:'עברית'}[l]}</option>`).join('')}</select></label><label class="chk"><input type="checkbox" id="repN" ${repNames?'checked':''}>${t('inclNames')}</label></div>
+  <pre class="rep" id="repTxt" dir="${repLang==='he'?'rtl':'ltr'}">${esc(katalinReport(repLang))}</pre>
+  <div class="row"><button class="btn p" id="cpRep">${icon('copy')}${t('copyRep')}</button><button class="btn" id="dlKat">${icon('dl')}${t('dlCsv')}</button></div></div>`;
+  document.getElementById('addPay').onclick=payoutForm;
+  app.querySelectorAll('[data-dp]').forEach(x=>x.onclick=()=>confirmDlg(t('delQ'),async()=>{await delDoc('payouts',x.dataset.dp)}));
+  document.getElementById('repL').onchange=e=>{repLang=e.target.value;lsSet('oz_replang',repLang);render()};
+  document.getElementById('repN').onchange=e=>{repNames=e.target.checked;render()};
+  document.getElementById('cpRep').onclick=async()=>{try{await navigator.clipboard.writeText(katalinReport(repLang));toast(t('copied'))}catch(e){const r=document.createRange();r.selectNodeContents(document.getElementById('repTxt'));const sel=getSelection();sel.removeAllRanges();sel.addRange(r);toast(t('copyFail'))}};
+  document.getElementById('dlKat').onclick=exportKatalinCsv;
+}
+function vSetup(app){
+  const s=season();
+  app.innerHTML=`<div class="card"><div class="row" style="margin-bottom:10px"><h3 style="margin:0">${t('season')}${s?': '+esc(s.name):''}</h3><span class="spacer"></span><button class="btn sm" id="newS">${icon('plus')}${t('newSeason')}</button></div>
+  ${s?seasonFields(s):`<p class="muted">${t('noSeason')}</p>`}</div>
+  <div class="card sec"><h3>${t('units')}</h3><div class="tw"><table><thead><tr><th>${t('unit')}</th><th>${t('type')}</th><th>${t('capacity')}</th><th>${t('commercial')}</th></tr></thead><tbody>
+  ${unitsSorted().map(u=>`<tr><td><input class="in" data-un="${esc(u.id)}" value="${esc(u.name)}" style="min-width:110px"></td><td>${u.type==='caravan'?t('caravan'):t('room')}</td><td><select class="in" data-uc="${esc(u.id)}" style="width:76px">${[1,2,3,4].map(n=>`<option ${+u.capacity===n?'selected':''}>${n}</option>`).join('')}</select></td><td><input type="checkbox" data-um="${esc(u.id)}" ${u.commercial!==false?'checked':''} style="width:22px;height:22px" aria-label="${t('commercial')}"></td></tr>`).join('')}
+  </tbody></table></div></div>
+  <div class="card sec"><h3>${t('account')}</h3><div class="row"><span class="muted small">${esc(session?.user?.email||'')}</span><span class="spacer"></span><a class="btn sm" href="../" target="_blank" rel="noopener">${t('site')}</a><button class="btn sm bad" id="so">${t('signOut')}</button></div></div>
+  <div class="card sec"><h3>${t('data')}</h3><div class="row"><button class="btn" id="bk">${icon('dl')}${t('backup')}</button><button class="btn" id="rs">${icon('up')}${t('restore')}</button>${s?`<button class="btn" id="ex">${icon('dl')}${t('exportBookings')}</button>`:''}</div></div>`;
+  if(s)bindSeasonFields(s);
+  document.getElementById('newS').onclick=newSeasonForm;
+  app.querySelectorAll('[data-un]').forEach(x=>x.onchange=()=>{const u=unitById(x.dataset.un);saveDoc('units',u.id,{...strip(u),name:x.value.trim()||u.name})});
+  app.querySelectorAll('[data-uc]').forEach(x=>x.onchange=()=>{const u=unitById(x.dataset.uc);saveDoc('units',u.id,{...strip(u),capacity:+x.value})});
+  app.querySelectorAll('[data-um]').forEach(x=>x.onchange=()=>{const u=unitById(x.dataset.um);saveDoc('units',u.id,{...strip(u),commercial:x.checked})});
+  document.getElementById('bk').onclick=backup;
+  document.getElementById('so').onclick=async()=>{await sb.auth.signOut();location.reload()};
+  document.getElementById('rs').onclick=()=>document.getElementById('restoreFile').click();
+  const ex=document.getElementById('ex');if(ex)ex.onclick=exportBookingsCsv;
+}
+const SF=[['name','seasonName','text'],['start','start','date'],['end','end','date'],['eurIls','eurIls','num'],['eurHuf','eurHuf','num'],['targetIls','targetIls','num'],['minNights','minNights','num'],['priceRoom','priceRoom','num'],['priceCar','priceCar','num'],['katRoom','katRoom','num'],['katCar','katCar','num'],['isPublic','pubSeason','bool']];
+function seasonFields(s){return `<form class="f" id="sf"><div class="f2">${SF.filter(x=>x[2]!=='bool').map(([k,l,ty])=>`<label class="fl">${t(l)}<input class="in" name="${k}" type="${ty==='num'?'number':ty}" ${ty==='num'?'step="any" inputmode="decimal"':''} value="${esc(s[k]??'')}"></label>`).join('')}</div><label class="chk"><input type="checkbox" name="isPublic" ${s.isPublic?'checked':''}>${t('pubSeason')}</label><p class="small muted">${t('rateNote')}</p><div><button class="btn p" type="submit">${t('save')}</button></div></form>`}
+function readSeasonForm(f){const o={};for(const [k,,ty] of SF){if(ty==='bool'){o[k]=f.elements[k].checked;continue}const v=f.elements[k].value.trim();o[k]=ty==='num'?(v===''?null:+v):v}return o}
+function bindSeasonFields(s){document.getElementById('sf').onsubmit=async e=>{e.preventDefault();const o=readSeasonForm(e.target);if(!o.name)return;await saveDoc('seasons',s.id,{...strip(s),...o})}}
+function newSeasonForm(){
+  const s=season()||{};const y=new Date().getFullYear()+1;
+  const base={name:'Ozora '+y,start:y+'-07-20',end:y+'-08-04',eurIls:s.eurIls??null,eurHuf:s.eurHuf??null,targetIls:s.targetIls??50000,minNights:s.minNights??7,priceRoom:s.priceRoom??80,priceCar:s.priceCar??50,katRoom:s.katRoom??25,katCar:s.katCar??15};
+  modal(t('newSeason'),seasonFields(base),m=>{m.querySelector('#sf').onsubmit=async e=>{e.preventDefault();const o=readSeasonForm(e.target);if(!o.name)return;const id='s'+Date.now().toString(36);await saveDoc('seasons',id,o);curSeasonId=id;lsSet('oz_season',id);closeModal();render()}});
+}
+
+function vLogin(app){
+  document.getElementById('nav').innerHTML='';document.getElementById('subbar').hidden=true;document.getElementById('fab').hidden=true;document.getElementById('seasonSel').hidden=true;document.getElementById('setupBtn').hidden=true;
+  document.getElementById('ttl').textContent='Ozora Camp';
+  app.innerHTML=`<div class="card" style="max-width:420px;margin:24px auto"><h2>${t('login')}</h2><form class="f" id="lf"><label class="fl">${t('email')}<input class="in" name="email" type="email" autocomplete="username" dir="ltr" required></label><label class="fl">${t('password')}<input class="in" name="pw" type="password" autocomplete="current-password" dir="ltr" required></label><div id="le"></div><button class="btn p" type="submit">${t('signIn')}</button></form></div>`;
+  document.getElementById('lf').onsubmit=async e=>{e.preventDefault();const f=e.target;const btn=f.querySelector('[type=submit]');btn.disabled=true;
+    const {data,error}=await sb.auth.signInWithPassword({email:f.elements.email.value.trim(),password:f.elements.pw.value});
+    btn.disabled=false;if(error){document.getElementById('le').innerHTML=`<div class="err">${t('loginErr')}</div>`;return}
+    await onSession(data.session)};
+}
+/* ===================== explain ===================== */
+function explainTotal(kind){
+  const s=season();const tot=seasonTotals(sBookings(),S.units,sPayouts(),s);
+  const ratesTxt=`${s.eurIls?`1€ = ₪${s.eurIls}`:'—'}${s.eurHuf?` · 1€ = ${s.eurHuf} Ft`:''}`;
+  let h=`<p class="small muted">${t('ruleLine')}</p>`;
+  const lines=tot.rows.sort((a,b)=>(+a.u?.order||0)-(+b.u?.order||0)).map(({b,u,c})=>{
+    let f;
+    if(kind==='kat')f=b.katBasis==='unit'?`${c.actual} × €${c.katRate} = ${moneyTxt(c.katEUR,'EUR')}`:`${c.g} × ${c.actual} × €${c.katRate} = ${moneyTxt(c.katEUR,'EUR')}`;
+    else if(kind==='rev')f=moneyTxt(+b.received||0,c.cur);
+    else if(kind==='out')f=moneyTxt((+b.charged||0)-(+b.received||0),c.cur);
+    else f=`${moneyTxt(+b.received||0,c.cur)} − ${moneyTxt(c.katEUR,'EUR')}`;
+    return `<tr><td>${esc(u?.name)}</td><td class="fx num" style="direction:ltr">${esc(f)}</td></tr>`}).join('');
+  const total=kind==='kat'?`${money(tot.kat,'EUR')} − ${t('katPaid')} ${money(tot.paid,'EUR')} = ${money(tot.katBal,'EUR')}`:showMix(kind==='rev'?tot.rev:kind==='out'?tot.out:tot.profit,s);
+  const raw=kind==='rev'?tot.rev:kind==='out'?tot.out:kind==='kat'?{EUR:tot.katBal}:tot.profit;
+  h+=`<table><tbody>${lines}</tbody><tfoot><tr><td>${t('total')}</td><td style="text-align:end">${total}</td></tr></tfoot></table>
+  <div class="calc" style="margin-top:12px"><div class="ln"><span>${t('rateOf')}</span><span class="num">${esc(ratesTxt)}</span></div>
+  ${Object.entries(raw).filter(([,v])=>v).map(([c,v])=>`<div class="ln"><span>${c}</span><span>${money(v,c)}</span></div>`).join('')}
+  ${['ILS','EUR','HUF'].map(c=>`<div class="ln"><span>= ${c}</span><span>${money(convert(raw,c,s),c)}</span></div>`).join('')}
+  ${!s.eurIls?`<div class="small warnt">${t('mixedNote')}</div>`:''}</div>`;
+  modal(t('explain')+' – '+t({profit:'profit',rev:'revenue',kat:'katBal',out:'outCust'}[kind]),h);
+}
+
+/* ===================== forms ===================== */
+function ratesForUnit(u,s){return u&&u.type==='caravan'?{listRate:+s.priceCar,katRate:+s.katCar,katBasis:'unit'}:{listRate:+s.priceRoom,katRate:+s.katRoom,katBasis:'person'}}
+function bookingForm(b,pre){
+  const s=season();const isNew=!b;
+  b=b?{...b}:{seasonId:curSeasonId,status:'confirmed',guests:2,currency:'EUR',charged:'',received:'',checkIn:'',checkOut:'',names:'',phone:'',method:'bit',paidDate:today(),note:'',noShow:false,...(pre||{})};
+  if(isNew&&b.unitId)Object.assign(b,ratesForUnit(unitById(b.unitId),s));
+  const units=unitsSorted();
+  const html=`<form class="f" id="bf" novalidate>
+  <label class="fl">${t('unit')}<select class="in" name="unitId"><option value="">—</option>${units.map(u=>`<option value="${esc(u.id)}" ${b.unitId===u.id?'selected':''}>${esc(u.name)} · ${u.commercial===false?t('personal'):t(unitKind(u))}</option>`).join('')}</select></label>
+  <label class="fl">${t('names')}<input class="in" name="names" value="${esc(b.names)}" autocomplete="off"></label>
+  <div class="f2"><label class="fl">${t('guests')}<input class="in" name="guests" type="number" min="1" max="10" inputmode="numeric" value="${esc(b.guests)}"></label><label class="fl">${t('phone')}<input class="in" name="phone" type="tel" value="${esc(b.phone)}"></label></div>
+  <div class="f2"><label class="fl">${t('checkIn')}<input class="in" name="checkIn" type="date" value="${esc(b.checkIn)}"></label><label class="fl">${t('checkOut')}<input class="in" name="checkOut" type="date" value="${esc(b.checkOut)}"></label></div>
+  <label class="chk"><input type="checkbox" name="noShow" ${b.noShow?'checked':''}>${t('noShow')}</label>
+  <div class="f2"><label class="fl">${t('currency')}<select class="in" name="currency">${['EUR','ILS'].map(c=>`<option value="${c}" ${b.currency===c?'selected':''}>${c} ${SYM[c]}</option>`).join('')}</select></label><label class="fl">${t('charged')}<input class="in" name="charged" type="number" step="any" inputmode="decimal" value="${esc(b.charged)}"></label></div>
+  <div class="f2"><label class="fl">${t('received')}<input class="in" name="received" type="number" step="any" inputmode="decimal" value="${esc(b.received)}"></label><label class="fl">${t('paidDate')}<input class="in" name="paidDate" type="date" value="${esc(b.paidDate||'')}"></label></div>
+  <label class="fl">${t('method')}<select class="in" name="method">${['bit','transfer','cash','other'].map(m=>`<option value="${m}" ${b.method===m?'selected':''}>${t(m)}</option>`).join('')}</select></label>
+  <details><summary>${t('rates')}</summary><div class="f2" style="margin-top:8px"><label class="fl">${t('listRate')}<input class="in" name="listRate" type="number" step="any" inputmode="decimal" value="${esc(b.listRate??'')}"></label><label class="fl">${t('katRate')} <small id="kb"></small><input class="in" name="katRate" type="number" step="any" inputmode="decimal" value="${esc(b.katRate??'')}"></label></div></details>
+  <label class="fl">${t('note')}<textarea class="in" name="note">${esc(b.note)}</textarea></label>
+  <div class="calc" id="cp"></div><div id="fe"></div>
+  <div class="row"><button class="btn p" type="submit">${t('save')}</button><button class="btn" type="button" id="cn">${t('cancel')}</button><span class="spacer"></span>${!isNew?`<button class="btn bad" type="button" id="dl">${t('del')}</button>`:''}</div></form>`;
+  modal(isNew?t('newBooking'):t('editBooking'),html,m=>{
+    const f=m.querySelector('#bf');let force=false;let lastUnit=b.unitId;
+    const read=()=>{const o={...b};for(const k of ['unitId','names','phone','checkIn','checkOut','currency','method','paidDate','note'])o[k]=f.elements[k].value.trim();
+      o.guests=+f.elements.guests.value;o.noShow=f.elements.noShow.checked;o.charged=f.elements.charged.value===''?'':+f.elements.charged.value;o.received=f.elements.received.value===''?'':+f.elements.received.value;o.listRate=+f.elements.listRate.value;o.katRate=+f.elements.katRate.value;return o};
+    const upd=()=>{
+      if(f.elements.unitId.value!==lastUnit){lastUnit=f.elements.unitId.value;const r=ratesForUnit(unitById(lastUnit),s);f.elements.listRate.value=r.listRate;f.elements.katRate.value=r.katRate;b.katBasis=r.katBasis}
+      const o=read();const u=unitById(o.unitId);m.querySelector('#kb').textContent=o.katBasis==='unit'?'('+t('perUnit')+')':'('+t('perPerson')+')';
+      const c=calcBooking(o,u,s);
+      const fx1=`${c.g} × max(${c.minN}, ${c.planned}) × €${c.listRate} = ${moneyTxt(c.listEUR,'EUR')}`;
+      const fx2=o.katBasis==='unit'?`${c.actual} × €${c.katRate} = ${moneyTxt(c.katEUR,'EUR')}`:`${c.g} × ${c.actual} × €${c.katRate} = ${moneyTxt(c.katEUR,'EUR')}`;
+      m.querySelector('#cp').innerHTML=`<b>${t('calc')}</b>
+      <div class="ln"><span>${t('nightsAct')} / ${t('billable')}</span><span class="num">${c.actual} / ${c.billable}</span></div>
+      <div class="ln"><span>${t('listPrice')}</span><span>${money(c.listEUR,'EUR')}${s.eurIls?` <span class="muted small">(${money(convert({EUR:c.listEUR},'ILS',s),'ILS')})</span>`:''}</span></div><div class="fx">${esc(fx1)}</div>
+      ${c.diffEUR!=null&&Math.abs(c.diffEUR)>=0.5&&o.charged!==''?`<div class="ln"><span>${t('vsList')}</span><span class="${c.diffEUR<0?'neg':'pos'}">${c.diffEUR<0?t('discount'):t('premium')} ${money(Math.abs(c.diffEUR),'EUR')}</span></div>`:''}
+      <div class="ln"><span>${t('katShort')}</span><span>${money(c.katEUR,'EUR')}</span></div><div class="fx">${esc(fx2)}</div>
+      <div class="ln"><span><b>${t('profitShort')}</b></span><span><b>${showMix(c.profit,s)}</b></span></div>
+      ${!c.commercial?`<div class="warnt">${t('warnNonCom')}</div>`:''}`;
+    };
+    f.oninput=()=>{force=false;upd()};upd();
+    m.querySelector('#cn').onclick=closeModal;
+    const dl=m.querySelector('#dl');if(dl)dl.onclick=()=>confirmDlg(t('delQ'),async()=>{await delDoc('bookings',b.id);closeModal()});
+    f.onsubmit=async e=>{e.preventDefault();const o=read();const fe=m.querySelector('#fe');const u=unitById(o.unitId);
+      const errs=[];if(!o.unitId)errs.push(t('errUnit'));if(!(o.guests>=1))errs.push(t('errGuests'));if(!(pd(o.checkOut)>pd(o.checkIn)))errs.push(t('errDates'));
+      if(o.charged===''||!(o.charged>=0))errs.push(t('errAmount')+' ('+t('charged')+')');if(o.received!==''&&!(o.received>=0))errs.push(t('errAmount')+' ('+t('received')+')');
+      if(errs.length){fe.innerHTML=errs.map(x=>`<div class="err">${esc(x)}</div>`).join('');return}
+      if(o.received==='')o.received=0;
+      const warns=[];if(u&&+u.capacity&&o.guests>+u.capacity)warns.push(t('warnCap')+` (${u.capacity})`);
+      const clash=S.bookings.filter(x=>x.status==='confirmed'&&x.id!==b.id&&x.unitId===o.unitId&&overlaps(x,o));
+      if(clash.length)warns.push(t('warnOverlap')+' '+clash.map(x=>`${x.names} ${fmtDate(x.checkIn)}–${fmtDate(x.checkOut)}`).join(', '));
+      if(warns.length&&!force){force=true;fe.innerHTML=warns.map(x=>`<div class="warnt">${esc(x)}</div>`).join('')+`<div class="small muted">${t('saveAnyway')} →</div>`;f.querySelector('[type=submit]').textContent=t('saveAnyway');return}
+      if(o.status!=='confirmed')o.status='confirmed';
+      const id=b.id||crypto.randomUUID();
+      if(!o.createdAt)o.createdAt=new Date().toISOString();
+      const ok=await saveDoc('bookings',id,strip(o));if(ok)closeModal();};
+  });
+}
+function requestForm(b){
+  const isNew=!b;const s=season();
+  b=b?{...b}:{seasonId:curSeasonId,status:'request',reqType:'room2',guests:2,names:'',phone:'',checkIn:'',checkOut:'',note:''};
+  const html=`<form class="f" id="rf" novalidate>
+  <label class="fl">${t('reqType')}<select class="in" name="reqType">${['room2','room3','caravan'].map(x=>`<option value="${x}" ${b.reqType===x?'selected':''}>${t(x)}</option>`).join('')}</select></label>
+  <label class="fl">${t('names')}<input class="in" name="names" value="${esc(b.names)}"></label>
+  <div class="f2"><label class="fl">${t('guests')}<input class="in" name="guests" type="number" min="1" inputmode="numeric" value="${esc(b.guests)}"></label><label class="fl">${t('phone')}<input class="in" name="phone" type="tel" value="${esc(b.phone)}"></label></div>
+  <div class="f2"><label class="fl">${t('checkIn')}<input class="in" name="checkIn" type="date" value="${esc(b.checkIn)}"></label><label class="fl">${t('checkOut')}<input class="in" name="checkOut" type="date" value="${esc(b.checkOut)}"></label></div>
+  <label class="fl">${t('note')}<textarea class="in" name="note">${esc(b.note)}</textarea></label><div id="fe"></div>
+  <div class="row"><button class="btn p" type="submit">${t('save')}</button><button class="btn" type="button" id="cn">${t('cancel')}</button><span class="spacer"></span>${!isNew?`<button class="btn bad" type="button" id="dl">${t('del')}</button>`:''}</div></form>`;
+  modal(isNew?t('newReq'):t('editBooking'),html,m=>{const f=m.querySelector('#rf');m.querySelector('#cn').onclick=closeModal;
+    const dl=m.querySelector('#dl');if(dl)dl.onclick=()=>confirmDlg(t('delQ'),async()=>{await delDoc('bookings',b.id);closeModal()});
+    f.onsubmit=async e=>{e.preventDefault();const o={...b};for(const k of ['reqType','names','phone','checkIn','checkOut','note'])o[k]=f.elements[k].value.trim();o.guests=+f.elements.guests.value;
+      if(!(pd(o.checkOut)>pd(o.checkIn))||!(o.guests>=1)){m.querySelector('#fe').innerHTML=`<div class="err">${t('errDates')}</div>`;return}
+      if(!o.createdAt)o.createdAt=new Date().toISOString();const id=b.id||crypto.randomUUID();if(await saveDoc('bookings',id,strip(o)))closeModal()}});
+}
+function approveForm(r){
+  const s=season();const free=freeUnitsFor(r.reqType,r.guests,r.checkIn,r.checkOut);
+  const u0=free[0];const rt=ratesForUnit(u0,s);const planned=nightsBetween(r.checkIn,r.checkOut);
+  const list=r2((+r.guests)*Math.max(+s.minNights||7,planned)*rt.listRate);
+  const html=`<form class="f" id="af"><div class="small muted">${esc(r.names)} · ${r.guests} ${t('guests')} · ${fmtDate(r.checkIn)}→${fmtDate(r.checkOut)}</div>
+  <label class="fl">${t('assignUnit')}<select class="in" name="unitId">${free.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (${u.capacity})</option>`).join('')}</select></label>
+  <div class="f2"><label class="fl">${t('currency')}<select class="in" name="currency"><option value="EUR">EUR €</option><option value="ILS">ILS ₪</option></select></label><label class="fl">${t('received')} <small>${t('listPrice')} €${fmtNum(list)}</small><input class="in" name="amount" type="number" step="any" inputmode="decimal" value="${list}"></label></div>
+  <div class="f2"><label class="fl">${t('paidDate')}<input class="in" type="date" name="paidDate" value="${today()}"></label><label class="fl">${t('method')}<select class="in" name="method">${['bit','transfer','cash','other'].map(m=>`<option value="${m}">${t(m)}</option>`).join('')}</select></label></div><div id="fe"></div>
+  <div class="row"><button class="btn ok" type="submit">${icon('check')}${t('approve')}</button><button class="btn" type="button" id="cn">${t('cancel')}</button></div></form>`;
+  modal(t('approveTitle'),html,m=>{const f=m.querySelector('#af');m.querySelector('#cn').onclick=closeModal;
+    f.onsubmit=async e=>{e.preventDefault();const amt=+f.elements.amount.value;if(!(amt>=0)||f.elements.amount.value===''){m.querySelector('#fe').innerHTML=`<div class="err">${t('errAmount')}</div>`;return}
+      const u=unitById(f.elements.unitId.value);const o={...strip(r),...ratesForUnit(u,s),unitId:u.id,status:'confirmed',currency:f.elements.currency.value,charged:amt,received:amt,paidDate:f.elements.paidDate.value,method:f.elements.method.value,approvedAt:new Date().toISOString()};
+      if(await saveDoc('bookings',r.id,o))closeModal()}});
+}
+function payoutForm(){
+  const tot=seasonTotals(sBookings(),S.units,sPayouts(),season());
+  modal(t('addPayout'),`<form class="f" id="pf"><div class="f2"><label class="fl">${t('amountEur')}<input class="in" name="amountEUR" type="number" step="any" inputmode="decimal" value="${tot.katBal>0?tot.katBal:''}"></label><label class="fl">${t('date')}<input class="in" name="date" type="date" value="${today()}"></label></div><label class="fl">${t('note')}<input class="in" name="note"></label><div id="fe"></div><div class="row"><button class="btn p" type="submit">${t('save')}</button><button class="btn" type="button" id="cn">${t('cancel')}</button></div></form>`,m=>{
+    m.querySelector('#cn').onclick=closeModal;m.querySelector('#pf').onsubmit=async e=>{e.preventDefault();const f=e.target;const a=+f.elements.amountEUR.value;if(!(a>0)){m.querySelector('#fe').innerHTML=`<div class="err">${t('errAmount')}</div>`;return}
+      if(await saveDoc('payouts',crypto.randomUUID(),{seasonId:curSeasonId,amountEUR:a,date:f.elements.date.value,note:f.elements.note.value.trim()}))closeModal()}});
+}
+
+/* ===================== modal / toast ===================== */
+let lastFocus=null;
+function modal(title,html,bind){lastFocus=document.activeElement;const root=document.getElementById('modalRoot');
+  root.innerHTML=`<div class="ov" id="ov"><div class="dlg" role="dialog" aria-modal="true" aria-labelledby="mt"><div class="hd"><h3 id="mt">${esc(title)}</h3><button class="iconbtn" id="mx" aria-label="${t('close')}">${icon('x')}</button></div>${html}</div></div>`;
+  const ov=document.getElementById('ov');ov.onclick=e=>{if(e.target===ov)closeModal()};document.getElementById('mx').onclick=closeModal;
+  if(bind)bind(ov);const first=ov.querySelector('input,select,textarea,button:not(#mx)');if(first)first.focus({preventScroll:true});}
+function closeModal(){document.getElementById('modalRoot').innerHTML='';if(lastFocus&&lastFocus.focus)try{lastFocus.focus()}catch(e){}}
+function confirmDlg(msg,fn){const root=document.getElementById('modalRoot');const prev=root.innerHTML;const wrap=document.createElement('div');
+  wrap.innerHTML=`<div class="ov" style="z-index:55"><div class="dlg" role="alertdialog" aria-modal="true"><p>${esc(msg)}</p><div class="row"><button class="btn bad" id="cy">${t('del')}</button><button class="btn" id="cnn">${t('cancel')}</button></div></div></div>`;
+  root.appendChild(wrap);wrap.querySelector('#cnn').onclick=()=>wrap.remove();wrap.querySelector('#cy').onclick=async()=>{wrap.remove();await fn()};wrap.querySelector('#cnn').focus();}
+function toast(msg){const d=document.createElement('div');d.className='toast';d.setAttribute('role','status');d.textContent=msg;document.body.appendChild(d);setTimeout(()=>d.remove(),2600)}
+
+/* ===================== data ops ===================== */
+const strip=o=>{const c={...o};delete c.id;return c};
+const SPECIAL={start:'start_date',end:'end_date',order:'sort',amountEUR:'amount_eur',isPublic:'public'};
+const REV=Object.fromEntries(Object.entries(SPECIAL).map(([a,b])=>[b,a]));
+const toSnake=k=>SPECIAL[k]||k.replace(/[A-Z]/g,m=>'_'+m.toLowerCase());
+const toCamel=k=>REV[k]||k.replace(/_([a-z])/g,(_,c)=>c.toUpperCase());
+function toDb(o){const r={};for(const k in o){let v=o[k];if(v===''||v===undefined)v=null;r[toSnake(k)]=v}return r}
+function toApp(o){const r={};for(const k in o)r[toCamel(k)]=o[k];return r}
+async function saveDoc(col,id,data,quiet){if(!sb){toast(t('noDb'));return false}
+  const {error}=await sb.from(col).upsert(toDb({...data,id}));
+  if(error){console.error(error);toast(t('saveErr')+' ('+(error.message||error.code)+')');return false}
+  if(!quiet){toast(t('saved'));await reload()}return true}
+async function delDoc(col,id){if(!sb)return;const {error}=await sb.from(col).delete().eq('id',id);if(error){toast(t('saveErr'));return}toast(t('deleted'));await reload()}
+async function reload(){
+  if(!sb||!session)return;
+  try{
+    const res=await Promise.all(['seasons','units','bookings','payouts'].map(c=>sb.from(c).select('*')));
+    const bad=res.find(r=>r.error);if(bad)throw bad.error;
+    ['seasons','units','bookings','payouts'].forEach((c,i)=>{S[c]=res[i].data.map(toApp);S.got[c]=true});
+    S.err=null;
+    if(!S.seasons.find(s=>s.id===curSeasonId)&&S.seasons.length){curSeasonId=([...S.seasons].find(s=>s.isPublic)||[...S.seasons].sort((a,b)=>(b.start||'').localeCompare(a.start||''))[0]).id}
+  }catch(e){console.error(e);S.err='load'}
+  render();
+}
+function csv(rows){return '﻿'+rows.map(r=>r.map(v=>{v=v==null?'':String(v);return /[",\n;]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v}).join(',')).join('\r\n')}
+async function save(filename,data){try{const type=filename.endsWith('.csv')?'text/csv;charset=utf-8':'application/json';const url=URL.createObjectURL(new Blob([data],{type}));const a=document.createElement('a');a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000)}catch(e){toast(t('dlNA'))}}
+function exportBookingsCsv(){const s=season();
+  const head=['unit','type','names','phone','guests','check_in','check_out','actual_nights','billable_nights','no_show','currency','charged','received','outstanding','list_price_eur','katalin_rate_eur','katalin_basis','katalin_eur','profit_eur','profit_ils','paid_date','method','note'];
+  const rows=sBookings().filter(b=>b.status==='confirmed').map(b=>{const u=unitById(b.unitId);const c=calcBooking(b,u,s);
+    return [u?.name,unitKind(u),b.names,b.phone,c.g,b.checkIn,b.checkOut,c.actual,c.billable,b.noShow?'yes':'',c.cur,b.charged,b.received,r2((+b.charged||0)-(+b.received||0)),c.listEUR,c.katRate,b.katBasis,c.katEUR,c.commercial?convert(c.profit,'EUR',s)??'':'',c.commercial?convert(c.profit,'ILS',s)??'':'',b.paidDate,b.method,b.note]});
+  save(`ozora-bookings-${s.name.replace(/\W+/g,'-')}.csv`,csv([head,...rows]));}
+function exportKatalinCsv(){const s=season();const rows=katalinRows().map(({b,u,c})=>[u?.name,repNames?b.names:'',b.checkIn,b.checkOut,b.katBasis==='unit'?'':c.g,c.actual,c.katRate,b.katBasis==='unit'?'per unit/night':'per person/night',c.katEUR]);
+  const tot=seasonTotals(sBookings(),S.units,sPayouts(),s);
+  save(`katalin-${s.name.replace(/\W+/g,'-')}.csv`,csv([['unit','guests_names','check_in','check_out','guests','nights','rate_eur','basis','amount_eur'],...rows,[],['total','','','','','','','',tot.kat],['paid','','','','','','','',tot.paid],['balance','','','','','','','',tot.katBal]]));}
+function backup(){const data={app:'ozora-camp',version:1,exportedAt:new Date().toISOString(),seasons:S.seasons,units:S.units,bookings:S.bookings,payouts:S.payouts};
+  save(`ozora-backup-${today()}.json`,JSON.stringify(data,null,1));}
+document.getElementById('restoreFile').onchange=async e=>{const file=e.target.files[0];e.target.value='';if(!file)return;
+  let data;try{data=JSON.parse(await file.text())}catch(x){toast('JSON?');return}
+  if(!data||data.app!=='ozora-camp'){toast('JSON?');return}
+  confirmDlg(t('restoreQ'),async()=>{let n=0;for(const col of ['seasons','units','bookings','payouts'])for(const d of (data[col]||[])){if(!d||!d.id)continue;if(await saveDoc(col,String(d.id),strip(d),true))n++}toast(t('restored',{n}));await reload()});
+};
+
+/* ===================== boot ===================== */
+document.getElementById('langSel').onchange=e=>{lang=e.target.value;lsSet('oz_lang',lang);render()};
+document.getElementById('seasonSel').onchange=e=>{curSeasonId=e.target.value;lsSet('oz_season',curSeasonId);render()};
+document.getElementById('subbar').onclick=e=>{const b=e.target.closest('[data-cur]');if(b){dispCur=b.dataset.cur;lsSet('oz_cur',dispCur);render()}};
+document.getElementById('fab').onclick=()=>{const r=route();if(r==='requests')requestForm();else bookingForm()};
+document.getElementById('app').addEventListener('click',e=>{const x=e.target.closest('[data-b]');if(x){const b=S.bookings.find(b=>b.id===x.dataset.b);if(b)bookingForm(b)}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('modalRoot').innerHTML)closeModal()});
+window.addEventListener('hashchange',()=>{closeModal();render()});
+render();
+async function onSession(sess){
+  booting=false;session=sess;isAdmin=null;
+  if(!session){render();return}
+  const {data,error}=await sb.from('admins').select('user_id').eq('user_id',session.user.id).maybeSingle();
+  isAdmin=!!(data&&!error);
+  if(isAdmin)await reload();else render();
+}
+(async()=>{
+  if(!window.supabase){booting=false;S.err='nodb';render();return}
+  sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+  const {data}=await sb.auth.getSession();
+  await onSession(data.session);
+  sb.auth.onAuthStateChange((ev,sess)=>{if(ev==='SIGNED_OUT'){session=null;render()}});
+  setInterval(()=>{if(session&&isAdmin&&document.visibilityState==='visible'&&!document.getElementById('modalRoot').innerHTML)reload()},60000);
+  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&session&&isAdmin)reload()});
+})();
+</script>
+</body>
+</html>

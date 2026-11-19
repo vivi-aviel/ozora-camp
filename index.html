@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ozora Camp – לינה ליד פסטיבל אוזורה</title>
+<meta name="description" content="חדרים וקרוואנים על שפת אגם, 10–12 דקות נסיעה מפסטיבל אוזורה בהונגריה. מים חמים 24/7, מינימום 7 לילות.">
+<meta property="og:title" content="Ozora Camp">
+<meta property="og:description" content="Lakeside rooms & caravans, 10–12 min from OZORA Festival, Hungary.">
+<meta property="og:image" content="assets/img/lake.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --forest:#14532D;--forest-2:#166534;--lake:#0F766E;--sand:#FAF7F0;--card:#fff;--ink:#1C1917;--muted:#57534E;--line:#E7E1D6;
+  --amber:#B45309;--amber-2:#92400E;--amber-bg:#FEF3C7;--ok:#15803D;--ok-bg:#DCFCE7;--bad:#B91C1C;--bad-bg:#FEE2E2;
+  --r:18px;--shadow:0 1px 2px rgba(28,25,23,.06),0 8px 24px rgba(28,25,23,.06);
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:72px;overflow-x:clip}
+body{margin:0;background:var(--sand);color:var(--ink);font-family:Rubik,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.6;-webkit-text-size-adjust:100%}
+img{max-width:100%;display:block}
+a{color:var(--lake)}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid #FCD34D;outline-offset:2px;border-radius:8px}
+.num{font-variant-numeric:tabular-nums;direction:ltr;unicode-bidi:isolate;display:inline-block}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+/* top bar */
+.bar{position:fixed;top:0;inset-inline:0;z-index:40;display:flex;align-items:center;gap:10px;padding:10px 16px;transition:background .25s,box-shadow .25s;color:#fff}
+.bar.solid{background:rgba(250,247,240,.96);color:var(--ink);box-shadow:0 1px 0 var(--line);backdrop-filter:blur(8px)}
+.brand{font-weight:800;font-size:19px;letter-spacing:.2px;text-decoration:none;color:inherit;flex:1}
+.lang{display:inline-flex;border:1px solid currentColor;border-radius:999px;overflow:hidden;opacity:.9}
+.lang button{border:0;background:transparent;padding:6px 12px;min-height:36px;font-weight:600;font-size:14px}
+.lang button[aria-pressed=true]{background:currentColor}
+.lang button[aria-pressed=true] span{color:var(--forest)}
+.bar:not(.solid) .lang button[aria-pressed=true] span{color:var(--forest)}
+.bar.solid .lang button[aria-pressed=true] span{color:#fff}
+.cta{background:var(--amber);color:#fff;border:0;border-radius:999px;padding:10px 18px;min-height:44px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 14px rgba(180,83,9,.3);transition:background .15s}
+.cta:hover{background:var(--amber-2)}
+/* hero */
+.hero{position:relative;min-height:88vh;min-height:88svh;display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.05) 35%,rgba(12,40,24,.78) 100%)}
+.hero .wrap{position:relative;z-index:1;padding-bottom:48px;width:100%}
+.eyebrow{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(6px);border-radius:999px;padding:4px 12px;font-size:14px;font-weight:600}
+.hero h1{font-size:clamp(40px,9vw,76px);line-height:1.02;margin:14px 0 10px;font-weight:800;letter-spacing:-.5px}
+.hero p{font-size:clamp(17px,2.6vw,21px);max-width:640px;margin:0 0 22px;color:#ECFDF5}
+.hero .row{display:flex;gap:10px;flex-wrap:wrap}
+.ghost{color:#fff;border:1.5px solid rgba(255,255,255,.7);border-radius:999px;padding:10px 18px;min-height:44px;text-decoration:none;font-weight:600;display:inline-flex;align-items:center}
+/* facts */
+.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:-34px;position:relative;z-index:2}
+@media(min-width:760px){.facts{grid-template-columns:repeat(4,1fr)}}
+.fact{background:var(--card);border-radius:14px;padding:14px;box-shadow:var(--shadow);display:flex;gap:10px;align-items:flex-start;font-size:15px}
+.fact svg{flex:none;color:var(--lake)}
+.fact b{display:block;font-size:16px}
+section{padding:64px 0 8px}
+h2{font-size:clamp(28px,5vw,40px);line-height:1.15;margin:0 0 8px;font-weight:800;color:var(--forest)}
+.lead{color:var(--muted);margin:0 0 26px;max-width:680px}
+/* units */
+.units{display:grid;gap:18px}
+@media(min-width:860px){.units{grid-template-columns:1fr 1fr}}
+.unit{background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.strip::-webkit-scrollbar{display:none}
+.strip button{flex:0 0 86%;scroll-snap-align:start;border:0;padding:0;background:#ddd;aspect-ratio:4/3}
+.strip button img{width:100%;height:100%;object-fit:cover}
+.unit .body{padding:18px 20px 22px;display:grid;gap:10px}
+.unit h3{margin:0;font-size:24px}
+.price{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
+.price b{font-size:30px;color:var(--forest)}
+.price span{color:var(--muted);font-size:15px}
+ul.ticks{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:15.5px}
+ul.ticks li{display:flex;gap:8px;align-items:flex-start}
+ul.ticks svg{flex:none;margin-top:4px;color:var(--ok)}
+.hint{font-size:13px;color:var(--muted)}
+/* gallery */
+.gal{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+@media(min-width:760px){.gal{grid-template-columns:repeat(4,1fr)}}
+.gal button{border:0;padding:0;border-radius:12px;overflow:hidden;aspect-ratio:1;background:#ddd}
+.gal button img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.gal button:hover img{transform:scale(1.04)}
+.gal .wide{grid-column:span 2;aspect-ratio:2/1}
+/* booking */
+.book{background:var(--forest);color:#fff;border-radius:24px;padding:26px 20px;margin-top:8px}
+@media(min-width:760px){.book{padding:36px}}
+.book h2{color:#fff}
+.book .lead{color:#D1FAE5}
+.formgrid{display:grid;gap:14px}
+@media(min-width:760px){.formgrid{grid-template-columns:1fr 1fr}.full{grid-column:1/-1}}
+.types{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.types button{background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.3);color:#fff;border-radius:14px;padding:12px 8px;min-height:64px;display:grid;gap:2px;text-align:center;font-weight:700;font-size:15px}
+.types button small{font-weight:400;font-size:12.5px;color:#BBF7D0}
+.types button[aria-pressed=true]{background:#fff;color:var(--forest);border-color:#fff}
+.types button[aria-pressed=true] small{color:var(--forest-2)}
+label.fl{display:grid;gap:6px;font-weight:600;font-size:15px}
+label.fl small{font-weight:400;color:#BBF7D0}
+.in{width:100%;border:1.5px solid transparent;border-radius:12px;padding:12px 14px;min-height:48px;background:#fff;color:var(--ink)}
+.in:focus{border-color:#FCD34D;outline:none}
+textarea.in{min-height:90px}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.formgrid>*,.two>*,label.fl{min-width:0}
+.in{min-width:0;max-width:100%}
+input[type=date].in{-webkit-appearance:none;appearance:none;display:block}
+.stepper{display:flex;align-items:center;background:#fff;border-radius:12px;min-height:48px;color:var(--ink)}
+.stepper button{border:0;background:transparent;width:48px;height:48px;font-size:22px;font-weight:700;color:var(--forest)}
+.stepper button:disabled{opacity:.3;cursor:not-allowed}
+.stepper output{flex:1;text-align:center;font-weight:700;font-size:18px}
+.quote{background:#fff;color:var(--ink);border-radius:16px;padding:16px;display:grid;gap:6px}
+.quote .ln{display:flex;justify-content:space-between;gap:10px;font-size:15px}
+.quote .ln span:first-child{color:var(--muted)}
+.quote .tot{font-size:22px;font-weight:800;color:var(--forest)}
+.avail{display:flex;gap:8px;align-items:center;font-weight:600;font-size:15px;border-radius:10px;padding:8px 12px}
+.avail.ok{background:var(--ok-bg);color:var(--ok)}.avail.bad{background:var(--bad-bg);color:var(--bad)}.avail.wait{background:#F5F5F4;color:var(--muted)}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;line-height:1.5}
+.chk input{width:22px;height:22px;flex:none;margin-top:2px;accent-color:var(--amber)}
+.err{background:var(--bad-bg);color:var(--bad);border-radius:10px;padding:10px 12px;font-weight:600;font-size:14.5px}
+.submit{width:100%;justify-content:center;font-size:18px;min-height:54px}
+.submit[disabled]{opacity:.55;cursor:not-allowed}
+.done{background:#fff;color:var(--ink);border-radius:18px;padding:24px;text-align:center;display:grid;gap:10px;justify-items:center}
+.done svg{color:var(--ok)}
+.hp{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+/* info */
+.cards{display:grid;gap:14px}
+@media(min-width:760px){.cards{grid-template-columns:repeat(3,1fr)}}
+.ic{background:var(--card);border-radius:var(--r);padding:20px;box-shadow:var(--shadow)}
+.ic h3{margin:0 0 8px;font-size:19px;display:flex;gap:8px;align-items:center;color:var(--forest)}
+.ic p,.ic ul{margin:0;color:var(--muted);font-size:15.5px}
+.ic ul{padding-inline-start:18px}
+.rules{background:var(--amber-bg);border:1px solid #FCD34D;border-radius:var(--r);padding:20px;margin-top:14px}
+.rules h3{margin:0 0 8px;color:var(--amber-2);font-size:19px}
+.rules ul{margin:0;padding-inline-start:18px;font-size:15.5px;display:grid;gap:4px}
+footer{margin-top:64px;background:#0C2818;color:#D1FAE5;padding:36px 0 110px}
+footer a{color:#fff;font-weight:600}
+footer .row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.wa{background:#16A34A;color:#fff;border-radius:999px;padding:10px 18px;min-height:44px;text-decoration:none;font-weight:700;display:inline-flex;align-items:center;gap:8px}
+.float{position:fixed;bottom:16px;inset-inline:16px;z-index:35;display:flex;justify-content:center;pointer-events:none;transition:opacity .2s,transform .2s}
+.float a{pointer-events:auto;width:100%;max-width:420px;justify-content:center;font-size:17px;min-height:52px}
+.float.hide{opacity:0;transform:translateY(20px)}
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center}
+.lb img{max-width:96vw;max-height:86vh;border-radius:8px}
+.lb button{position:absolute;background:rgba(255,255,255,.12);border:0;color:#fff;width:48px;height:48px;border-radius:999px;display:grid;place-items:center}
+.lb .x{top:14px;inset-inline-end:14px}.lb .pv{inset-inline-start:10px;top:50%}.lb .nx{inset-inline-end:10px;top:50%}
+[dir=rtl] .lb .pv svg,[dir=rtl] .lb .nx svg{transform:scaleX(-1)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="bar" id="bar">
+  <a class="brand" href="#top">Ozora Camp</a>
+  <div class="lang" role="group" aria-label="Language"><button data-l="he" aria-pressed="true"><span>עב</span></button><button data-l="en" aria-pressed="false"><span>EN</span></button></div>
+  <a class="cta" href="#book" data-t="bookNow">הזמנה</a>
+</header>
+
+<div class="hero" id="top">
+  <img src="assets/img/lake.jpg" srcset="assets/img/lake-sm.jpg 720w, assets/img/lake.jpg 1600w" sizes="100vw" alt="" fetchpriority="high">
+  <div class="wrap">
+    <span class="eyebrow" data-t="eyebrow">OZORA Festival · Hungary</span>
+    <h1>Ozora Camp</h1>
+    <p data-t="heroText"></p>
+    <div class="row"><a class="cta" href="#book" data-t="checkDates"></a><a class="ghost" href="#stay" data-t="seeRooms"></a></div>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="facts">
+    <div class="fact"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.99-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 14.99 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><span><b data-t="f1t"></b><span data-t="f1"></span></span></div>
+    <div class="fact"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg><span><b data-t="f2t"></b><span data-t="f2"></span></span></div>
+    <div class="fact"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9 4.9 19.1"/></svg><span><b data-t="f3t"></b><span data-t="f3"></span></span></div>
+    <div class="fact"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span><b data-t="f4t"></b><span data-t="f4"></span></span></div>
+  </div>
+
+  <section id="stay">
+    <h2 data-t="stayTitle"></h2>
+    <p class="lead" data-t="stayLead"></p>
+    <div class="units">
+      <article class="unit">
+        <div class="strip" data-gal="rooms"></div>
+        <div class="body">
+          <h3 data-t="rooms"></h3>
+          <div class="price"><b class="num" id="pRoom">€80</b><span data-t="perPersonNight"></span></div>
+          <ul class="ticks" data-list="roomTicks"></ul>
+          <p class="hint" data-t="roomHint"></p>
+        </div>
+      </article>
+      <article class="unit">
+        <div class="strip" data-gal="caravans"></div>
+        <div class="body">
+          <h3 data-t="caravans"></h3>
+          <div class="price"><b class="num" id="pCar">€50</b><span data-t="perPersonNight"></span></div>
+          <ul class="ticks" data-list="carTicks"></ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <h2 data-t="galTitle"></h2>
+    <p class="lead" data-t="galLead"></p>
+    <div class="gal" data-gal="place"></div>
+  </section>
+
+  <section id="book">
+    <div class="book">
+      <h2 data-t="bookTitle"></h2>
+      <p class="lead" data-t="bookLead"></p>
+      <form id="bf" class="formgrid" novalidate>
+        <div class="full"><div class="fl" style="font-weight:600;margin-bottom:6px" data-t="chooseType"></div>
+          <div class="types" role="group" id="types"></div></div>
+        <div class="two full">
+          <label class="fl"><span data-t="checkIn"></span><input class="in" type="date" name="in" required></label>
+          <label class="fl"><span data-t="checkOut"></span><input class="in" type="date" name="out" required></label>
+        </div>
+        <div><div class="fl" style="margin-bottom:6px"><span data-t="guests"></span></div>
+          <div class="stepper"><button type="button" id="gMinus" aria-label="-">−</button><output id="gOut" aria-live="polite">2</output><button type="button" id="gPlus" aria-label="+">+</button></div></div>
+        <div id="availBox" aria-live="polite"></div>
+        <div class="full quote" id="quote" hidden></div>
+        <label class="fl"><span data-t="name"></span><input class="in" name="names" autocomplete="name" required maxlength="200"></label>
+        <label class="fl"><span data-t="phone"></span><small data-t="phoneHint"></small><input class="in" name="phone" type="tel" autocomplete="tel" inputmode="tel" required maxlength="40" dir="ltr"></label>
+        <label class="fl"><span data-t="email"></span><input class="in" name="email" type="email" autocomplete="email" maxlength="200" dir="ltr"></label>
+        <label class="fl"><span data-t="note"></span><textarea class="in" name="note" maxlength="1000"></textarea></label>
+        <div class="hp" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div>
+        <label class="chk full"><input type="checkbox" name="terms" required><span data-t="terms"></span></label>
+        <div class="full" id="err" role="alert"></div>
+        <div class="full"><button class="cta submit" type="submit" id="sendBtn" data-t="send"></button></div>
+      </form>
+      <div class="done" id="done" hidden>
+        <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+        <h3 style="margin:0;font-size:24px" data-t="doneTitle"></h3>
+        <p style="margin:0;color:var(--muted)" data-t="doneText"></p>
+        <a class="wa" id="doneWa" target="_blank" rel="noopener" data-t="waMe"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="info">
+    <h2 data-t="infoTitle"></h2>
+    <div class="cards">
+      <div class="ic"><h3 data-t="i1t"></h3><p data-t="i1"></p></div>
+      <div class="ic"><h3 data-t="i2t"></h3><p data-t="i2"></p></div>
+      <div class="ic"><h3 data-t="i3t"></h3><ul data-list="services"></ul></div>
+    </div>
+    <div class="rules"><h3 data-t="rulesTitle"></h3><ul data-list="rules"></ul></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <h2 style="color:#fff;font-size:26px">Ozora Camp</h2>
+    <p data-t="contactLine"></p>
+    <div class="row"><a class="wa" id="footWa" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 .9c.3.1.5.2.5.3.1.2.1.6-.1 1.2z"/></svg><span class="num">+972 52-682-1668</span></a><span class="num">Aviel · +972 52-682-1668</span></div>
+    <p style="font-size:13px;opacity:.75;margin-top:24px" data-t="footNote"></p>
+  </div>
+</footer>
+<div class="float" id="float"><a class="cta" href="#book" data-t="checkDates"></a></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL='https://agihjbqthsdcnandfxmm.supabase.co';
+const SUPABASE_KEY='sb_publishable_ACfHU3z5UXEioXVqwsK4DQ_XGJyfDTx';
+const PHONE='972526821668';
+const sb=window.supabase?window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY):null;
+
+const IMG={
+  rooms:[['room-twin','roomTwinAlt'],['room-double','roomDoubleAlt'],['porch','porchAlt'],['room-large','roomLargeAlt']],
+  caravans:[['caravans','carOutAlt'],['caravan1-bed','carBedAlt'],['caravan2-kitchen','carKitchenAlt'],['caravan2-seat','carSeatAlt'],['caravan1-kitchen','carKitchenAlt']],
+  place:[['compound','compoundAlt',1],['lake-boat','lakeBoatAlt'],['porch','porchAlt'],['lake','lakeAlt'],['caravans','carOutAlt'],['room-twin','roomTwinAlt'],['room-double','roomDoubleAlt']]
+};
+const T={
+he:{dir:'rtl',title:'Ozora Camp – לינה ליד פסטיבל אוזורה',bookNow:'הזמנה',eyebrow:'פסטיבל OZORA · הונגריה',
+heroText:'חדרים וקרוואנים על שפת אגם, בירוק ובשקט, 10–12 דקות נסיעה משער הפסטיבל. ישנים קרוב, נחים באמת.',
+checkDates:'בדיקת תאריכים ומחיר',seeRooms:'החדרים והקרוואנים',
+f1t:'10–12 דקות',f1:'נסיעה מהפסטיבל',f2t:'מים חמים 24/7',f2:'בכל המתחם',f3t:'מאוורר בכל חדר',f3:'אין מזגן, הלילות קרירים',f4t:'מינימום 7 לילות',f4:'תשלום מלא מראש',
+stayTitle:'איפה ישנים',stayLead:'שני סוגי לינה. המחיר הוא לאדם ללילה, עם מינימום של 7 לילות.',
+rooms:'חדרים',caravans:'קרוואנים',perPersonNight:'לאדם ללילה',
+roomTicks:['חדרים ל־2 או ל־3 אנשים','מאוורר בכל חדר','מים חמים 24/7','מרפסת מקורה משותפת מול הירוק'],
+roomHint:'התמונות מציגות את סגנון החדרים במתחם. החדר המדויק משובץ באישור ההזמנה.',
+carTicks:['קרוואן זוגי (עד 2 אנשים)','מקלחת חיצונית צמודה','מים חמים 24/7','בצל העצים, עם פינת ישיבה'],
+galTitle:'המקום',galLead:'אגם, עצים, דשא והרבה שקט. ליד: מאפייה, תחנת דלק, מסעדה וסופרמרקט.',
+bookTitle:'בקשת הזמנה',bookLead:'בוחרים סוג, תאריכים ומספר אנשים, ורואים מיד אם יש מקום ומה המחיר. אנחנו חוזרים אליכם תוך 24 שעות עם אישור ופרטי תשלום.',
+chooseType:'סוג לינה',room2:'חדר ל־2',room3:'חדר ל־3',caravan:'קרוואן',upTo:'עד {n} אנשים',
+checkIn:'הגעה',checkOut:'עזיבה',guests:'מספר אנשים',name:'שם מלא',phone:'טלפון / וואטסאפ',phoneHint:'כולל קידומת מדינה, למשל ‎+972',email:'מייל (לא חובה)',note:'הערות (לא חובה)',
+terms:'קראתי ואני מסכים/ה: תשלום מלא מראש לאישור ההזמנה, אין ביטולים, החזרים או העברת הזמנה לאדם אחר, ואורחים ללא הזמנה לא יכולים להיכנס למתחם.',
+send:'שליחת בקשה',sending:'שולח…',
+checking:'בודק זמינות…',availOk:'יש מקום בתאריכים האלה',availNo:'אין מקום מהסוג הזה בתאריכים האלה. נסו סוג אחר או תאריכים אחרים, או כתבו לנו בוואטסאפ.',availErr:'לא הצלחנו לבדוק זמינות כרגע. אפשר לשלוח בקשה בכל זאת.',
+qNights:'לילות',qCharged:'לילות לחיוב',qMin:'(מינימום {n})',qCalc:'{g} אנשים × {n} לילות × €{p}',qTotal:'סה״כ',
+eDates:'בחרו תאריך עזיבה אחרי תאריך ההגעה.',ePast:'תאריך ההגעה עבר.',eName:'כתבו שם מלא.',ePhone:'כתבו מספר טלפון תקין.',eTerms:'צריך לאשר את התנאים.',eFull:'אין מקום מהסוג הזה בתאריכים שבחרתם.',eServer:'השליחה נכשלה. נסו שוב, או שלחו לנו וואטסאפ.',eBusy:'יש עומס כרגע. נסו שוב בעוד כמה דקות או כתבו לנו בוואטסאפ.',
+doneTitle:'הבקשה נשלחה!',doneText:'נחזור אליכם תוך 24 שעות עם אישור ופרטי תשלום. ההזמנה נסגרת רק אחרי התשלום.',waMe:'רוצים להזדרז? שלחו וואטסאפ',
+waText:'היי אביאל, שלחתי עכשיו בקשת הזמנה באתר Ozora Camp',
+infoTitle:'מידע חשוב',i1t:'אוכל',i1:'אפשר להזמין במקום ארוחת בוקר, צהריים וערב בתוספת תשלום, כולל מנות הונגריות קלאסיות וקינוחים. התשלום על האוכל במקום.',
+i2t:'מה יש בסביבה',i2:'מאפייה, תחנת דלק, מסעדה וסופרמרקט נמצאים קרוב למתחם.',i3t:'שירותים נוספים',services:['עזרה ברכישת ציוד קמפינג לפסטיבל','השכרת רכב','השכרת קרוואן לשטח הפסטיבל'],
+rulesTitle:'תנאים',rules:['תשלום מלא מראש לאישור ההזמנה','אין ביטולים, החזרים או העברת הזמנה לאדם אחר','מינימום 7 לילות. גם בהגעה מאוחרת או עזיבה מוקדמת, התשלום הוא על 7 לילות לפחות','אורחים ללא חדר מוזמן, כולל קרובים, שכנים וחברים, אינם רשאים להיכנס. מי שמזמין אותם לא יוכל לחזור'],
+contactLine:'שאלות? כתבו לאביאל בוואטסאפ.',footNote:'הבקשות באתר אינן הזמנה סופית. ההזמנה נסגרת לאחר אישור ותשלום מלא.',
+roomTwinAlt:'חדר עם שתי מיטות ושירותים',roomDoubleAlt:'חדר עם מיטה זוגית',porchAlt:'המרפסת המקורה מול החדרים',roomLargeAlt:'חדר במתחם',carOutAlt:'שני הקרוואנים בצל העצים',carBedAlt:'מיטה זוגית בקרוואן',carKitchenAlt:'מטבחון בקרוואן',carSeatAlt:'פינת ישיבה בקרוואן',compoundAlt:'בניין החדרים מעבר לבריכה',lakeBoatAlt:'האגם עם הסירה',lakeAlt:'האגם ביום קיץ',close:'סגירה',prev:'הקודם',next:'הבא'},
+en:{dir:'ltr',title:'Ozora Camp – stay next to OZORA Festival',bookNow:'Book',eyebrow:'OZORA Festival · Hungary',
+heroText:'Lakeside rooms and caravans in a green, quiet spot, a 10–12 minute drive from the festival gate. Sleep close, actually rest.',
+checkDates:'Check dates & price',seeRooms:'Rooms & caravans',
+f1t:'10–12 min',f1:'drive to the festival',f2t:'Hot water 24/7',f2:'across the site',f3t:'Fan in every room',f3:'no A/C – nights are cool',f4t:'7-night minimum',f4:'full payment upfront',
+stayTitle:'Where you sleep',stayLead:'Two ways to stay. Prices are per person per night, with a 7-night minimum.',
+rooms:'Rooms',caravans:'Caravans',perPersonNight:'per person / night',
+roomTicks:['Rooms for 2 or 3 people','Fan in every room','Hot water 24/7','Shared covered porch facing the green'],
+roomHint:'Photos show the style of rooms on site. Your exact room is assigned when we confirm.',
+carTicks:['Double caravan (up to 2 people)','Private outdoor shower','Hot water 24/7','In the shade of the trees, with a seating area'],
+galTitle:'The place',galLead:'Lake, trees, grass and plenty of quiet. Nearby: bakery, gas station, restaurant and supermarket.',
+bookTitle:'Booking request',bookLead:'Pick a type, dates and number of people to see availability and price right away. We reply within 24 hours with confirmation and payment details.',
+chooseType:'Type',room2:'Room for 2',room3:'Room for 3',caravan:'Caravan',upTo:'up to {n} people',
+checkIn:'Arrival',checkOut:'Departure',guests:'People',name:'Full name',phone:'Phone / WhatsApp',phoneHint:'with country code, e.g. +972',email:'Email (optional)',note:'Notes (optional)',
+terms:'I have read and agree: full payment upfront confirms the booking; no cancellations, refunds or transfers to another person; guests without a booking may not enter the site.',
+send:'Send request',sending:'Sending…',
+checking:'Checking availability…',availOk:'Available for these dates',availNo:'This type is full for these dates. Try another type or dates, or message us on WhatsApp.',availErr:"Couldn't check availability right now. You can still send a request.",
+qNights:'Nights',qCharged:'Nights charged',qMin:'(minimum {n})',qCalc:'{g} people × {n} nights × €{p}',qTotal:'Total',
+eDates:'Choose a departure date after arrival.',ePast:'Arrival date is in the past.',eName:'Please enter your full name.',ePhone:'Please enter a valid phone number.',eTerms:'Please accept the terms.',eFull:'This type is full for the dates you chose.',eServer:'Sending failed. Please try again or message us on WhatsApp.',eBusy:'We are busy right now. Please try again in a few minutes or message us on WhatsApp.',
+doneTitle:'Request sent!',doneText:"We'll get back to you within 24 hours with confirmation and payment details. The booking is final only after payment.",waMe:'In a hurry? Message us on WhatsApp',
+waText:'Hi Aviel, I just sent a booking request on the Ozora Camp website',
+infoTitle:'Good to know',i1t:'Food',i1:'Breakfast, lunch and dinner can be ordered on site for an extra charge, including classic Hungarian dishes and desserts. Food is paid on site.',
+i2t:'Nearby',i2:'A bakery, gas station, restaurant and supermarket are close to the site.',i3t:'Extra services',services:['Help buying camping gear for the festival','Car rental','Caravan rental on the festival grounds'],
+rulesTitle:'Terms',rules:['Full payment upfront confirms the booking','No cancellations, refunds or transfers to another person','7-night minimum – arriving late or leaving early still counts as at least 7 nights','Guests without a booked room – including relatives, neighbours and friends – may not enter. Whoever invites them will not be allowed back'],
+contactLine:'Questions? Message Aviel on WhatsApp.',footNote:'Requests on this site are not final bookings. A booking is confirmed after approval and full payment.',
+roomTwinAlt:'Room with two beds and en-suite toilet',roomDoubleAlt:'Room with a double bed',porchAlt:'The covered porch in front of the rooms',roomLargeAlt:'A room on site',carOutAlt:'The two caravans under the trees',carBedAlt:'Double bed in a caravan',carKitchenAlt:'Caravan kitchenette',carSeatAlt:'Caravan seating corner',compoundAlt:'The rooms building across the pond',lakeBoatAlt:'The lake with the boat',lakeAlt:'The lake on a summer day',close:'Close',prev:'Previous',next:'Next'}
+};
+let lang=(new URLSearchParams(location.search).get('lang'))||(()=>{try{return localStorage.getItem('oc_lang')}catch(e){}})()||((navigator.language||'').startsWith('he')?'he':'en');
+if(!T[lang])lang='en';
+const t=(k,v)=>{let s=T[lang][k]??T.en[k]??k;if(v&&typeof s==='string')for(const x in v)s=s.split('{'+x+'}').join(v[x]);return s};
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const TICK='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
+
+let INFO={minNights:7,priceRoom:80,priceCar:50,start:null,end:null,name:'OZORA'};
+const st={type:'room2',guests:2,free:null,checking:false};
+const MAXG={room2:2,room3:3,caravan:2};
+
+function applyLang(){
+  document.documentElement.lang=lang;document.documentElement.dir=t('dir');document.title=t('title');
+  document.querySelectorAll('[data-l]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===lang));
+  document.querySelectorAll('[data-t]').forEach(el=>{el.textContent=t(el.dataset.t)});
+  document.querySelectorAll('[data-list]').forEach(el=>{el.innerHTML=(t(el.dataset.list)||[]).map(x=>`<li>${el.closest('.ticks')||el.classList.contains('ticks')?TICK:''}<span>${esc(x)}</span></li>`).join('')});
+  renderGalleries();renderTypes();renderQuote();renderAvail();
+  const wa=`https://wa.me/${PHONE}`;document.getElementById('footWa').href=wa;
+  document.getElementById('doneWa').href=wa+'?text='+encodeURIComponent(t('waText'));
+}
+function renderGalleries(){
+  document.querySelectorAll('[data-gal]').forEach(el=>{const set=IMG[el.dataset.gal];
+    el.innerHTML=set.map(([f,a,w],i)=>`<button type="button" class="${w?'wide':''}" data-lb="${el.dataset.gal}" data-i="${i}" aria-label="${esc(t(a))}"><img src="assets/img/${f}-sm.jpg" alt="${esc(t(a))}" loading="lazy" decoding="async"></button>`).join('')});
+}
+function renderTypes(){
+  document.getElementById('types').innerHTML=['room2','room3','caravan'].map(k=>`<button type="button" data-type="${k}" aria-pressed="${st.type===k}">${t(k)}<small>${t('upTo',{n:MAXG[k]})}</small></button>`).join('');
+}
+/* ---- booking logic ---- */
+const f=document.getElementById('bf');
+const pd=s=>{if(!s)return null;const [y,m,d]=s.split('-').map(Number);return Date.UTC(y,m-1,d)};
+const nights=()=>{const a=pd(f.elements.in.value),b=pd(f.elements.out.value);return a!=null&&b!=null&&b>a?Math.round((b-a)/864e5):0};
+const today=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+function price(){return st.type==='caravan'?+INFO.priceCar:+INFO.priceRoom}
+function renderQuote(){
+  const q=document.getElementById('quote');const n=nights();
+  if(!n){q.hidden=true;return}
+  const minN=+INFO.minNights||7;const bill=Math.max(minN,n);const total=st.guests*bill*price();
+  q.hidden=false;
+  q.innerHTML=`<div class="ln"><span>${t('qNights')}</span><span class="num">${n}</span></div>
+  ${bill!==n?`<div class="ln"><span>${t('qCharged')}</span><span>${bill} ${t('qMin',{n:minN})}</span></div>`:''}
+  <div class="ln"><span>${esc(t('qCalc',{g:st.guests,n:bill,p:price()}))}</span></div>
+  <div class="ln"><span style="font-weight:700;color:var(--ink)">${t('qTotal')}</span><span class="tot num">€${total.toLocaleString('en-US')}</span></div>`;
+}
+function renderAvail(){
+  const box=document.getElementById('availBox');
+  if(!nights()){box.innerHTML='';return}
+  if(st.checking){box.innerHTML=`<div class="avail wait">${t('checking')}</div>`;return}
+  if(st.free==='err'){box.innerHTML=`<div class="avail wait">${t('availErr')}</div>`;return}
+  if(!st.free){box.innerHTML='';return}
+  const n=st.free[st.type]||0;
+  box.innerHTML=n>0?`<div class="avail ok">${TICK} ${t('availOk')}</div>`:`<div class="avail bad">${t('availNo')}</div>`;
+}
+let availTimer=null,availSeq=0;
+function checkAvail(){
+  clearTimeout(availTimer);st.free=null;
+  if(!nights()||!sb){renderAvail();return}
+  st.checking=true;renderAvail();
+  availTimer=setTimeout(async()=>{const my=++availSeq;
+    try{const {data,error}=await sb.rpc('free_counts',{p_in:f.elements.in.value,p_out:f.elements.out.value});if(my!==availSeq)return;if(error)throw error;st.free=data||'err'}
+    catch(e){st.free='err'}
+    st.checking=false;renderAvail();},350);
+}
+function setGuests(g){st.guests=Math.max(1,Math.min(MAXG[st.type],g));document.getElementById('gOut').textContent=st.guests;
+  document.getElementById('gMinus').disabled=st.guests<=1;document.getElementById('gPlus').disabled=st.guests>=MAXG[st.type];renderQuote()}
+document.getElementById('types').addEventListener('click',e=>{const b=e.target.closest('[data-type]');if(!b)return;st.type=b.dataset.type;
+  if(st.type==='room3'&&st.guests<3)st.guests=3;renderTypes();setGuests(st.guests);renderAvail()});
+document.getElementById('gMinus').onclick=()=>setGuests(st.guests-1);
+document.getElementById('gPlus').onclick=()=>setGuests(st.guests+1);
+f.elements.in.addEventListener('change',()=>{if(f.elements.in.value&&(!f.elements.out.value||pd(f.elements.out.value)<=pd(f.elements.in.value))){const d=new Date(pd(f.elements.in.value)+7*864e5);f.elements.out.value=d.toISOString().slice(0,10)}
+  f.elements.out.min=f.elements.in.value;renderQuote();checkAvail()});
+f.elements.out.addEventListener('change',()=>{renderQuote();checkAvail()});
+f.addEventListener('submit',async e=>{
+  e.preventDefault();const err=document.getElementById('err');err.innerHTML='';
+  const E=[];const v=k=>f.elements[k].value.trim();
+  if(!nights())E.push(t('eDates'));else if(v('in')<today())E.push(t('ePast'));
+  if(v('names').length<2)E.push(t('eName'));
+  if(v('phone').replace(/\D/g,'').length<6)E.push(t('ePhone'));
+  if(!f.elements.terms.checked)E.push(t('eTerms'));
+  if(st.free&&st.free!=='err'&&!(st.free[st.type]>0))E.push(t('eFull'));
+  if(E.length){err.innerHTML=`<div class="err">${E.map(esc).join('<br>')}</div>`;err.scrollIntoView({block:'nearest',behavior:'smooth'});return}
+  if(v('website')){showDone();return}
+  const btn=document.getElementById('sendBtn');btn.disabled=true;btn.textContent=t('sending');
+  try{
+    if(!sb)throw new Error('no client');
+    const {error}=await sb.rpc('submit_request',{p_type:st.type,p_guests:st.guests,p_in:v('in'),p_out:v('out'),p_names:v('names'),p_phone:v('phone'),p_email:v('email')||null,p_note:v('note')||null,p_lang:lang});
+    if(error)throw error;
+    showDone();
+  }catch(x){const m=String(x&&x.message||'');err.innerHTML=`<div class="err">${esc(m.includes('busy')?t('eBusy'):t('eServer'))}</div>`}
+  finally{btn.disabled=false;btn.textContent=t('send')}
+});
+function showDone(){f.hidden=true;const d=document.getElementById('done');d.hidden=false;d.scrollIntoView({block:'center',behavior:'smooth'})}
+/* ---- lightbox ---- */
+let lbSet=null,lbI=0;
+document.addEventListener('click',e=>{const b=e.target.closest('[data-lb]');if(!b)return;lbSet=b.dataset.lb;lbI=+b.dataset.i;openLb()});
+function openLb(){closeLb();const [fn,a]=IMG[lbSet][lbI];const d=document.createElement('div');d.className='lb';d.id='lb';d.setAttribute('role','dialog');d.setAttribute('aria-modal','true');
+  const arrow='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>';
+  d.innerHTML=`<img src="assets/img/${fn}.jpg" alt="${esc(t(a))}"><button class="x" aria-label="${t('close')}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg></button><button class="pv" aria-label="${t('prev')}">${arrow}</button><button class="nx" aria-label="${t('next')}" style="transform:scaleX(-1)">${arrow}</button>`;
+  document.body.appendChild(d);d.querySelector('.x').focus();
+  d.onclick=e=>{if(e.target===d)closeLb()};d.querySelector('.x').onclick=closeLb;
+  d.querySelector('.pv').onclick=()=>{lbI=(lbI-1+IMG[lbSet].length)%IMG[lbSet].length;openLb()};
+  d.querySelector('.nx').onclick=()=>{lbI=(lbI+1)%IMG[lbSet].length;openLb()};}
+function closeLb(){const d=document.getElementById('lb');if(d)d.remove()}
+document.addEventListener('keydown',e=>{if(!document.getElementById('lb'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowRight')document.querySelector('#lb .nx').click();if(e.key==='ArrowLeft')document.querySelector('#lb .pv').click()});
+/* ---- chrome ---- */
+document.querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>{lang=b.dataset.l;try{localStorage.setItem('oc_lang',lang)}catch(e){}applyLang()});
+const bar=document.getElementById('bar'),flt=document.getElementById('float'),bookSec=document.getElementById('book');
+function onScroll(){bar.classList.toggle('solid',scrollY>window.innerHeight*0.6);
+  const r=bookSec.getBoundingClientRect();flt.classList.toggle('hide',scrollY<window.innerHeight*0.5||(r.top<window.innerHeight&&r.bottom>0))}
+addEventListener('scroll',onScroll,{passive:true});
+f.elements.in.min=today();f.elements.out.min=today();
+applyLang();setGuests(2);onScroll();
+(async()=>{if(!sb)return;try{const {data}=await sb.rpc('public_info');if(data){INFO={...INFO,...data};
+  document.getElementById('pRoom').textContent='€'+INFO.priceRoom;document.getElementById('pCar').textContent='€'+INFO.priceCar;
+  if(INFO.start&&INFO.start>today()&&!f.elements.in.value){}
+  renderQuote()}}catch(e){}})();
+</script>
+</body>
+</html>
