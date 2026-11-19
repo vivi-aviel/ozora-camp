@@ -183,6 +183,12 @@ footer{background:#030008}
 body::before{content:"";position:fixed;inset:0;background:url(assets/theme/uv.svg) center/cover no-repeat;opacity:.38;z-index:-1;pointer-events:none}
 .hero::before{content:"";position:absolute;z-index:1;width:min(120vw,760px);aspect-ratio:1;left:50%;top:6%;margin-left:calc(min(120vw,760px)/-2);background:url(assets/theme/sacred.svg) center/contain no-repeat;opacity:.9;mix-blend-mode:screen;animation:spin 180s linear infinite;pointer-events:none}
 .book::before{content:"";position:absolute;width:420px;aspect-ratio:1;inset-inline-end:-160px;bottom:-160px;background:url(assets/theme/uv_hero.svg) center/contain no-repeat;opacity:.35;animation:spin 200s linear infinite reverse;pointer-events:none}
+
+/* ONE sacred-geometry shape as the site background: one huge mandala spanning the whole page, behind all content */
+.hero::before{display:none!important}
+body::before{display:none!important}
+body{position:relative}
+body::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:url(assets/theme/sacred.svg) center/auto 100% no-repeat;opacity:.55;filter:blur(1.5px)}
 </style>
 </head>
 <body>
