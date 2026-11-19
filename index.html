@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ozora Camp – לינה ליד פסטיבל אוזורה</title>
+<meta name="theme-color" content="#07020F">
 <meta name="description" content="חדרים וקרוואנים על שפת אגם, 10–12 דקות נסיעה מפסטיבל אוזורה בהונגריה. מים חמים 24/7, מינימום 7 לילות.">
 <meta property="og:title" content="Ozora Camp">
 <meta property="og:description" content="Lakeside rooms & caravans, 10–12 min from OZORA Festival, Hungary.">
@@ -146,6 +147,37 @@ footer .row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
 .lb .x{top:14px;inset-inline-end:14px}.lb .pv{inset-inline-start:10px;top:50%}.lb .nx{inset-inline-end:10px;top:50%}
 [dir=rtl] .lb .pv svg,[dir=rtl] .lb .nx svg{transform:scaleX(-1)}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+/* ===== psychedelic theme: UV string art + sacred geometry ===== */
+:root{--forest:#F5F3FF;--forest-2:#C4B5FD;--sand:#07020F;--card:rgba(255,255,255,.05);--ink:#F5F3FF;--muted:#C9BEF5;--line:rgba(255,255,255,.12);--amber:#FF2BD6;--amber-2:#E11DCB;--lake:#00F0FF}
+body{background:#07020F;color:var(--ink)}
+.in,.stepper{color:#1C1917}
+.fact,.unit,.ic{background:rgba(18,8,40,.72);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(8px);color:var(--ink)}
+.fact svg{color:#00F0FF}.price b{color:#B6FF00;text-shadow:0 0 12px rgba(182,255,0,.5)}
+ul.ticks svg{color:#B6FF00}
+h2{color:#fff;text-shadow:0 0 18px rgba(255,43,214,.75),0 0 3px rgba(255,255,255,.8)}
+.hero h1{text-shadow:0 0 24px rgba(0,240,255,.7),0 0 4px #fff}
+.book{background:rgba(10,4,24,.82);border:1px solid rgba(0,240,255,.4);box-shadow:0 0 40px rgba(255,43,214,.28),inset 0 0 50px rgba(0,240,255,.08);position:relative;overflow:hidden}
+.book>*{position:relative;z-index:1}
+.types button[aria-pressed=true]{background:#fff;color:#6B0091;border-color:#fff}.types button[aria-pressed=true] small{color:#6B0091}
+.rules{background:rgba(255,230,0,.07);border-color:rgba(255,230,0,.45);color:var(--ink)}.rules h3{color:#FFE600}
+.ic h3{color:#00F0FF}.ic p,.ic ul{color:var(--muted)}
+.bar.solid{background:rgba(7,2,15,.88);color:#fff;box-shadow:0 1px 0 rgba(255,255,255,.1)}
+.lang button[aria-pressed=true]{background:#fff!important}.lang button[aria-pressed=true] span{color:#07020F!important}
+footer{background:#030008}
+.quote{background:#fff;color:#1C1917}
+.hero::after{background:linear-gradient(180deg,rgba(7,2,15,.45),rgba(7,2,15,.15) 35%,#07020F)}
+.hero .wrap{z-index:2}
+.cta{box-shadow:0 0 20px rgba(255,43,214,.6)}
+.gal button{box-shadow:0 0 0 1px rgba(0,240,255,.25)}
+.strip button{background:#120828}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.hero::before,.book::before{animation:none!important}}
+
+
+.stepper button{color:#6B0091}
+body::before{content:"";position:fixed;inset:0;background:url(assets/theme/uv.svg) center/cover no-repeat;opacity:.38;z-index:-1;pointer-events:none}
+.hero::before{content:"";position:absolute;z-index:1;width:min(120vw,760px);aspect-ratio:1;left:50%;top:6%;margin-left:calc(min(120vw,760px)/-2);background:url(assets/theme/sacred.svg) center/contain no-repeat;opacity:.9;mix-blend-mode:screen;animation:spin 180s linear infinite;pointer-events:none}
+.book::before{content:"";position:absolute;width:420px;aspect-ratio:1;inset-inline-end:-160px;bottom:-160px;background:url(assets/theme/uv_hero.svg) center/contain no-repeat;opacity:.35;animation:spin 200s linear infinite reverse;pointer-events:none}
 </style>
 </head>
 <body>
