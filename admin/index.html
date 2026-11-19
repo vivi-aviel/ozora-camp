@@ -450,6 +450,7 @@ function freeUnitsFor(type,guests,ci,co,excludeId){
     if(guests&&+u.capacity&&+guests>+u.capacity)return false;
     return !conf.some(b=>b.unitId===u.id&&overlaps(b,{checkIn:ci,checkOut:co}))});
 }
+function waNum(p){let d=String(p||'').replace(/\D/g,'');if(d.startsWith('00'))d=d.slice(2);else if(d.startsWith('0'))d='972'+d.slice(1);return d}
 function vRequests(app){
   const s=season();const all=sBookings().filter(b=>b.status==='request'||(showDeclined&&b.status==='declined'));
   all.sort((a,b)=>(a.createdAt||'').localeCompare(b.createdAt||''));
@@ -459,7 +460,7 @@ function vRequests(app){
     const free=freeUnitsFor(b.reqType,b.guests,b.checkIn,b.checkOut);
     const p=nightsBetween(b.checkIn,b.checkOut);
     return `<div class="item"><div class="t"><span class="tag ${esc(b.reqType)}">${t(b.reqType)}</span><span>${esc(b.names||'—')}</span><span class="spacer"></span>${b.status==='declined'?`<span class="tag mut">${t('declined')}</span>`:hrs!=null?`<span class="tag ${hrs>=24?'bad':'warn'}">${hrs>=24?t('over24'):t('hoursAgo',{n:hrs})}</span>`:''}</div>
-    <div class="meta"><span class="num">${fmtDate(b.checkIn)} → ${fmtDate(b.checkOut)}</span><span>${b.guests} ${t('guests')} · ${p} ${t('nights')}</span>${b.phone?`<a class="num" href="https://wa.me/${esc(String(b.phone).replace(/\D/g,''))}" target="_blank" rel="noopener">${esc(b.phone)}</a>`:''}${b.email?`<span class="num">${esc(b.email)}</span>`:''}${b.source==='website'?`<span class="tag ok">${t('fromWebsite')}</span>`:''}</div>
+    <div class="meta"><span class="num">${fmtDate(b.checkIn)} → ${fmtDate(b.checkOut)}</span><span>${b.guests} ${t('guests')} · ${p} ${t('nights')}</span>${b.phone?`<a class="num" href="https://wa.me/${esc(waNum(b.phone))}" target="_blank" rel="noopener">${esc(b.phone)}</a>`:''}${b.email?`<span class="num">${esc(b.email)}</span>`:''}${b.source==='website'?`<span class="tag ok">${t('fromWebsite')}</span>`:''}</div>
     ${b.note?`<div class="small">${esc(b.note)}</div>`:''}
     ${b.status==='request'?`<div class="small ${free.length?'muted':'err'}">${free.length?t('freeUnits',{n:free.length}):t('noFree')}</div>
     <div class="row"><button class="btn ok sm" data-ap="${esc(b.id)}" ${free.length?'':'disabled'}>${icon('check')}${t('approve')}</button><button class="btn bad sm" data-dc="${esc(b.id)}">${t('decline')}</button><button class="btn sm" data-ed="${esc(b.id)}">${t('editBooking')}</button></div>`:''}</div>`}).join(''):`<div class="empty">${t('noReq')}</div>`}</div>`;
