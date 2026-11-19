@@ -122,6 +122,9 @@ input[type=date].in{-webkit-appearance:none;appearance:none;display:block}
 .avail.ok{background:var(--ok-bg);color:var(--ok)}.avail.bad{background:var(--bad-bg);color:var(--bad)}.avail.wait{background:#F5F5F4;color:var(--muted)}
 .chk{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;line-height:1.5}
 .chk input{width:22px;height:22px;flex:none;margin-top:2px;accent-color:var(--amber)}
+.visitors{background:rgba(255,230,0,.1);border:1.5px solid rgba(255,230,0,.55);border-radius:14px;padding:14px 16px;font-size:15px;line-height:1.55}
+.visitors b{display:block;color:#FFE600;font-size:16px;margin-bottom:4px}
+.visitors p{margin:0}
 .err{background:var(--bad-bg);color:var(--bad);border-radius:10px;padding:10px 12px;font-weight:600;font-size:14.5px}
 .submit{width:100%;justify-content:center;font-size:18px;min-height:54px}
 .submit[disabled]{opacity:.55;cursor:not-allowed}
@@ -270,6 +273,8 @@ body::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
         <label class="fl"><span data-t="email"></span><input class="in" name="email" type="email" autocomplete="email" maxlength="200" dir="ltr"></label>
         <label class="fl"><span data-t="note"></span><textarea class="in" name="note" maxlength="1000"></textarea></label>
         <div class="hp" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div>
+        <div class="full visitors" role="note"><b data-t="visTitle"></b><p data-t="visText"></p></div>
+        <label class="chk full"><input type="checkbox" name="visitors" required><span data-t="visAgree"></span></label>
         <label class="chk full"><input type="checkbox" name="terms" required><span data-t="terms"></span></label>
         <div class="full" id="err" role="alert"></div>
         <div class="full"><button class="cta submit" type="submit" id="sendBtn" data-t="send"></button></div>
@@ -330,7 +335,8 @@ galTitle:'המקום',galLead:'אגם, עצים, דשא והרבה שקט. לי�
 bookTitle:'בקשת הזמנה',bookLead:'בוחרים סוג, תאריכים ומספר אנשים, ורואים מיד אם יש מקום ומה המחיר. אנחנו חוזרים אליכם תוך 24 שעות עם אישור ופרטי תשלום.',
 chooseType:'סוג לינה',room2:'חדר ל־2',room3:'חדר ל־3',caravan:'קרוואן',upTo:'עד {n} אנשים',
 checkIn:'הגעה',checkOut:'עזיבה',guests:'מספר אנשים',name:'שם מלא',phone:'טלפון / וואטסאפ',phoneHint:'כולל קידומת מדינה, למשל ‎+972',email:'מייל (לא חובה)',note:'הערות (לא חובה)',
-terms:'קראתי ואני מסכים/ה: תשלום מלא מראש לאישור ההזמנה, אין ביטולים, החזרים או העברת הזמנה לאדם אחר, ואורחים ללא הזמנה לא יכולים להיכנס למתחם.',
+terms:'קראתי ואני מסכים/ה: תשלום מלא מראש לאישור ההזמנה, ואין ביטולים, החזרים או העברת הזמנה לאדם אחר.',
+visTitle:'⚠️ חשוב לקרוא: אורחים ומבקרים',visText:'אין אפשרות להזמין להתקלח או להיכנס למתחם קרובים כמו דוד, אח, אבא, אמא, סבתא, סבא, שכן, אחיין וכו׳. שמענו את כל התירוצים בעולם, ולכן זה עדכון מראש. מי שלא לקח חדר יצטרך לעזוב את המתחם, ומי שיזמין אותו לא יורשה לחזור.',visAgree:'קראתי והבנתי: רק מי שהזמין חדר נכנס למתחם.',eVisitors:'צריך לאשר את כלל האורחים והמבקרים.',
 send:'שליחת בקשה',sending:'שולח…',
 checking:'בודק זמינות…',availOk:'יש מקום בתאריכים האלה',availNo:'אין מקום מהסוג הזה בתאריכים האלה. נסו סוג אחר או תאריכים אחרים, או כתבו לנו בוואטסאפ.',availErr:'לא הצלחנו לבדוק זמינות כרגע. אפשר לשלוח בקשה בכל זאת.',
 qNights:'לילות',qCharged:'לילות לחיוב',qMin:'(מינימום {n})',qCalc:'{g} אנשים × {n} לילות × €{p}',qTotal:'סה״כ',
@@ -339,7 +345,7 @@ doneTitle:'הבקשה נשלחה!',doneText:'נחזור אליכם תוך 24 ש�
 waText:'היי אביאל, שלחתי עכשיו בקשת הזמנה באתר Ozora Camp',
 infoTitle:'מידע חשוב',i1t:'אוכל',i1:'אפשר להזמין במקום ארוחת בוקר, צהריים וערב בתוספת תשלום, כולל מנות הונגריות קלאסיות וקינוחים. התשלום על האוכל במקום.',
 i2t:'מה יש בסביבה',i2:'מאפייה, תחנת דלק, מסעדה וסופרמרקט נמצאים קרוב למתחם.',i3t:'שירותים נוספים',services:['עזרה ברכישת ציוד קמפינג לפסטיבל','השכרת רכב','השכרת קרוואן לשטח הפסטיבל'],
-rulesTitle:'תנאים',rules:['תשלום מלא מראש לאישור ההזמנה','אין ביטולים, החזרים או העברת הזמנה לאדם אחר','מינימום 7 לילות. גם בהגעה מאוחרת או עזיבה מוקדמת, התשלום הוא על 7 לילות לפחות','אורחים ללא חדר מוזמן, כולל קרובים, שכנים וחברים, אינם רשאים להיכנס. מי שמזמין אותם לא יוכל לחזור'],
+rulesTitle:'תנאים',rules:['תשלום מלא מראש לאישור ההזמנה','אין ביטולים, החזרים או העברת הזמנה לאדם אחר','מינימום 7 לילות. גם בהגעה מאוחרת או עזיבה מוקדמת, התשלום הוא על 7 לילות לפחות','אין להזמין קרובים או חברים להתקלח או להיכנס למתחם. מי שלא לקח חדר יצטרך לעזוב, ומי שהזמין אותו לא יורשה לחזור'],
 contactLine:'שאלות? כתבו לאביאל בוואטסאפ.',footNote:'הבקשות באתר אינן הזמנה סופית. ההזמנה נסגרת לאחר אישור ותשלום מלא.',
 roomTwinAlt:'חדר עם שתי מיטות ושירותים',roomDoubleAlt:'חדר עם מיטה זוגית',porchAlt:'המרפסת המקורה מול החדרים',roomLargeAlt:'חדר במתחם',carOutAlt:'שני הקרוואנים בצל העצים',carBedAlt:'מיטה זוגית בקרוואן',carKitchenAlt:'מטבחון בקרוואן',carSeatAlt:'פינת ישיבה בקרוואן',compoundAlt:'בניין החדרים מעבר לבריכה',lakeBoatAlt:'האגם עם הסירה',lakeAlt:'האגם ביום קיץ',close:'סגירה',prev:'הקודם',next:'הבא'},
 en:{dir:'ltr',title:'Ozora Camp – stay next to OZORA Festival',bookNow:'Book',eyebrow:'OZORA Festival · Hungary',
@@ -355,7 +361,8 @@ galTitle:'The place',galLead:'Lake, trees, grass and plenty of quiet. Nearby: ba
 bookTitle:'Booking request',bookLead:'Pick a type, dates and number of people to see availability and price right away. We reply within 24 hours with confirmation and payment details.',
 chooseType:'Type',room2:'Room for 2',room3:'Room for 3',caravan:'Caravan',upTo:'up to {n} people',
 checkIn:'Arrival',checkOut:'Departure',guests:'People',name:'Full name',phone:'Phone / WhatsApp',phoneHint:'with country code, e.g. +972',email:'Email (optional)',note:'Notes (optional)',
-terms:'I have read and agree: full payment upfront confirms the booking; no cancellations, refunds or transfers to another person; guests without a booking may not enter the site.',
+terms:'I have read and agree: full payment upfront confirms the booking, and there are no cancellations, refunds or transfers to another person.',
+visTitle:'⚠️ Please read: guests and visitors',visText:"You may not invite relatives or anyone else – uncle, brother, father, mother, grandmother, grandfather, neighbour, nephew, etc. – to shower at or enter the site. We've heard every excuse in the world, so we're saying it in advance. Anyone without a booked room will have to leave the site, and whoever invited them will not be allowed back.",visAgree:'I have read and understood: only people who booked a room may enter the site.',eVisitors:'Please accept the guests and visitors rule.',
 send:'Send request',sending:'Sending…',
 checking:'Checking availability…',availOk:'Available for these dates',availNo:'This type is full for these dates. Try another type or dates, or message us on WhatsApp.',availErr:"Couldn't check availability right now. You can still send a request.",
 qNights:'Nights',qCharged:'Nights charged',qMin:'(minimum {n})',qCalc:'{g} people × {n} nights × €{p}',qTotal:'Total',
@@ -444,6 +451,7 @@ f.addEventListener('submit',async e=>{
   if(!nights())E.push(t('eDates'));else if(v('in')<today())E.push(t('ePast'));
   if(v('names').length<2)E.push(t('eName'));
   if(v('phone').replace(/\D/g,'').length<6)E.push(t('ePhone'));
+  if(!f.elements.visitors.checked)E.push(t('eVisitors'));
   if(!f.elements.terms.checked)E.push(t('eTerms'));
   if(st.free&&st.free!=='err'&&!(st.free[st.type]>0))E.push(t('eFull'));
   if(E.length){err.innerHTML=`<div class="err">${E.map(esc).join('<br>')}</div>`;err.scrollIntoView({block:'nearest',behavior:'smooth'});return}
