@@ -125,6 +125,12 @@ input[type=date].in{-webkit-appearance:none;appearance:none;display:block}
 .visitors{background:rgba(255,230,0,.1);border:1.5px solid rgba(255,230,0,.55);border-radius:14px;padding:14px 16px;font-size:15px;line-height:1.55}
 .visitors b{display:block;color:#FFE600;font-size:16px;margin-bottom:4px}
 .visitors p{margin:0}
+.mapbox{border-radius:18px;overflow:hidden;border:1px solid rgba(0,240,255,.35);box-shadow:0 0 30px rgba(124,58,237,.3);aspect-ratio:16/10;background:#120828}
+@media(max-width:600px){.mapbox{aspect-ratio:4/5}}
+.mapbox iframe{width:100%;height:100%;border:0;display:block}
+.navbtns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.nav{display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;border-radius:14px;font-weight:700;text-decoration:none;color:#fff;border:1px solid rgba(255,255,255,.25)}
+.nav.waze{background:#0A84C6}.nav.gmaps{background:#1E8E3E}
 .err{background:var(--bad-bg);color:var(--bad);border-radius:10px;padding:10px 12px;font-weight:600;font-size:14.5px}
 .submit{width:100%;justify-content:center;font-size:18px;min-height:54px}
 .submit[disabled]{opacity:.55;cursor:not-allowed}
@@ -288,6 +294,18 @@ body::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
     </div>
   </section>
 
+  <section id="map">
+    <h2 data-t="mapTitle"></h2>
+    <p class="lead" data-t="mapLead"></p>
+    <div class="mapbox">
+      <iframe title="Ozora Camp map" src="https://maps.google.com/maps?q=46.758056,18.546444&z=14&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </div>
+    <div class="navbtns">
+      <a class="nav waze" href="https://waze.com/ul?ll=46.758056,18.546444&navigate=yes" target="_blank" rel="noopener"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 19-9-9 19-2-8-8-2z"/></svg><span data-t="navWaze"></span></a>
+      <a class="nav gmaps" href="https://www.google.com/maps/dir/?api=1&destination=46.758056,18.546444" target="_blank" rel="noopener"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.99-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 14.99 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><span data-t="navGoogle"></span></a>
+    </div>
+  </section>
+
   <section id="info">
     <h2 data-t="infoTitle"></h2>
     <div class="cards">
@@ -343,6 +361,7 @@ qNights:'לילות',qCharged:'לילות לחיוב',qMin:'(מינימום {n})
 eDates:'בחרו תאריך עזיבה אחרי תאריך ההגעה.',ePast:'תאריך ההגעה עבר.',eName:'כתבו שם מלא.',ePhone:'כתבו מספר טלפון תקין.',eTerms:'צריך לאשר את התנאים.',eFull:'אין מקום מהסוג הזה בתאריכים שבחרתם.',eServer:'השליחה נכשלה. נסו שוב, או שלחו לנו וואטסאפ.',eBusy:'יש עומס כרגע. נסו שוב בעוד כמה דקות או כתבו לנו בוואטסאפ.',
 doneTitle:'הבקשה נשלחה!',doneText:'נחזור אליכם תוך 24 שעות עם אישור ופרטי תשלום. ההזמנה נסגרת רק אחרי התשלום.',waMe:'רוצים להזדרז? שלחו וואטסאפ',
 waText:'היי אביאל, שלחתי עכשיו בקשת הזמנה באתר Ozora Camp',
+mapTitle:'איך מגיעים',mapLead:'המתחם נמצא ליד תחנת הדלק MOL ב־Simontornya, \u206610–12\u2069 דקות נסיעה מהפסטיבל. לחצו לניווט ישירות למקום.',navWaze:'ניווט ב־Waze',navGoogle:'ניווט ב־Google Maps',
 infoTitle:'מידע חשוב',i1t:'אוכל',i1:'אפשר להזמין במקום ארוחת בוקר, צהריים וערב בתוספת תשלום, כולל מנות הונגריות קלאסיות וקינוחים. התשלום על האוכל במקום.',
 i2t:'מה יש בסביבה',i2:'מאפייה, תחנת דלק, מסעדה וסופרמרקט נמצאים קרוב למתחם.',i3t:'שירותים נוספים',services:['עזרה ברכישת ציוד קמפינג לפסטיבל','השכרת רכב','השכרת קרוואן לשטח הפסטיבל'],
 rulesTitle:'תנאים',rules:['תשלום מלא מראש לאישור ההזמנה','אין ביטולים, החזרים או העברת הזמנה לאדם אחר','מינימום 7 לילות. גם בהגעה מאוחרת או עזיבה מוקדמת, התשלום הוא על 7 לילות לפחות','אין להזמין קרובים או חברים להתקלח או להיכנס למתחם. מי שלא לקח חדר יצטרך לעזוב, ומי שהזמין אותו לא יורשה לחזור'],
@@ -369,6 +388,7 @@ qNights:'Nights',qCharged:'Nights charged',qMin:'(minimum {n})',qCalc:'{g} peopl
 eDates:'Choose a departure date after arrival.',ePast:'Arrival date is in the past.',eName:'Please enter your full name.',ePhone:'Please enter a valid phone number.',eTerms:'Please accept the terms.',eFull:'This type is full for the dates you chose.',eServer:'Sending failed. Please try again or message us on WhatsApp.',eBusy:'We are busy right now. Please try again in a few minutes or message us on WhatsApp.',
 doneTitle:'Request sent!',doneText:"We'll get back to you within 24 hours with confirmation and payment details. The booking is final only after payment.",waMe:'In a hurry? Message us on WhatsApp',
 waText:'Hi Aviel, I just sent a booking request on the Ozora Camp website',
+mapTitle:'Getting here',mapLead:'The site is next to the MOL gas station in Simontornya, a 10–12 minute drive from the festival. Tap to navigate straight there.',navWaze:'Navigate with Waze',navGoogle:'Navigate with Google Maps',
 infoTitle:'Good to know',i1t:'Food',i1:'Breakfast, lunch and dinner can be ordered on site for an extra charge, including classic Hungarian dishes and desserts. Food is paid on site.',
 i2t:'Nearby',i2:'A bakery, gas station, restaurant and supermarket are close to the site.',i3t:'Extra services',services:['Help buying camping gear for the festival','Car rental','Caravan rental on the festival grounds'],
 rulesTitle:'Terms',rules:['Full payment upfront confirms the booking','No cancellations, refunds or transfers to another person','7-night minimum – arriving late or leaving early still counts as at least 7 nights','Guests without a booked room – including relatives, neighbours and friends – may not enter. Whoever invites them will not be allowed back'],
