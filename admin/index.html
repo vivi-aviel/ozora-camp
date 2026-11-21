@@ -56,6 +56,7 @@ button.kpi:hover{border-color:var(--primary-2)}
 .banner button{margin-inline-start:auto}
 .btn{border:1px solid var(--border);background:#fff;border-radius:10px;padding:10px 14px;min-height:44px;font-weight:600;display:inline-flex;align-items:center;gap:6px;justify-content:center;transition:background .15s}
 .btn:hover{background:var(--muted-bg)}
+a.btn{text-decoration:none}
 .btn.p{background:var(--primary);border-color:var(--primary);color:#fff}
 .btn.p:hover{background:var(--primary-2)}
 .btn.ok{background:var(--ok);border-color:var(--ok);color:#fff}
@@ -245,11 +246,14 @@ ruleLine:"Lista: vendég × max(7, éj) × ár. Katalin: csak tényleges éjek."
 }};
 Object.assign(T.he,{noDb:'אין חיבור לשרת. בדוק את האינטרנט ונסה לרענן.',login:'כניסה למערכת',email:'מייל',password:'סיסמה',signIn:'כניסה',signOut:'יציאה מהמערכת',loginErr:'המייל או הסיסמה שגויים.',notAdmin:'המשתמש הזה מחובר, אבל אין לו הרשאת מנהל. הרץ ב־Supabase את שורת ההרשאה מקובץ ההגדרה.',pubSeason:'העונה שמוצגת באתר ללקוחות',fromWebsite:'מהאתר',site:'האתר ללקוחות',loadErr:'טעינת הנתונים נכשלה',retry:'נסה שוב',account:'חשבון'});
 Object.assign(T.en,{noDb:'Cannot reach the server. Check your internet and refresh.',login:'Sign in',email:'Email',password:'Password',signIn:'Sign in',signOut:'Sign out',loginErr:'Wrong email or password.',notAdmin:'This user is signed in but is not an administrator. Run the admin line from the setup file in Supabase.',pubSeason:'Season shown on the customer website',fromWebsite:'website',site:'Customer website',loadErr:'Loading data failed',retry:'Retry',account:'Account'});
-Object.assign(T.he,{visits:'כניסות לאתר',vToday:'היום',vWeek:'7 ימים',vMonth:'30 יום',vConv:'שלחו בקשה',vSources:'מאיפה הגיעו (30 יום)',vMobile:'מהטלפון',vDaily:'14 הימים האחרונים',vNone:'עוד אין כניסות. הן יתחילו להיספר מעכשיו.',vSetup:'כדי לראות כניסות, הרץ ב־Supabase את הקובץ analytics.sql.',
+Object.assign(T.he,{copyMsg:'העתק הודעה',paidCash:'💵 שולם במזומן',infoTitle:'שליחת מידע ללקוח',infoText:'ההזמנה אושרה. שלח ללקוח בוואטסאפ את כל המידע: ניווט למתחם ולפסטיבל, המקומות בסביבה וכלל האורחים.',sendInfo:'שלח מידע ללקוח בוואטסאפ',noPhone:'אין מספר טלפון בהזמנה. הוסף טלפון ונסה שוב.',previewMsg:'הצג את ההודעה',sendInfoShort:'📲 שלח מידע ללקוח',
+ visits:'כניסות לאתר',vToday:'היום',vWeek:'7 ימים',vMonth:'30 יום',vConv:'שלחו בקשה',vSources:'מאיפה הגיעו (30 יום)',vMobile:'מהטלפון',vDaily:'14 הימים האחרונים',vNone:'עוד אין כניסות. הן יתחילו להיספר מעכשיו.',vSetup:'כדי לראות כניסות, הרץ ב־Supabase את הקובץ analytics.sql.',
  src_direct:'ישיר / קישור',src_whatsapp:'וואטסאפ',src_oldsite:'האתר הישן',src_instagram:'אינסטגרם',src_facebook:'פייסבוק',src_google:'גוגל',src_search:'חיפוש אחר',src_twitter:'X / טוויטר'});
-Object.assign(T.en,{visits:'Website visits',vToday:'Today',vWeek:'7 days',vMonth:'30 days',vConv:'sent a request',vSources:'Where visitors came from (30 days)',vMobile:'on phones',vDaily:'Last 14 days',vNone:'No visits yet. Counting starts now.',vSetup:'To see visits, run analytics.sql in Supabase.',
+Object.assign(T.en,{copyMsg:'Copy message',paidCash:'💵 Paid in cash',infoTitle:'Send info to guest',infoText:'Booking confirmed. Send the guest everything on WhatsApp: navigation to the camp and the festival, nearby places and the visitors rule.',sendInfo:'Send info on WhatsApp',noPhone:'No phone number on this booking. Add one and try again.',previewMsg:'Show the message',sendInfoShort:'📲 Send info to guest',
+ visits:'Website visits',vToday:'Today',vWeek:'7 days',vMonth:'30 days',vConv:'sent a request',vSources:'Where visitors came from (30 days)',vMobile:'on phones',vDaily:'Last 14 days',vNone:'No visits yet. Counting starts now.',vSetup:'To see visits, run analytics.sql in Supabase.',
  src_direct:'Direct / link',src_whatsapp:'WhatsApp',src_oldsite:'Old website',src_instagram:'Instagram',src_facebook:'Facebook',src_google:'Google',src_search:'Other search',src_twitter:'X / Twitter'});
-Object.assign(T.hu,{visits:'Látogatások',vToday:'Ma',vWeek:'7 nap',vMonth:'30 nap',vConv:'kérést küldött',vSources:'Honnan jöttek (30 nap)',vMobile:'telefonról',vDaily:'Utolsó 14 nap',vNone:'Még nincs látogatás.',vSetup:'Futtasd az analytics.sql fájlt a Supabase-ben.',
+Object.assign(T.hu,{copyMsg:'Üzenet másolása',paidCash:'💵 Készpénzben fizetve',infoTitle:'Info küldése',infoText:'Foglalás megerősítve. Küldd el a vendégnek WhatsAppon az összes infót.',sendInfo:'Küldés WhatsAppon',noPhone:'Nincs telefonszám.',previewMsg:'Üzenet mutatása',sendInfoShort:'📲 Info küldése',
+ visits:'Látogatások',vToday:'Ma',vWeek:'7 nap',vMonth:'30 nap',vConv:'kérést küldött',vSources:'Honnan jöttek (30 nap)',vMobile:'telefonról',vDaily:'Utolsó 14 nap',vNone:'Még nincs látogatás.',vSetup:'Futtasd az analytics.sql fájlt a Supabase-ben.',
  src_direct:'Közvetlen',src_whatsapp:'WhatsApp',src_oldsite:'Régi oldal',src_instagram:'Instagram',src_facebook:'Facebook',src_google:'Google',src_search:'Egyéb kereső',src_twitter:'X / Twitter'});
 Object.assign(T.hu,{login:'Bejelentkezés',email:'E-mail',password:'Jelszó',signIn:'Belépés',signOut:'Kijelentkezés',loginErr:'Hibás e-mail vagy jelszó.',notAdmin:'Ez a felhasználó nem adminisztrátor.',pubSeason:'A weboldalon megjelenő szezon',fromWebsite:'weboldal',site:'Ügyféloldal',loadErr:'Az adatok betöltése sikertelen',retry:'Újra',account:'Fiók'});
 function lsGet(k,d){try{return localStorage.getItem(k)||d}catch(e){return d}}
@@ -477,7 +481,6 @@ function freeUnitsFor(type,guests,ci,co,excludeId){
     if(guests&&+u.capacity&&+guests>+u.capacity)return false;
     return !conf.some(b=>b.unitId===u.id&&overlaps(b,{checkIn:ci,checkOut:co}))});
 }
-function waNum(p){let d=String(p||'').replace(/\D/g,'');if(d.startsWith('00'))d=d.slice(2);else if(d.startsWith('0'))d='972'+d.slice(1);return d}
 function vRequests(app){
   const s=season();const all=sBookings().filter(b=>b.status==='request'||(showDeclined&&b.status==='declined'));
   all.sort((a,b)=>(a.createdAt||'').localeCompare(b.createdAt||''));
@@ -490,9 +493,10 @@ function vRequests(app){
     <div class="meta"><span class="num">${fmtDate(b.checkIn)} → ${fmtDate(b.checkOut)}</span><span>${b.guests} ${t('guests')} · ${p} ${t('nights')}</span>${b.phone?`<a class="num" href="https://wa.me/${esc(waNum(b.phone))}" target="_blank" rel="noopener">${esc(b.phone)}</a>`:''}${b.email?`<span class="num">${esc(b.email)}</span>`:''}${b.source==='website'?`<span class="tag ok">${t('fromWebsite')}</span>`:''}</div>
     ${b.note?`<div class="small">${esc(b.note)}</div>`:''}
     ${b.status==='request'?`<div class="small ${free.length?'muted':'err'}">${free.length?t('freeUnits',{n:free.length}):t('noFree')}</div>
-    <div class="row"><button class="btn ok sm" data-ap="${esc(b.id)}" ${free.length?'':'disabled'}>${icon('check')}${t('approve')}</button><button class="btn bad sm" data-dc="${esc(b.id)}">${t('decline')}</button><button class="btn sm" data-ed="${esc(b.id)}">${t('editBooking')}</button></div>`:''}</div>`}).join(''):`<div class="empty">${t('noReq')}</div>`}</div>`;
+    <div class="row"><button class="btn ok sm" data-cash="${esc(b.id)}" ${free.length?'':'disabled'}>${t('paidCash')}</button><button class="btn ok sm" data-ap="${esc(b.id)}" ${free.length?'':'disabled'}>${icon('check')}${t('approve')}</button><button class="btn bad sm" data-dc="${esc(b.id)}">${t('decline')}</button><button class="btn sm" data-ed="${esc(b.id)}">${t('editBooking')}</button></div>`:''}</div>`}).join(''):`<div class="empty">${t('noReq')}</div>`}</div>`;
   document.getElementById('shD').onchange=e=>{showDeclined=e.target.checked;render()};
   app.querySelectorAll('[data-ap]').forEach(x=>x.onclick=()=>approveForm(S.bookings.find(b=>b.id===x.dataset.ap)));
+  app.querySelectorAll('[data-cash]').forEach(x=>x.onclick=()=>approveForm(S.bookings.find(b=>b.id===x.dataset.cash),'cash'));
   app.querySelectorAll('[data-dc]').forEach(x=>x.onclick=async()=>{const b=S.bookings.find(b=>b.id===x.dataset.dc);await saveDoc('bookings',b.id,{...strip(b),status:'declined'})});
   app.querySelectorAll('[data-ed]').forEach(x=>x.onclick=()=>requestForm(S.bookings.find(b=>b.id===x.dataset.ed)));
 }
@@ -612,7 +616,7 @@ function bookingForm(b,pre){
   <details><summary>${t('rates')}</summary><div class="f2" style="margin-top:8px"><label class="fl">${t('listRate')}<input class="in" name="listRate" type="number" step="any" inputmode="decimal" value="${esc(b.listRate??'')}"></label><label class="fl">${t('katRate')} <small id="kb"></small><input class="in" name="katRate" type="number" step="any" inputmode="decimal" value="${esc(b.katRate??'')}"></label></div></details>
   <label class="fl">${t('note')}<textarea class="in" name="note">${esc(b.note)}</textarea></label>
   <div class="calc" id="cp"></div><div id="fe"></div>
-  <div class="row"><button class="btn p" type="submit">${t('save')}</button><button class="btn" type="button" id="cn">${t('cancel')}</button><span class="spacer"></span>${!isNew?`<button class="btn bad" type="button" id="dl">${t('del')}</button>`:''}</div></form>`;
+  <div class="row"><button class="btn p" type="submit">${t('save')}</button><button class="btn" type="button" id="cn">${t('cancel')}</button><span class="spacer"></span>${!isNew?`<button class="btn bad" type="button" id="dl">${t('del')}</button>`:''}</div>${!isNew&&b.status==='confirmed'?`<button class="btn" type="button" id="si" style="width:100%">${t('sendInfoShort')}</button>`:''}</form>`;
   modal(isNew?t('newBooking'):t('editBooking'),html,m=>{
     const f=m.querySelector('#bf');let force=false;let lastUnit=b.unitId;
     const read=()=>{const o={...b};for(const k of ['unitId','names','phone','checkIn','checkOut','currency','method','paidDate','note'])o[k]=f.elements[k].value.trim();
@@ -633,6 +637,7 @@ function bookingForm(b,pre){
     };
     f.oninput=()=>{force=false;upd()};upd();
     m.querySelector('#cn').onclick=closeModal;
+    const si=m.querySelector('#si');if(si)si.onclick=()=>sendInfoDlg(read());
     const dl=m.querySelector('#dl');if(dl)dl.onclick=()=>confirmDlg(t('delQ'),async()=>{await delDoc('bookings',b.id);closeModal()});
     f.onsubmit=async e=>{e.preventDefault();const o=read();const fe=m.querySelector('#fe');const u=unitById(o.unitId);
       const errs=[];if(!o.unitId)errs.push(t('errUnit'));if(!(o.guests>=1))errs.push(t('errGuests'));if(!(pd(o.checkOut)>pd(o.checkIn)))errs.push(t('errDates'));
@@ -646,7 +651,7 @@ function bookingForm(b,pre){
       if(o.status!=='confirmed')o.status='confirmed';
       const id=b.id||crypto.randomUUID();
       if(!o.createdAt)o.createdAt=new Date().toISOString();
-      const ok=await saveDoc('bookings',id,strip(o));if(ok)closeModal();};
+      const ok=await saveDoc('bookings',id,strip(o));if(ok){closeModal();if(isNew&&o.phone)sendInfoDlg({...o,id})}};
   });
 }
 function requestForm(b){
@@ -665,25 +670,79 @@ function requestForm(b){
       if(!(pd(o.checkOut)>pd(o.checkIn))||!(o.guests>=1)){m.querySelector('#fe').innerHTML=`<div class="err">${t('errDates')}</div>`;return}
       if(!o.createdAt)o.createdAt=new Date().toISOString();const id=b.id||crypto.randomUUID();if(await saveDoc('bookings',id,strip(o)))closeModal()}});
 }
-function approveForm(r){
+function approveForm(r,preMethod){
   const s=season();const free=freeUnitsFor(r.reqType,r.guests,r.checkIn,r.checkOut);
   const u0=free[0];const rt=ratesForUnit(u0,s);const planned=nightsBetween(r.checkIn,r.checkOut);
   const list=r2((+r.guests)*Math.max(+s.minNights||7,planned)*rt.listRate);
   const html=`<form class="f" id="af"><div class="small muted">${esc(r.names)} · ${r.guests} ${t('guests')} · ${fmtDate(r.checkIn)}→${fmtDate(r.checkOut)}</div>
   <label class="fl">${t('assignUnit')}<select class="in" name="unitId">${free.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (${u.capacity})</option>`).join('')}</select></label>
   <div class="f2"><label class="fl">${t('currency')}<select class="in" name="currency"><option value="EUR">EUR €</option><option value="ILS">ILS ₪</option></select></label><label class="fl">${t('received')} <small>${t('listPrice')} €${fmtNum(list)}</small><input class="in" name="amount" type="number" step="any" inputmode="decimal" value="${list}"></label></div>
-  <div class="f2"><label class="fl">${t('paidDate')}<input class="in" type="date" name="paidDate" value="${today()}"></label><label class="fl">${t('method')}<select class="in" name="method">${['bit','transfer','cash','other'].map(m=>`<option value="${m}">${t(m)}</option>`).join('')}</select></label></div><div id="fe"></div>
-  <div class="row"><button class="btn ok" type="submit">${icon('check')}${t('approve')}</button><button class="btn" type="button" id="cn">${t('cancel')}</button></div></form>`;
-  modal(t('approveTitle'),html,m=>{const f=m.querySelector('#af');m.querySelector('#cn').onclick=closeModal;
+  <div class="f2"><label class="fl">${t('paidDate')}<input class="in" type="date" name="paidDate" value="${today()}"></label><label class="fl">${t('method')}<select class="in" name="method">${['bit','transfer','cash','other'].map(m=>`<option value="${m}" ${m===preMethod?'selected':''}>${t(m)}</option>`).join('')}</select></label></div><div id="fe"></div>
+  <div class="row"><button class="btn ok" type="submit">${preMethod==='cash'?t('paidCash'):icon('check')+t('approve')}</button><button class="btn" type="button" id="cn">${t('cancel')}</button></div></form>`;
+  modal(preMethod==='cash'?t('paidCash'):t('approveTitle'),html,m=>{const f=m.querySelector('#af');m.querySelector('#cn').onclick=closeModal;
     f.onsubmit=async e=>{e.preventDefault();const amt=+f.elements.amount.value;if(!(amt>=0)||f.elements.amount.value===''){m.querySelector('#fe').innerHTML=`<div class="err">${t('errAmount')}</div>`;return}
       const u=unitById(f.elements.unitId.value);const o={...strip(r),...ratesForUnit(u,s),unitId:u.id,status:'confirmed',currency:f.elements.currency.value,charged:amt,received:amt,paidDate:f.elements.paidDate.value,method:f.elements.method.value,approvedAt:new Date().toISOString()};
-      if(await saveDoc('bookings',r.id,o))closeModal()}});
+      if(await saveDoc('bookings',r.id,o)){closeModal();sendInfoDlg({...o,id:r.id})}}});
 }
 function payoutForm(){
   const tot=seasonTotals(sBookings(),S.units,sPayouts(),season());
   modal(t('addPayout'),`<form class="f" id="pf"><div class="f2"><label class="fl">${t('amountEur')}<input class="in" name="amountEUR" type="number" step="any" inputmode="decimal" value="${tot.katBal>0?tot.katBal:''}"></label><label class="fl">${t('date')}<input class="in" name="date" type="date" value="${today()}"></label></div><label class="fl">${t('note')}<input class="in" name="note"></label><div id="fe"></div><div class="row"><button class="btn p" type="submit">${t('save')}</button><button class="btn" type="button" id="cn">${t('cancel')}</button></div></form>`,m=>{
     m.querySelector('#cn').onclick=closeModal;m.querySelector('#pf').onsubmit=async e=>{e.preventDefault();const f=e.target;const a=+f.elements.amountEUR.value;if(!(a>0)){m.querySelector('#fe').innerHTML=`<div class="err">${t('errAmount')}</div>`;return}
       if(await saveDoc('payouts',crypto.randomUUID(),{seasonId:curSeasonId,amountEUR:a,date:f.elements.date.value,note:f.elements.note.value.trim()}))closeModal()}});
+}
+
+
+/* ===================== guest info message (sent after payment) ===================== */
+const CAMP={waze:'https://waze.com/ul?ll=46.758056,18.546444&navigate=yes',gmaps:'https://www.google.com/maps/dir/?api=1&destination=46.758056,18.546444',fest:'https://www.google.com/maps/search/?api=1&query=Ozora%20Gate'};
+const NEAR=[['MOL ⛽','https://www.google.com/maps/search/?api=1&query=MOL%20Simontornya'],['Pékség Kabasi 🥐','https://www.google.com/maps/search/?api=1&query=P%C3%A9ks%C3%A9g%20Kabasi%20Simontornya'],['Tulipán Étterem 🍽','https://www.google.com/maps/search/?api=1&query=Tulip%C3%A1n%20%C3%89tterem%20Simontornya'],['Útonálló Kebab 🌯','https://www.google.com/maps/search/?api=1&query=%C3%9Aton%C3%A1ll%C3%B3%20Kebab%20Simontornya'],['mini Coop ABC 🛒','https://www.google.com/maps/search/?api=1&query=mini%20Coop%20ABC%20Simontornya'],['Könyöklő Büfé 🍺','https://www.google.com/maps/search/?api=1&query=K%C3%B6ny%C3%B6kl%C5%91%20B%C3%BCf%C3%A9%20Simontornya'],['OTP ATM 💶','https://www.google.com/maps/search/?api=1&query=Simontornya%20Orvosi%20%C3%9Cgyelet%20OTP%20ATM']];
+function waNum(p){let d=String(p||'').replace(/\D/g,'');if(d.startsWith('00'))d=d.slice(2);else if(d.startsWith('0'))d='972'+d.slice(1);return d}
+function guestMsg(b){
+  const u=unitById(b.unitId);const L=b.lang==='en'?'en':'he';const n=nightsBetween(b.checkIn,b.checkOut);
+  const d=x=>{const [y,m,dd]=(x||'').split('-');return dd+'/'+m};
+  const first=(b.names||'').split(/[ ,]/)[0]||'';
+  if(L==='en')return `Hi ${first}! 🌀 Your booking at Ozora Camp is confirmed ✅
+
+🏠 ${u?(u.type==='caravan'?'Caravan':'Room')+' '+(u.name.match(/\d+/)||[''])[0]:''} · ${b.guests} people
+📅 ${d(b.checkIn)} → ${d(b.checkOut)} (${n} nights)
+
+📍 Navigate to the camp:
+Waze: ${CAMP.waze}
+Google Maps: ${CAMP.gmaps}
+
+🎪 Navigate to the festival (10–12 min drive):
+${CAMP.fest}
+
+🗺 Nearby:
+${NEAR.map(([n,l])=>n+'\n'+l).join('\n')}
+
+⚠️ Reminder: only people who booked a room may enter the site – no visiting relatives or friends, including for showers.
+
+See you soon! Aviel`;
+  return `היי ${first}! 🌀 ההזמנה שלך ב־Ozora Camp אושרה ✅
+
+🏠 ${u?(u.type==='caravan'?'קרוואן':'חדר')+' '+(u.name.match(/\d+/)||[''])[0]:''} · ${b.guests} אנשים
+📅 ${d(b.checkIn)} ← ${d(b.checkOut)} (${n} לילות)
+
+📍 ניווט למתחם:
+Waze: ${CAMP.waze}
+Google Maps: ${CAMP.gmaps}
+
+🎪 ניווט לפסטיבל (10–12 דקות נסיעה):
+${CAMP.fest}
+
+🗺 מה יש בסביבה:
+${NEAR.map(([n,l])=>n+'\n'+l).join('\n')}
+
+⚠️ תזכורת: רק מי שהזמין חדר נכנס למתחם. אין להזמין קרובים או חברים, גם לא להתקלח.
+
+נתראה! אביאל`;
+}
+function guestWaUrl(b){return 'https://wa.me/'+waNum(b.phone)+'?text='+encodeURIComponent(guestMsg(b))}
+function sendInfoDlg(b){
+  const ok=!!waNum(b.phone);
+  modal(t('infoTitle'),`<p>${t('infoText')}</p>${ok?`<a class="btn ok" style="width:100%" href="${esc(guestWaUrl(b))}" target="_blank" rel="noopener">${t('sendInfo')}</a>`:`<p class="err">${t('noPhone')}</p>`}
+  <details style="margin-top:12px"><summary>${t('previewMsg')}</summary><pre class="rep" dir="${b.lang==='en'?'ltr':'rtl'}">${esc(guestMsg(b))}</pre><button class="btn sm" id="cpm">${icon('copy')}${t('copyMsg')}</button></details>`,m=>{
+    const c=m.querySelector('#cpm');if(c)c.onclick=async()=>{try{await navigator.clipboard.writeText(guestMsg(b));toast(t('copied'))}catch(e){toast(t('copyFail'))}};});
 }
 
 /* ===================== modal / toast ===================== */

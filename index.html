@@ -131,6 +131,14 @@ input[type=date].in{-webkit-appearance:none;appearance:none;display:block}
 .navbtns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
 .nav{display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;border-radius:14px;font-weight:700;text-decoration:none;color:#fff;border:1px solid rgba(255,255,255,.25)}
 .nav.waze{background:#0A84C6}.nav.gmaps{background:#1E8E3E}
+.fest{display:flex;align-items:center;gap:12px;justify-content:space-between;padding:16px 18px;border-radius:18px;text-decoration:none;color:#fff;background:linear-gradient(135deg,rgba(124,58,237,.55),rgba(37,99,235,.55));border:1px solid rgba(255,255,255,.3);box-shadow:0 0 24px rgba(124,58,237,.35);margin-bottom:12px}
+.fest b{display:block;font-size:19px}.fest small{color:#E0E7FF;font-size:14.5px}
+.places{display:grid;gap:10px}
+@media(min-width:760px){.places{grid-template-columns:1fr 1fr}}
+.place{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:16px;text-decoration:none;color:var(--ink);background:rgba(18,8,40,.72);border:1px solid rgba(255,255,255,.14);min-height:64px}
+.place .pi{flex:none;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:rgba(0,240,255,.12);color:#00F0FF}
+.place .pt{flex:1;min-width:0}.place b{display:block;font-size:16px}.place small{display:block;color:var(--muted);font-size:13.5px;line-height:1.4}
+.pn{flex:none;font-size:13px;font-weight:700;color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:6px 12px;white-space:nowrap}
 .err{background:var(--bad-bg);color:var(--bad);border-radius:10px;padding:10px 12px;font-weight:600;font-size:14.5px}
 .submit{width:100%;justify-content:center;font-size:18px;min-height:54px}
 .submit[disabled]{opacity:.55;cursor:not-allowed}
@@ -306,6 +314,21 @@ body::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
     </div>
   </section>
 
+  <section id="around">
+    <h2 data-t="aroundTitle"></h2>
+    <p class="lead" data-t="aroundLead"></p>
+    <div class="fest"><span><b data-t="festName"></b><small data-t="festSub"></small></span></div>
+    <div class="places">
+      <div class="place"><span class="pi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 22V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v17M3 22h12M15 10h2a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V8l-3-3M6 8h6"/></svg></span><span class="pt"><b>MOL</b><small data-t="pl0"></small></span></div>
+      <div class="place"><span class="pi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11a4 4 0 0 1 0-8h14a4 4 0 0 1 0 8v9a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1z"/></svg></span><span class="pt"><b>Pékség Kabasi</b><small data-t="pl1"></small></span></div>
+      <div class="place"><span class="pi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2M7 2v20M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg></span><span class="pt"><b>Tulipán Étterem</b><small data-t="pl2"></small></span></div>
+      <div class="place"><span class="pi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2M7 2v20M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg></span><span class="pt"><b>Útonálló Kebab</b><small data-t="pl3"></small></span></div>
+      <div class="place"><span class="pi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2 2h3l2.7 12.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg></span><span class="pt"><b>mini Coop ABC</b><small data-t="pl4"></small></span></div>
+      <div class="place"><span class="pi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 22h8M12 11v11M19 3l-7 8-7-8z"/></svg></span><span class="pt"><b>Könyöklő Büfé</b><small data-t="pl5"></small></span></div>
+      <div class="place"><span class="pi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg></span><span class="pt"><b>OTP ATM</b><small data-t="pl6"></small></span></div>
+    </div>
+  </section>
+
   <section id="info">
     <h2 data-t="infoTitle"></h2>
     <div class="cards">
@@ -361,7 +384,7 @@ qNights:'לילות',qCharged:'לילות לחיוב',qMin:'(מינימום {n})
 eDates:'בחרו תאריך עזיבה אחרי תאריך ההגעה.',ePast:'תאריך ההגעה עבר.',eName:'כתבו שם מלא.',ePhone:'כתבו מספר טלפון תקין.',eTerms:'צריך לאשר את התנאים.',eFull:'אין מקום מהסוג הזה בתאריכים שבחרתם.',eServer:'השליחה נכשלה. נסו שוב, או שלחו לנו וואטסאפ.',eBusy:'יש עומס כרגע. נסו שוב בעוד כמה דקות או כתבו לנו בוואטסאפ.',
 doneTitle:'הבקשה נשלחה!',doneText:'נחזור אליכם תוך 24 שעות עם אישור ופרטי תשלום. ההזמנה נסגרת רק אחרי התשלום.',waMe:'רוצים להזדרז? שלחו וואטסאפ',
 waText:'היי אביאל, שלחתי עכשיו בקשת הזמנה באתר Ozora Camp',
-mapTitle:'איך מגיעים',mapLead:'המתחם נמצא ליד תחנת הדלק MOL ב־Simontornya, \u206610–12\u2069 דקות נסיעה מהפסטיבל. לחצו לניווט ישירות למקום.',navWaze:'ניווט ב־Waze',navGoogle:'ניווט ב־Google Maps',
+aroundTitle:'מה יש בסביבה',aroundLead:'כל מה שצריך נמצא ממש ליד, בעיירה Simontornya. מאפייה, מסעדות, מכולת, תחנת דלק וכספומט, הכול כמה דקות מהחדרים.',festName:'פסטיבל OZORA',festSub:'\u206610–12\u2069 דקות נסיעה מהמתחם',navFest:'ניווט לפסטיבל',navShort:'ניווט',pl0:'תחנת דלק עם מינימרקט, צמודה למתחם',pl1:'מאפייה ממש ליד המתחם, לחם ומאפים טריים בבוקר',pl2:'מסעדה הונגרית מומלצת מאוד',pl3:'קבב ואוכל מהיר, פתוח עד מאוחר',pl4:'מכולת למצרכים בסיסיים. כדאי לבדוק שעות, בסופ״ש נסגר מוקדם',pl5:'בר קטן ומקומי',pl6:'כספומט 24 שעות, ליד מוקד רפואה דחופה (Orvosi Ügyelet)',mapTitle:'איך מגיעים',mapLead:'המתחם נמצא ליד תחנת הדלק MOL ב־Simontornya, \u206610–12\u2069 דקות נסיעה מהפסטיבל. לחצו לניווט ישירות למקום.',navWaze:'ניווט ב־Waze',navGoogle:'ניווט ב־Google Maps',
 infoTitle:'מידע חשוב',i1t:'אוכל',i1:'אפשר להזמין במקום ארוחת בוקר, צהריים וערב בתוספת תשלום, כולל מנות הונגריות קלאסיות וקינוחים. התשלום על האוכל במקום.',
 i2t:'מה יש בסביבה',i2:'מאפייה, תחנת דלק, מסעדה וסופרמרקט נמצאים קרוב למתחם.',i3t:'שירותים נוספים',services:['עזרה ברכישת ציוד קמפינג לפסטיבל','השכרת רכב','השכרת קרוואן לשטח הפסטיבל'],
 rulesTitle:'תנאים',rules:['תשלום מלא מראש לאישור ההזמנה','אין ביטולים, החזרים או העברת הזמנה לאדם אחר','מינימום 7 לילות. גם בהגעה מאוחרת או עזיבה מוקדמת, התשלום הוא על 7 לילות לפחות','אין להזמין קרובים או חברים להתקלח או להיכנס למתחם. מי שלא לקח חדר יצטרך לעזוב, ומי שהזמין אותו לא יורשה לחזור'],
@@ -388,7 +411,7 @@ qNights:'Nights',qCharged:'Nights charged',qMin:'(minimum {n})',qCalc:'{g} peopl
 eDates:'Choose a departure date after arrival.',ePast:'Arrival date is in the past.',eName:'Please enter your full name.',ePhone:'Please enter a valid phone number.',eTerms:'Please accept the terms.',eFull:'This type is full for the dates you chose.',eServer:'Sending failed. Please try again or message us on WhatsApp.',eBusy:'We are busy right now. Please try again in a few minutes or message us on WhatsApp.',
 doneTitle:'Request sent!',doneText:"We'll get back to you within 24 hours with confirmation and payment details. The booking is final only after payment.",waMe:'In a hurry? Message us on WhatsApp',
 waText:'Hi Aviel, I just sent a booking request on the Ozora Camp website',
-mapTitle:'Getting here',mapLead:'The site is next to the MOL gas station in Simontornya, a 10–12 minute drive from the festival. Tap to navigate straight there.',navWaze:'Navigate with Waze',navGoogle:'Navigate with Google Maps',
+aroundTitle:'What\'s nearby',aroundLead:'Everything you need is close by in the town of Simontornya. Bakery, restaurants, grocery, gas station and ATM – all a few minutes from the rooms.',festName:'OZORA Festival',festSub:'10–12 minute drive from the site',navFest:'Navigate to the festival',navShort:'Navigate',pl0:'Gas station with a mini-market, right next to the site',pl1:'Bakery right by the site – fresh bread and pastries in the morning',pl2:'Highly recommended Hungarian restaurant',pl3:'Kebab and fast food, open late',pl4:'Grocery for basics. Check opening hours – closes early on weekends',pl5:'Small local bar',pl6:'24-hour ATM, next to the urgent-care medical center (Orvosi Ügyelet)',mapTitle:'Getting here',mapLead:'The site is next to the MOL gas station in Simontornya, a 10–12 minute drive from the festival. Tap to navigate straight there.',navWaze:'Navigate with Waze',navGoogle:'Navigate with Google Maps',
 infoTitle:'Good to know',i1t:'Food',i1:'Breakfast, lunch and dinner can be ordered on site for an extra charge, including classic Hungarian dishes and desserts. Food is paid on site.',
 i2t:'Nearby',i2:'A bakery, gas station, restaurant and supermarket are close to the site.',i3t:'Extra services',services:['Help buying camping gear for the festival','Car rental','Caravan rental on the festival grounds'],
 rulesTitle:'Terms',rules:['Full payment upfront confirms the booking','No cancellations, refunds or transfers to another person','7-night minimum – arriving late or leaving early still counts as at least 7 nights','Guests without a booked room – including relatives, neighbours and friends – may not enter. Whoever invites them will not be allowed back'],
