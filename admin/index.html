@@ -245,6 +245,12 @@ ruleLine:"Lista: vendég × max(7, éj) × ár. Katalin: csak tényleges éjek."
 }};
 Object.assign(T.he,{noDb:'אין חיבור לשרת. בדוק את האינטרנט ונסה לרענן.',login:'כניסה למערכת',email:'מייל',password:'סיסמה',signIn:'כניסה',signOut:'יציאה מהמערכת',loginErr:'המייל או הסיסמה שגויים.',notAdmin:'המשתמש הזה מחובר, אבל אין לו הרשאת מנהל. הרץ ב־Supabase את שורת ההרשאה מקובץ ההגדרה.',pubSeason:'העונה שמוצגת באתר ללקוחות',fromWebsite:'מהאתר',site:'האתר ללקוחות',loadErr:'טעינת הנתונים נכשלה',retry:'נסה שוב',account:'חשבון'});
 Object.assign(T.en,{noDb:'Cannot reach the server. Check your internet and refresh.',login:'Sign in',email:'Email',password:'Password',signIn:'Sign in',signOut:'Sign out',loginErr:'Wrong email or password.',notAdmin:'This user is signed in but is not an administrator. Run the admin line from the setup file in Supabase.',pubSeason:'Season shown on the customer website',fromWebsite:'website',site:'Customer website',loadErr:'Loading data failed',retry:'Retry',account:'Account'});
+Object.assign(T.he,{visits:'כניסות לאתר',vToday:'היום',vWeek:'7 ימים',vMonth:'30 יום',vConv:'שלחו בקשה',vSources:'מאיפה הגיעו (30 יום)',vMobile:'מהטלפון',vDaily:'14 הימים האחרונים',vNone:'עוד אין כניסות. הן יתחילו להיספר מעכשיו.',vSetup:'כדי לראות כניסות, הרץ ב־Supabase את הקובץ analytics.sql.',
+ src_direct:'ישיר / קישור',src_whatsapp:'וואטסאפ',src_oldsite:'האתר הישן',src_instagram:'אינסטגרם',src_facebook:'פייסבוק',src_google:'גוגל',src_search:'חיפוש אחר',src_twitter:'X / טוויטר'});
+Object.assign(T.en,{visits:'Website visits',vToday:'Today',vWeek:'7 days',vMonth:'30 days',vConv:'sent a request',vSources:'Where visitors came from (30 days)',vMobile:'on phones',vDaily:'Last 14 days',vNone:'No visits yet. Counting starts now.',vSetup:'To see visits, run analytics.sql in Supabase.',
+ src_direct:'Direct / link',src_whatsapp:'WhatsApp',src_oldsite:'Old website',src_instagram:'Instagram',src_facebook:'Facebook',src_google:'Google',src_search:'Other search',src_twitter:'X / Twitter'});
+Object.assign(T.hu,{visits:'Látogatások',vToday:'Ma',vWeek:'7 nap',vMonth:'30 nap',vConv:'kérést küldött',vSources:'Honnan jöttek (30 nap)',vMobile:'telefonról',vDaily:'Utolsó 14 nap',vNone:'Még nincs látogatás.',vSetup:'Futtasd az analytics.sql fájlt a Supabase-ben.',
+ src_direct:'Közvetlen',src_whatsapp:'WhatsApp',src_oldsite:'Régi oldal',src_instagram:'Instagram',src_facebook:'Facebook',src_google:'Google',src_search:'Egyéb kereső',src_twitter:'X / Twitter'});
 Object.assign(T.hu,{login:'Bejelentkezés',email:'E-mail',password:'Jelszó',signIn:'Belépés',signOut:'Kijelentkezés',loginErr:'Hibás e-mail vagy jelszó.',notAdmin:'Ez a felhasználó nem adminisztrátor.',pubSeason:'A weboldalon megjelenő szezon',fromWebsite:'weboldal',site:'Ügyféloldal',loadErr:'Az adatok betöltése sikertelen',retry:'Újra',account:'Fiók'});
 function lsGet(k,d){try{return localStorage.getItem(k)||d}catch(e){return d}}
 function lsSet(k,v){try{localStorage.setItem(k,v)}catch(e){}}
@@ -297,7 +303,8 @@ function seasonTotals(bookings,units,payouts,s){
 
 /* ===================== state ===================== */
 const S={seasons:[],units:[],bookings:[],payouts:[],got:{},err:null,slow:false};
-let sb=null,session=null,isAdmin=null,booting=true;
+let sb=null,session=null,isAdmin=null,booting=true,VS=undefined;
+async function loadVisits(){try{const {data,error}=await sb.rpc('visit_stats',{p_from:null});VS=error?null:data}catch(e){VS=null}}
 let curSeasonId=lsGet('oz_season','');
 let dispCur=lsGet('oz_cur','ILS');
 let showDeclined=false, bookFilter='all';
@@ -396,8 +403,28 @@ function vDash(app){
     <tr><td>${t('accom')}</td><td style="text-align:end">${showMix(tot.profit,s)}</td></tr>
     ${['cars','equip','broker'].map(k=>`<tr><td class="muted">${t(k)}</td><td style="text-align:end"><span class="tag mut">${t('soon')}</span></td></tr>`).join('')}
     </tbody></table></div>
+  ${visitsCard()}
   <div class="card sec"><h3>${t('perBooking')}</h3>${perBookingTable(tot,s)}</div>`;
   app.querySelectorAll('[data-x]').forEach(b=>b.onclick=()=>explainTotal(b.dataset.x));
+}
+function visitsCard(){
+  if(VS===undefined)return '';
+  if(VS===null)return `<div class="card sec"><h3>${t('visits')}</h3><p class="small muted">${t('vSetup')}</p></div>`;
+  const v=VS;const conv=(n,r)=>n?`<span class="h">${r} ${t('vConv')} · <span class="num">${Math.round(r/n*100)}%</span></span>`:'';
+  const max=Math.max(1,...(v.daily||[]).map(d=>d.n));
+  const srcName=k=>T[lang]['src_'+k]||T.en['src_'+k]||k;
+  return `<div class="card sec"><h3>${t('visits')}</h3>
+  <div class="grid g3" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+   <div class="kpi" style="padding:10px 12px"><span class="l">${t('vToday')}</span><span class="v num">${v.today}</span></div>
+   <div class="kpi" style="padding:10px 12px"><span class="l">${t('vWeek')}</span><span class="v num">${v.week}</span>${conv(v.week,v.reqWeek)}</div>
+   <div class="kpi" style="padding:10px 12px"><span class="l">${t('vMonth')}</span><span class="v num">${v.month}</span>${conv(v.month,v.reqMonth)}</div>
+  </div>
+  ${v.month?`<div class="sec" style="margin-top:14px"><div class="small muted" style="margin-bottom:6px">${t('vDaily')}</div>
+   <div style="display:flex;align-items:flex-end;gap:4px;height:90px;direction:ltr">${(v.daily||[]).map(d=>`<div title="${esc(d.d)}: ${d.n}" style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:2px;height:100%"><span style="font-size:10px;color:var(--muted)">${d.n||''}</span><span style="display:block;width:100%;height:${Math.max(2,d.n/max*70)}px;background:var(--primary-2);border-radius:4px 4px 0 0;opacity:${d.n?1:.25}"></span></div>`).join('')}</div>
+   <div style="display:flex;justify-content:space-between;direction:ltr;font-size:10.5px;color:var(--muted)"><span>${fmtDate((v.daily[0]||{}).d)}</span><span>${fmtDate((v.daily[v.daily.length-1]||{}).d)}</span></div></div>
+  <div style="margin-top:14px"><div class="small muted" style="margin-bottom:4px">${t('vSources')} · <span class="num">${Math.round(v.mobile/v.month*100)}%</span> ${t('vMobile')}</div>
+   <table><tbody>${(v.sources||[]).map(x=>`<tr><td>${esc(srcName(x.s))}</td><td style="width:55%"><span style="display:block;height:8px;border-radius:4px;background:var(--primary-2);width:${Math.max(3,x.n/v.month*100)}%"></span></td><td class="num" style="text-align:end">${x.n}</td></tr>`).join('')}</tbody></table></div>`
+  :`<p class="small muted" style="margin-top:10px">${t('vNone')}</p>`}</div>`;
 }
 function perBookingTable(tot,s){
   if(!tot.rows.length)return `<p class="muted">${t('noBookings')}</p>`;
@@ -727,7 +754,7 @@ async function onSession(sess){
   if(!session){render();return}
   const {data,error}=await sb.from('admins').select('user_id').eq('user_id',session.user.id).maybeSingle();
   isAdmin=!!(data&&!error);
-  if(isAdmin)await reload();else render();
+  if(isAdmin){await reload();await loadVisits();render()}else render();
 }
 (async()=>{
   if(!window.supabase){booting=false;S.err='nodb';render();return}
@@ -735,7 +762,7 @@ async function onSession(sess){
   const {data}=await sb.auth.getSession();
   await onSession(data.session);
   sb.auth.onAuthStateChange((ev,sess)=>{if(ev==='SIGNED_OUT'){session=null;render()}});
-  setInterval(()=>{if(session&&isAdmin&&document.visibilityState==='visible'&&!document.getElementById('modalRoot').innerHTML)reload()},60000);
+  setInterval(async()=>{if(session&&isAdmin&&document.visibilityState==='visible'&&!document.getElementById('modalRoot').innerHTML){await loadVisits();reload()}},60000);
   document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&session&&isAdmin)reload()});
 })();
 </script>

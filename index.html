@@ -486,6 +486,17 @@ function onScroll(){bar.classList.toggle('solid',scrollY>window.innerHeight*0.6)
 addEventListener('scroll',onScroll,{passive:true});
 f.elements.in.min=today();f.elements.out.min=today();
 applyLang();setGuests(2);onScroll();
+
+/* ---- visit counter: one count per browser session; no cookies, no personal data ---- */
+(async()=>{try{
+  if(!sb)return;try{if(sessionStorage.getItem('oc_v'))return;sessionStorage.setItem('oc_v','1')}catch(e){}
+  const q=new URLSearchParams(location.search);let src=(q.get('src')||q.get('utm_source')||'').toLowerCase().replace(/[^a-z0-9_-]/g,'').slice(0,30);
+  if(!src){let h='';try{h=document.referrer?new URL(document.referrer).hostname:''}catch(e){}
+    if(h&&h!==location.hostname){src=/sites\.google/.test(h)?'oldsite':/instagram/.test(h)?'instagram':/facebook|fb\./.test(h)?'facebook':/whatsapp/.test(h)?'whatsapp':/google\./.test(h)?'google':/bing|duckduckgo|yahoo/.test(h)?'search':/t\.co$|twitter|x\.com/.test(h)?'twitter':h.replace(/^www\./,'').slice(0,30)}
+    else if(/WhatsApp/i.test(navigator.userAgent))src='whatsapp';else if(/Instagram/i.test(navigator.userAgent))src='instagram';else if(/FBAN|FBAV/i.test(navigator.userAgent))src='facebook';}
+  const device=matchMedia('(pointer:coarse)').matches||innerWidth<800?'mobile':'desktop';
+  await sb.rpc('log_visit',{p_source:src||'direct',p_lang:lang,p_device:device});
+}catch(e){}})();
 (async()=>{if(!sb)return;try{const {data}=await sb.rpc('public_info');if(data){INFO={...INFO,...data};
   document.getElementById('pRoom').textContent='€'+INFO.priceRoom;document.getElementById('pCar').textContent='€'+INFO.priceCar;
   if(INFO.start&&INFO.start>today()&&!f.elements.in.value){}
