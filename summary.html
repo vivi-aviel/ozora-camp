@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#07020F">
+<title>Ozora Camp – סיכום הזמנה</title>
+<meta property="og:title" content="Ozora Camp – ההזמנה שלך אושרה ✅">
+<meta property="og:description" content="פרטי ההזמנה, ניווט למתחם ולפסטיבל וכל מה שיש בסביבה.">
+<meta property="og:image" content="https://vivi-aviel.github.io/ozora-camp/assets/img/share.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --forest:#14532D;--forest-2:#166534;--lake:#0F766E;--sand:#FAF7F0;--card:#fff;--ink:#1C1917;--muted:#57534E;--line:#E7E1D6;
+  --amber:#B45309;--amber-2:#92400E;--amber-bg:#FEF3C7;--ok:#15803D;--ok-bg:#DCFCE7;--bad:#B91C1C;--bad-bg:#FEE2E2;
+  --r:18px;--shadow:0 1px 2px rgba(28,25,23,.06),0 8px 24px rgba(28,25,23,.06);
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:72px;overflow-x:clip}
+body{margin:0;background:var(--sand);color:var(--ink);font-family:Rubik,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.6;-webkit-text-size-adjust:100%}
+img{max-width:100%;display:block}
+a{color:var(--lake)}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid #FCD34D;outline-offset:2px;border-radius:8px}
+.num{font-variant-numeric:tabular-nums;direction:ltr;unicode-bidi:isolate;display:inline-block}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+/* top bar */
+.bar{position:fixed;top:0;inset-inline:0;z-index:40;display:flex;align-items:center;gap:10px;padding:10px 16px;transition:background .25s,box-shadow .25s;color:#fff}
+.bar.solid{background:rgba(250,247,240,.96);color:var(--ink);box-shadow:0 1px 0 var(--line);backdrop-filter:blur(8px)}
+.brand{font-weight:800;font-size:19px;letter-spacing:.2px;text-decoration:none;color:inherit;flex:1}
+.lang{display:inline-flex;border:1px solid currentColor;border-radius:999px;overflow:hidden;opacity:.9}
+.lang button{border:0;background:transparent;padding:6px 12px;min-height:36px;font-weight:600;font-size:14px}
+.lang button[aria-pressed=true]{background:currentColor}
+.lang button[aria-pressed=true] span{color:var(--forest)}
+.bar:not(.solid) .lang button[aria-pressed=true] span{color:var(--forest)}
+.bar.solid .lang button[aria-pressed=true] span{color:#fff}
+.cta{background:var(--amber);color:#fff;border:0;border-radius:999px;padding:10px 18px;min-height:44px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 14px rgba(180,83,9,.3);transition:background .15s}
+.cta:hover{background:var(--amber-2)}
+/* hero */
+.hero{position:relative;min-height:88vh;min-height:88svh;display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.05) 35%,rgba(12,40,24,.78) 100%)}
+.hero .wrap{position:relative;z-index:1;padding-bottom:48px;width:100%}
+.eyebrow{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(6px);border-radius:999px;padding:4px 12px;font-size:14px;font-weight:600}
+.hero h1{font-size:clamp(40px,9vw,76px);line-height:1.02;margin:14px 0 10px;font-weight:800;letter-spacing:-.5px}
+.hero p{font-size:clamp(17px,2.6vw,21px);max-width:640px;margin:0 0 22px;color:#ECFDF5}
+.hero .row{display:flex;gap:10px;flex-wrap:wrap}
+.ghost{color:#fff;border:1.5px solid rgba(255,255,255,.7);border-radius:999px;padding:10px 18px;min-height:44px;text-decoration:none;font-weight:600;display:inline-flex;align-items:center}
+/* facts */
+.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:-34px;position:relative;z-index:2}
+@media(min-width:760px){.facts{grid-template-columns:repeat(4,1fr)}}
+.fact{background:var(--card);border-radius:14px;padding:14px;box-shadow:var(--shadow);display:flex;gap:10px;align-items:flex-start;font-size:15px}
+.fact svg{flex:none;color:var(--lake)}
+.fact b{display:block;font-size:16px}
+section{padding:64px 0 8px}
+h2{font-size:clamp(28px,5vw,40px);line-height:1.15;margin:0 0 8px;font-weight:800;color:var(--forest)}
+.lead{color:var(--muted);margin:0 0 26px;max-width:680px}
+/* units */
+.units{display:grid;gap:18px}
+@media(min-width:860px){.units{grid-template-columns:1fr 1fr}}
+.unit{background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.strip::-webkit-scrollbar{display:none}
+.strip button{flex:0 0 86%;scroll-snap-align:start;border:0;padding:0;background:#ddd;aspect-ratio:4/3}
+.strip button img{width:100%;height:100%;object-fit:cover}
+.unit .body{padding:18px 20px 22px;display:grid;gap:10px}
+.unit h3{margin:0;font-size:24px}
+.price{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
+.price b{font-size:30px;color:var(--forest)}
+.price span{color:var(--muted);font-size:15px}
+ul.ticks{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:15.5px}
+ul.ticks li{display:flex;gap:8px;align-items:flex-start}
+ul.ticks svg{flex:none;margin-top:4px;color:var(--ok)}
+.hint{font-size:13px;color:var(--muted)}
+/* gallery */
+.gal{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+@media(min-width:760px){.gal{grid-template-columns:repeat(4,1fr)}}
+.gal button{border:0;padding:0;border-radius:12px;overflow:hidden;aspect-ratio:1;background:#ddd}
+.gal button img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.gal button:hover img{transform:scale(1.04)}
+.gal .wide{grid-column:span 2;aspect-ratio:2/1}
+/* booking */
+.book{background:var(--forest);color:#fff;border-radius:24px;padding:26px 20px;margin-top:8px}
+@media(min-width:760px){.book{padding:36px}}
+.book h2{color:#fff}
+.book .lead{color:#D1FAE5}
+.formgrid{display:grid;gap:14px}
+@media(min-width:760px){.formgrid{grid-template-columns:1fr 1fr}.full{grid-column:1/-1}}
+.types{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.types button{background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.3);color:#fff;border-radius:14px;padding:12px 8px;min-height:64px;display:grid;gap:2px;text-align:center;font-weight:700;font-size:15px}
+.types button small{font-weight:400;font-size:12.5px;color:#BBF7D0}
+.types button[aria-pressed=true]{background:#fff;color:var(--forest);border-color:#fff}
+.types button[aria-pressed=true] small{color:var(--forest-2)}
+label.fl{display:grid;gap:6px;font-weight:600;font-size:15px}
+label.fl small{font-weight:400;color:#BBF7D0}
+.in{width:100%;border:1.5px solid transparent;border-radius:12px;padding:12px 14px;min-height:48px;background:#fff;color:var(--ink)}
+.in:focus{border-color:#FCD34D;outline:none}
+textarea.in{min-height:90px}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.formgrid>*,.two>*,label.fl{min-width:0}
+.in{min-width:0;max-width:100%}
+input[type=date].in{-webkit-appearance:none;appearance:none;display:block}
+.stepper{display:flex;align-items:center;background:#fff;border-radius:12px;min-height:48px;color:var(--ink)}
+.stepper button{border:0;background:transparent;width:48px;height:48px;font-size:22px;font-weight:700;color:var(--forest)}
+.stepper button:disabled{opacity:.3;cursor:not-allowed}
+.stepper output{flex:1;text-align:center;font-weight:700;font-size:18px}
+.quote{background:#fff;color:var(--ink);border-radius:16px;padding:16px;display:grid;gap:6px}
+.quote .ln{display:flex;justify-content:space-between;gap:10px;font-size:15px}
+.quote .ln span:first-child{color:var(--muted)}
+.quote .tot{font-size:22px;font-weight:800;color:var(--forest)}
+.avail{display:flex;gap:8px;align-items:center;font-weight:600;font-size:15px;border-radius:10px;padding:8px 12px}
+.avail.ok{background:var(--ok-bg);color:var(--ok)}.avail.bad{background:var(--bad-bg);color:var(--bad)}.avail.wait{background:#F5F5F4;color:var(--muted)}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;line-height:1.5}
+.chk input{width:22px;height:22px;flex:none;margin-top:2px;accent-color:var(--amber)}
+.visitors{background:rgba(255,230,0,.1);border:1.5px solid rgba(255,230,0,.55);border-radius:14px;padding:14px 16px;font-size:15px;line-height:1.55}
+.visitors b{display:block;color:#FFE600;font-size:16px;margin-bottom:4px}
+.visitors p{margin:0}
+.mapbox{border-radius:18px;overflow:hidden;border:1px solid rgba(0,240,255,.35);box-shadow:0 0 30px rgba(124,58,237,.3);aspect-ratio:16/10;background:#120828}
+@media(max-width:600px){.mapbox{aspect-ratio:4/5}}
+.mapbox iframe{width:100%;height:100%;border:0;display:block}
+.navbtns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.nav{display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;border-radius:14px;font-weight:700;text-decoration:none;color:#fff;border:1px solid rgba(255,255,255,.25)}
+.nav.waze{background:#0A84C6}.nav.gmaps{background:#1E8E3E}
+.fest{display:flex;align-items:center;gap:12px;justify-content:space-between;padding:16px 18px;border-radius:18px;text-decoration:none;color:#fff;background:linear-gradient(135deg,rgba(124,58,237,.55),rgba(37,99,235,.55));border:1px solid rgba(255,255,255,.3);box-shadow:0 0 24px rgba(124,58,237,.35);margin-bottom:12px}
+.fest b{display:block;font-size:19px}.fest small{color:#E0E7FF;font-size:14.5px}
+.places{display:grid;gap:10px}
+@media(min-width:760px){.places{grid-template-columns:1fr 1fr}}
+.place{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:16px;text-decoration:none;color:var(--ink);background:rgba(18,8,40,.72);border:1px solid rgba(255,255,255,.14);min-height:64px}
+.place .pi{flex:none;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:rgba(0,240,255,.12);color:#00F0FF}
+.place .pt{flex:1;min-width:0}.place b{display:block;font-size:16px}.place small{display:block;color:var(--muted);font-size:13.5px;line-height:1.4}
+.pn{flex:none;font-size:13px;font-weight:700;color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:6px 12px;white-space:nowrap}
+.err{background:var(--bad-bg);color:var(--bad);border-radius:10px;padding:10px 12px;font-weight:600;font-size:14.5px}
+.submit{width:100%;justify-content:center;font-size:18px;min-height:54px}
+.submit[disabled]{opacity:.55;cursor:not-allowed}
+.done{background:#fff;color:var(--ink);border-radius:18px;padding:24px;text-align:center;display:grid;gap:10px;justify-items:center}
+.done svg{color:var(--ok)}
+.hp{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+/* info */
+.cards{display:grid;gap:14px}
+@media(min-width:760px){.cards{grid-template-columns:repeat(3,1fr)}}
+.ic{background:var(--card);border-radius:var(--r);padding:20px;box-shadow:var(--shadow)}
+.ic h3{margin:0 0 8px;font-size:19px;display:flex;gap:8px;align-items:center;color:var(--forest)}
+.ic p,.ic ul{margin:0;color:var(--muted);font-size:15.5px}
+.ic ul{padding-inline-start:18px}
+.rules{background:var(--amber-bg);border:1px solid #FCD34D;border-radius:var(--r);padding:20px;margin-top:14px}
+.rules h3{margin:0 0 8px;color:var(--amber-2);font-size:19px}
+.rules ul{margin:0;padding-inline-start:18px;font-size:15.5px;display:grid;gap:4px}
+footer{margin-top:64px;background:#0C2818;color:#D1FAE5;padding:36px 0 110px}
+footer a{color:#fff;font-weight:600}
+footer .row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.wa{background:#16A34A;color:#fff;border-radius:999px;padding:10px 18px;min-height:44px;text-decoration:none;font-weight:700;display:inline-flex;align-items:center;gap:8px}
+.float{position:fixed;bottom:16px;inset-inline:16px;z-index:35;display:flex;justify-content:center;pointer-events:none;transition:opacity .2s,transform .2s}
+.float a{pointer-events:auto;width:100%;max-width:420px;justify-content:center;font-size:17px;min-height:52px}
+.float.hide{opacity:0;transform:translateY(20px)}
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center}
+.lb img{max-width:96vw;max-height:86vh;border-radius:8px}
+.lb button{position:absolute;background:rgba(255,255,255,.12);border:0;color:#fff;width:48px;height:48px;border-radius:999px;display:grid;place-items:center}
+.lb .x{top:14px;inset-inline-end:14px}.lb .pv{inset-inline-start:10px;top:50%}.lb .nx{inset-inline-end:10px;top:50%}
+[dir=rtl] .lb .pv svg,[dir=rtl] .lb .nx svg{transform:scaleX(-1)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+/* ===== psychedelic theme: UV string art + sacred geometry ===== */
+:root{--forest:#F5F3FF;--forest-2:#C4B5FD;--sand:#07020F;--card:rgba(255,255,255,.05);--ink:#F5F3FF;--muted:#C9BEF5;--line:rgba(255,255,255,.12);--amber:#FF2BD6;--amber-2:#E11DCB;--lake:#00F0FF}
+body{background:#07020F;color:var(--ink)}
+.in,.stepper{color:#1C1917}
+.fact,.unit,.ic{background:rgba(18,8,40,.72);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(8px);color:var(--ink)}
+.fact svg{color:#00F0FF}.price b{color:#B6FF00;text-shadow:0 0 12px rgba(182,255,0,.5)}
+ul.ticks svg{color:#B6FF00}
+h2{color:#fff;text-shadow:0 0 18px rgba(255,43,214,.75),0 0 3px rgba(255,255,255,.8)}
+.hero h1{text-shadow:0 0 24px rgba(0,240,255,.7),0 0 4px #fff}
+.book{background:rgba(10,4,24,.82);border:1px solid rgba(0,240,255,.4);box-shadow:0 0 40px rgba(255,43,214,.28),inset 0 0 50px rgba(0,240,255,.08);position:relative;overflow:hidden}
+.book>*{position:relative;z-index:1}
+.types button[aria-pressed=true]{background:#fff;color:#6B0091;border-color:#fff}.types button[aria-pressed=true] small{color:#6B0091}
+.rules{background:rgba(255,230,0,.07);border-color:rgba(255,230,0,.45);color:var(--ink)}.rules h3{color:#FFE600}
+.ic h3{color:#00F0FF}.ic p,.ic ul{color:var(--muted)}
+.bar.solid{background:rgba(7,2,15,.88);color:#fff;box-shadow:0 1px 0 rgba(255,255,255,.1)}
+.lang button[aria-pressed=true]{background:#fff!important}.lang button[aria-pressed=true] span{color:#07020F!important}
+footer{background:#030008}
+.quote{background:#fff;color:#1C1917}
+.hero::after{background:linear-gradient(180deg,rgba(7,2,15,.45),rgba(7,2,15,.15) 35%,#07020F)}
+.hero .wrap{z-index:2}
+.cta{box-shadow:0 0 20px rgba(255,43,214,.6)}
+.gal button{box-shadow:0 0 0 1px rgba(0,240,255,.25)}
+.strip button{background:#120828}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.hero::before,.book::before{animation:none!important}}
+
+
+.stepper button{color:#6B0091}
+body::before{content:"";position:fixed;inset:0;background:url(assets/theme/uv.svg) center/cover no-repeat;opacity:.38;z-index:-1;pointer-events:none}
+.hero::before{content:"";position:absolute;z-index:1;width:min(120vw,760px);aspect-ratio:1;left:50%;top:6%;margin-left:calc(min(120vw,760px)/-2);background:url(assets/theme/sacred.svg) center/contain no-repeat;opacity:.9;mix-blend-mode:screen;animation:spin 180s linear infinite;pointer-events:none}
+.book::before{content:"";position:absolute;width:420px;aspect-ratio:1;inset-inline-end:-160px;bottom:-160px;background:url(assets/theme/uv_hero.svg) center/contain no-repeat;opacity:.35;animation:spin 200s linear infinite reverse;pointer-events:none}
+
+/* ONE sacred-geometry shape as the site background: one huge mandala spanning the whole page, behind all content */
+.hero::before{display:none!important}
+body::before{display:none!important}
+body{position:relative}
+body::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:url(assets/theme/sacred.svg) center/auto 100% no-repeat;opacity:.55;filter:blur(1.5px)}
+
+/* buttons: violet-blue */
+.cta{background:linear-gradient(135deg,#7C3AED,#2563EB);color:#fff;box-shadow:0 0 18px rgba(124,58,237,.5);border:1px solid rgba(255,255,255,.25)}
+.cta:hover{background:linear-gradient(135deg,#7C3AED,#2563EB);filter:brightness(1.15)}
+
+.sum-hero{position:relative;padding:90px 0 30px;text-align:center}
+.sum-hero h1{font-size:clamp(34px,8vw,56px);margin:10px 0 6px;font-weight:800;text-shadow:0 0 24px rgba(0,240,255,.7),0 0 4px #fff}
+.ok-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(22,163,74,.2);border:1px solid rgba(74,222,128,.6);color:#BBF7D0;border-radius:999px;padding:6px 14px;font-weight:700}
+.card2{background:rgba(18,8,40,.78);border:1px solid rgba(255,255,255,.16);border-radius:20px;padding:18px 20px;backdrop-filter:blur(8px)}
+.facts2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.facts2 div{background:rgba(255,255,255,.06);border-radius:14px;padding:12px 14px}
+.facts2 small{display:block;color:var(--muted);font-size:13px}.facts2 b{font-size:19px}
+.sec2{margin-top:26px}.sec2 h2{font-size:24px;margin:0 0 12px}
+.navbig{display:grid;gap:10px}
+.navbig a{display:flex;align-items:center;justify-content:center;gap:10px;min-height:56px;border-radius:16px;font-weight:700;font-size:17px;text-decoration:none;color:#fff;border:1px solid rgba(255,255,255,.25)}
+.navbig .waze{background:#0A84C6}.navbig .gm{background:#1E8E3E}.navbig .fs{background:linear-gradient(135deg,#7C3AED,#2563EB)}
+.place .pn{flex:none;font-size:13px;font-weight:700;color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:6px 12px}
+.msg{text-align:center;padding:80px 20px;color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="bar solid"><a class="brand" href="./">Ozora Camp</a>
+<div class="lang" role="group" aria-label="Language"><button data-l="he" aria-pressed="true"><span>עב</span></button><button data-l="en" aria-pressed="false"><span>EN</span></button></div></header>
+<main class="wrap" id="app"><div class="msg" data-t="loading"></div></main>
+<footer><div class="wrap"><p data-t="contact"></p><a class="wa" href="https://wa.me/972526821668" target="_blank" rel="noopener"><span class="num">+972 52-682-1668</span></a></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL='https://agihjbqthsdcnandfxmm.supabase.co',SUPABASE_KEY='sb_publishable_ACfHU3z5UXEioXVqwsK4DQ_XGJyfDTx';
+const LINKS={waze:'https://waze.com/ul?ll=46.758056,18.546444&navigate=yes',gm:'https://www.google.com/maps/dir/?api=1&destination=46.758056,18.546444',fest:'https://www.google.com/maps/search/?api=1&query=Ozora%20Gate'};
+const T={he:{dir:'rtl',loading:'טוען את ההזמנה…',notFound:'לא מצאנו את ההזמנה. בדקו שהקישור מלא, או כתבו לנו בוואטסאפ.',hi:'היי {n}!',confirmed:'ההזמנה שלך אושרה',unit:'יחידה',room:'חדר',caravan:'קרוואן',guests:'אנשים',arrive:'הגעה',leave:'עזיבה',nights:'לילות',
+navTitle:'ניווט',navWaze:'ניווט למתחם ב־Waze',navGm:'ניווט למתחם ב־Google Maps',navFest:'ניווט לפסטיבל (\u206610–12\u2069 דק׳)',around:'מה יש בסביבה',nav:'ניווט',
+rulesTitle:'חשוב לזכור',rules:['רק מי שהזמין חדר נכנס למתחם. אין להזמין קרובים או חברים, גם לא להתקלח. מי שלא לקח חדר יצטרך לעזוב, ומי שהזמין אותו לא יורשה לחזור.','אפשר להזמין ארוחות במקום בתוספת תשלום.','אין מזגן, יש מאוורר בכל חדר, והלילות קרירים.'],
+contact:'שאלות? כתבו לאביאל בוואטסאפ.',pl0:'תחנת דלק עם מינימרקט, צמודה למתחם',pl1:'מאפייה ממש ליד המתחם, לחם ומאפים טריים בבוקר',pl2:'מסעדה הונגרית מומלצת מאוד',pl3:'קבב ואוכל מהיר, פתוח עד מאוחר',pl4:'מכולת למצרכים בסיסיים. כדאי לבדוק שעות, בסופ״ש נסגר מוקדם',pl5:'בר קטן ומקומי',pl6:'כספומט 24 שעות, ליד מוקד רפואה דחופה (Orvosi Ügyelet)'},
+en:{dir:'ltr',loading:'Loading your booking…',notFound:"We couldn't find this booking. Check the link is complete, or message us on WhatsApp.",hi:'Hi {n}!',confirmed:'Your booking is confirmed',unit:'Unit',room:'Room',caravan:'Caravan',guests:'People',arrive:'Arrival',leave:'Departure',nights:'nights',
+navTitle:'Navigation',navWaze:'Navigate to the camp with Waze',navGm:'Navigate to the camp with Google Maps',navFest:'Navigate to the festival (10–12 min)',around:"What\'s nearby",nav:'Navigate',
+rulesTitle:'Please remember',rules:['Only people who booked a room may enter the site – no relatives or friends, including for showers. Anyone without a room will have to leave, and whoever invited them will not be allowed back.','Meals can be ordered on site for an extra charge.','No A/C – there is a fan in every room, and nights are cool.'],
+contact:'Questions? Message Aviel on WhatsApp.',pl0:'Gas station with a mini-market, right next to the site',pl1:'Bakery right by the site – fresh bread and pastries in the morning',pl2:'Highly recommended Hungarian restaurant',pl3:'Kebab and fast food, open late',pl4:'Grocery for basics. Check opening hours – closes early on weekends',pl5:'Small local bar',pl6:'24-hour ATM, next to the urgent-care medical center (Orvosi Ügyelet)'}};
+let lang='he',B=null;
+const t=(k,v)=>{let s=T[lang][k]??T.en[k]??k;if(v&&typeof s==='string')for(const x in v)s=s.split('{'+x+'}').join(v[x]);return s};
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const d=x=>{const [y,m,dd]=(x||'').split('-');return dd+'/'+m+'/'+y};
+const nights=()=>Math.round((Date.parse(B.checkOut)-Date.parse(B.checkIn))/864e5);
+const CARDS=`<a class="place" href="https://www.google.com/maps/search/?api=1&query=MOL%20Simontornya" target="_blank" rel="noopener"><span class="pi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 22V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v17M3 22h12M15 10h2a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V8l-3-3M6 8h6"/></svg></span><span class="pt"><b>MOL</b><small data-t="pl0"></small></span><span class="pn" data-t="nav"></span></a>
+<a class="place" href="https://www.google.com/maps/search/?api=1&query=P%C3%A9ks%C3%A9g%20Kabasi%20Simontornya" target="_blank" rel="noopener"><span class="pi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11a4 4 0 0 1 0-8h14a4 4 0 0 1 0 8v9a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1z"/></svg></span><span class="pt"><b>Pékség Kabasi</b><small data-t="pl1"></small></span><span class="pn" data-t="nav"></span></a>
+<a class="place" href="https://www.google.com/maps/search/?api=1&query=Tulip%C3%A1n%20%C3%89tterem%20Simontornya" target="_blank" rel="noopener"><span class="pi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2M7 2v20M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg></span><span class="pt"><b>Tulipán Étterem</b><small data-t="pl2"></small></span><span class="pn" data-t="nav"></span></a>
+<a class="place" href="https://www.google.com/maps/search/?api=1&query=%C3%9Aton%C3%A1ll%C3%B3%20Kebab%20Simontornya" target="_blank" rel="noopener"><span class="pi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2M7 2v20M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg></span><span class="pt"><b>Útonálló Kebab</b><small data-t="pl3"></small></span><span class="pn" data-t="nav"></span></a>
+<a class="place" href="https://www.google.com/maps/search/?api=1&query=mini%20Coop%20ABC%20Simontornya" target="_blank" rel="noopener"><span class="pi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2 2h3l2.7 12.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg></span><span class="pt"><b>mini Coop ABC</b><small data-t="pl4"></small></span><span class="pn" data-t="nav"></span></a>
+<a class="place" href="https://www.google.com/maps/search/?api=1&query=K%C3%B6ny%C3%B6kl%C5%91%20B%C3%BCf%C3%A9%20Simontornya" target="_blank" rel="noopener"><span class="pi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 22h8M12 11v11M19 3l-7 8-7-8z"/></svg></span><span class="pt"><b>Könyöklő Büfé</b><small data-t="pl5"></small></span><span class="pn" data-t="nav"></span></a>
+<a class="place" href="https://www.google.com/maps/search/?api=1&query=Simontornya%20Orvosi%20%C3%9Cgyelet%20OTP%20ATM" target="_blank" rel="noopener"><span class="pi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg></span><span class="pt"><b>OTP ATM</b><small data-t="pl6"></small></span><span class="pn" data-t="nav"></span></a>`;
+function render(){
+  document.documentElement.lang=lang;document.documentElement.dir=t('dir');
+  document.querySelectorAll('[data-l]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===lang));
+  document.querySelectorAll('footer [data-t]').forEach(el=>el.textContent=t(el.dataset.t));
+  const app=document.getElementById('app');
+  if(B===null){app.innerHTML=`<div class="msg">${t('loading')}</div>`;return}
+  if(B===false){app.innerHTML=`<div class="msg">${t('notFound')}</div>`;return}
+  app.innerHTML=`<div class="sum-hero"><span class="ok-badge">✓ ${t('confirmed')}</span><h1>${esc(t('hi',{n:B.name||''}))}</h1></div>
+  <div class="card2"><div class="facts2">
+   <div><small>${t('unit')}</small><b>${t(B.unitType==='caravan'?'caravan':'room')} ${esc(B.unitNo||'')}</b></div>
+   <div><small>${t('guests')}</small><b class="num">${B.guests}</b></div>
+   <div><small>${t('arrive')}</small><b class="num">${d(B.checkIn)}</b></div>
+   <div><small>${t('leave')}</small><b class="num">${d(B.checkOut)}</b></div>
+  </div><p class="small" style="margin:10px 2px 0;color:var(--muted)"><span class="num">${nights()}</span> ${t('nights')}</p></div>
+  <div class="sec2"><h2>${t('navTitle')}</h2><div class="navbig">
+   <a class="waze" href="${LINKS.waze}" target="_blank" rel="noopener">${t('navWaze')}</a>
+   <a class="gm" href="${LINKS.gm}" target="_blank" rel="noopener">${t('navGm')}</a>
+   <a class="fs" href="${LINKS.fest}" target="_blank" rel="noopener">${t('navFest')}</a></div></div>
+  <div class="sec2"><h2>${t('around')}</h2><div class="places">${CARDS}</div></div>
+  <div class="sec2 rules"><h3>${t('rulesTitle')}</h3><ul>${t('rules').map(r=>`<li>${esc(r)}</li>`).join('')}</ul></div>`;
+  app.querySelectorAll('[data-t]').forEach(el=>el.textContent=t(el.dataset.t));
+}
+document.querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>{lang=b.dataset.l;render()});
+(async()=>{
+  const id=new URLSearchParams(location.search).get('b')||'';
+  if(!/^[0-9a-f-]{36}$/i.test(id)||!window.supabase){B=false;render();return}
+  try{const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);const {data,error}=await sb.rpc('guest_summary',{p_id:id});
+    if(error||!data){B=false}else{B=data;if(B.lang==='en')lang='en'}}catch(e){B=false}
+  const q=new URLSearchParams(location.search).get('lang');if(q==='en'||q==='he')lang=q;
+  render();
+})();
+render();
+</script>
+</body>
+</html>
