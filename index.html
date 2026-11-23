@@ -4,19 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ozora Camp – לינה ליד פסטיבל אוזורה</title>
-<meta name="theme-color" content="#07020F">
+<meta name="theme-color" content="#F6F7F3">
 <meta name="description" content="חדרים וקרוואנים על שפת אגם, 10–12 דקות נסיעה מפסטיבל אוזורה בהונגריה. מים חמים 24/7, מינימום 7 לילות.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://vivi-aviel.github.io/ozora-camp/">
 <meta property="og:title" content="Ozora Camp – לינה ליד פסטיבל אוזורה">
 <meta property="og:description" content="חדרים וקרוואנים על שפת אגם, 10–12 דקות מהפסטיבל. בדקו תאריכים ומחיר ושלחו בקשה.">
-<meta property="og:image" content="https://vivi-aviel.github.io/ozora-camp/assets/img/share4.jpg">
+<meta property="og:image" content="https://vivi-aviel.github.io/ozora-camp/assets/img/share5.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --forest:#14532D;--forest-2:#166534;--lake:#0F766E;--sand:#FAF7F0;--card:#fff;--ink:#1C1917;--muted:#57534E;--line:#E7E1D6;
@@ -169,47 +169,55 @@ footer .row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
 .lb .x{top:14px;inset-inline-end:14px}.lb .pv{inset-inline-start:10px;top:50%}.lb .nx{inset-inline-end:10px;top:50%}
 [dir=rtl] .lb .pv svg,[dir=rtl] .lb .nx svg{transform:scaleX(-1)}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
-/* ===== psychedelic theme: UV string art + sacred geometry ===== */
-:root{--forest:#F5F3FF;--forest-2:#C4B5FD;--sand:#07020F;--card:rgba(255,255,255,.05);--ink:#F5F3FF;--muted:#C9BEF5;--line:rgba(255,255,255,.12);--amber:#FF2BD6;--amber-2:#E11DCB;--lake:#00F0FF}
-body{background:#07020F;color:var(--ink)}
-.in,.stepper{color:#1C1917}
-.fact,.unit,.ic{background:rgba(18,8,40,.72);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(8px);color:var(--ink)}
-.fact svg{color:#00F0FF}.price b{color:#B6FF00;text-shadow:0 0 12px rgba(182,255,0,.5)}
-ul.ticks svg{color:#B6FF00}
-h2{color:#fff;text-shadow:0 0 18px rgba(255,43,214,.75),0 0 3px rgba(255,255,255,.8)}
-.hero h1{text-shadow:0 0 24px rgba(0,240,255,.7),0 0 4px #fff}
-.book{background:rgba(10,4,24,.82);border:1px solid rgba(0,240,255,.4);box-shadow:0 0 40px rgba(255,43,214,.28),inset 0 0 50px rgba(0,240,255,.08);position:relative;overflow:hidden}
-.book>*{position:relative;z-index:1}
-.types button[aria-pressed=true]{background:#fff;color:#6B0091;border-color:#fff}.types button[aria-pressed=true] small{color:#6B0091}
-.rules{background:rgba(255,230,0,.07);border-color:rgba(255,230,0,.45);color:var(--ink)}.rules h3{color:#FFE600}
-.ic h3{color:#00F0FF}.ic p,.ic ul{color:var(--muted)}
-.bar.solid{background:rgba(7,2,15,.88);color:#fff;box-shadow:0 1px 0 rgba(255,255,255,.1)}
-.lang button[aria-pressed=true]{background:#fff!important}.lang button[aria-pressed=true] span{color:#07020F!important}
-footer{background:#030008}
-.quote{background:#fff;color:#1C1917}
-.hero::after{background:linear-gradient(180deg,rgba(7,2,15,.45),rgba(7,2,15,.15) 35%,#07020F)}
-.hero .wrap{z-index:2}
-.cta{box-shadow:0 0 20px rgba(255,43,214,.6)}
-.gal button{box-shadow:0 0 0 1px rgba(0,240,255,.25)}
-.strip button{background:#120828}
-@keyframes spin{to{transform:rotate(360deg)}}
-@media (prefers-reduced-motion:reduce){.hero::before,.book::before{animation:none!important}}
 
-
-.stepper button{color:#6B0091}
-body::before{content:"";position:fixed;inset:0;background:url(assets/theme/uv.svg) center/cover no-repeat;opacity:.38;z-index:-1;pointer-events:none}
-.hero::before{content:"";position:absolute;z-index:1;width:min(120vw,760px);aspect-ratio:1;left:50%;top:6%;margin-left:calc(min(120vw,760px)/-2);background:url(assets/theme/sacred.svg) center/contain no-repeat;opacity:.9;mix-blend-mode:screen;animation:spin 180s linear infinite;pointer-events:none}
-.book::before{content:"";position:absolute;width:420px;aspect-ratio:1;inset-inline-end:-160px;bottom:-160px;background:url(assets/theme/uv_hero.svg) center/contain no-repeat;opacity:.35;animation:spin 200s linear infinite reverse;pointer-events:none}
-
-/* ONE sacred-geometry shape as the site background: one huge mandala spanning the whole page, behind all content */
-.hero::before{display:none!important}
-body::before{display:none!important}
-body{position:relative}
-body::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:url(assets/theme/sacred.svg) center/auto 100% no-repeat;opacity:.55;filter:blur(1.5px)}
-
-/* buttons: violet-blue */
-.cta{background:linear-gradient(135deg,#7C3AED,#2563EB);color:#fff;box-shadow:0 0 18px rgba(124,58,237,.5);border:1px solid rgba(255,255,255,.25)}
-.cta:hover{background:linear-gradient(135deg,#7C3AED,#2563EB);filter:brightness(1.15)}
+/* ===== Style D: modern soft (sage) ===== */
+:root{--forest:#22302B;--forest-2:#4E6B5C;--lake:#4E6B5C;--sand:#F6F7F3;--card:#fff;--ink:#22302B;--muted:#6E7B74;--line:#DDE3DC;--amber:#4E6B5C;--amber-2:#3F5A4C;--amber-bg:#EEF3EE;--sage:#4E6B5C;--sage-bg:#E9EEE8}
+body{font-family:Heebo,system-ui,-apple-system,"Segoe UI",sans-serif;font-weight:300;background:var(--sand);color:var(--ink)}
+b,strong,h3{font-weight:500}
+h2{font-weight:300;letter-spacing:-1px;color:var(--ink);font-size:clamp(30px,6vw,42px)}
+.lead{color:var(--muted)}
+.bar{color:#fff}.bar.solid{background:rgba(246,247,243,.95);color:var(--ink);box-shadow:0 1px 0 var(--line)}
+.brand{font-weight:500;letter-spacing:2px;font-size:16px;direction:ltr}
+.lang{border-color:currentColor}
+.bar.solid .lang button[aria-pressed=true]{background:var(--ink)}.bar.solid .lang button[aria-pressed=true] span{color:#fff}
+.bar:not(.solid) .lang button[aria-pressed=true] span{color:var(--ink)}
+.cta{background:var(--sage);color:#fff;border-radius:10px;box-shadow:none;font-weight:500}
+.cta:hover{background:var(--amber-2)}
+.ghost{border-radius:10px}
+.hero h1{font-weight:300;letter-spacing:-1.5px}
+.hero::after{background:linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,0) 35%,rgba(20,30,25,.7) 100%)}
+.eyebrow{font-weight:500;letter-spacing:1.5px;font-size:12.5px}
+.fact{border-radius:16px;box-shadow:0 10px 30px rgba(34,48,43,.07)}
+.fact svg{color:var(--sage)}
+.unit{border-radius:20px;box-shadow:0 10px 30px rgba(34,48,43,.08)}
+.unit h3{font-weight:300;font-size:28px;letter-spacing:-.5px}
+.price b{color:var(--ink);font-weight:500}
+ul.ticks svg{color:var(--sage)}
+.gal button{border-radius:14px}
+.book{background:#fff;color:var(--ink);border-radius:24px;box-shadow:0 10px 30px rgba(34,48,43,.08)}
+.book h2{color:var(--ink)}.book .lead{color:var(--muted)}
+label.fl small{color:var(--muted)}
+.in{border:1px solid var(--line);background:var(--sand)}
+.in:focus{border-color:var(--sage);box-shadow:0 0 0 3px var(--sage-bg)}
+.types button{background:var(--sand);border:1px solid var(--line);color:var(--ink)}
+.types button small{color:var(--muted)}
+.types button[aria-pressed=true]{background:var(--sage);border-color:var(--sage);color:#fff}
+.types button[aria-pressed=true] small{color:#DCE8DF}
+.stepper{background:var(--sand);border:1px solid var(--line)}.stepper button{color:var(--sage)}
+.quote{background:var(--sage-bg)}.quote .tot{color:var(--ink)}
+.chk input{accent-color:var(--sage)}
+.visitors{background:#FFF8E6;border:1px solid #F2D58A;color:var(--ink)}.visitors b{color:#8A5A00}
+.done{background:var(--sage-bg)}
+.ic{border-radius:18px;box-shadow:0 10px 30px rgba(34,48,43,.06)}.ic h3{color:var(--ink)}
+.rules{background:var(--sage-bg);border-color:var(--line)}.rules h3{color:var(--ink)}
+.mapbox{border:1px solid var(--line);box-shadow:0 10px 30px rgba(34,48,43,.08)}
+.nav{border:0}.nav.waze{background:#0A84C6}.nav.gmaps{background:var(--sage)}
+.fest{background:var(--sage);border:0;box-shadow:none}.fest small{color:#DCE8DF}
+.place{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.place .pi{background:var(--sage-bg);color:var(--sage)}
+.place small{color:var(--muted)}
+footer{background:var(--ink);color:#DCE8DF}
+.wa{background:#1E8E3E}
 </style>
 </head>
 <body>
@@ -344,7 +352,7 @@ body::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
   <div class="wrap">
     <h2 style="color:#fff;font-size:26px">Ozora Camp</h2>
     <p data-t="contactLine"></p>
-    <div class="row"><a class="wa" id="footWa" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 .9c.3.1.5.2.5.3.1.2.1.6-.1 1.2z"/></svg><span class="num">+972 52-682-1668</span></a><span class="num">Aviel · +972 52-682-1668</span></div>
+    <div class="row"><a class="wa" id="footWa" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 .9c.3.1.5.2.5.3.1.2.1.6-.1 1.2z"/></svg><span class="num">+972 52-682-1668</span></a></div>
     <p style="font-size:13px;opacity:.75;margin-top:24px" data-t="footNote"></p>
   </div>
 </footer>
@@ -388,7 +396,7 @@ aroundTitle:'מה יש בסביבה',aroundLead:'כל מה שצריך נמצא �
 infoTitle:'מידע חשוב',i1t:'אוכל',i1:'אפשר להזמין במקום ארוחת בוקר, צהריים וערב בתוספת תשלום, כולל מנות הונגריות קלאסיות וקינוחים. התשלום על האוכל במקום.',
 i2t:'מה יש בסביבה',i2:'מאפייה, תחנת דלק, מסעדה וסופרמרקט נמצאים קרוב למתחם.',i3t:'שירותים נוספים',services:['עזרה ברכישת ציוד קמפינג לפסטיבל','השכרת רכב','השכרת קרוואן לשטח הפסטיבל'],
 rulesTitle:'תנאים',rules:['תשלום מלא מראש לאישור ההזמנה','צ׳ק אאוט עד השעה 12:00','אין ביטולים, החזרים או העברת הזמנה לאדם אחר','מינימום 7 לילות. גם בהגעה מאוחרת או עזיבה מוקדמת, התשלום הוא על 7 לילות לפחות','אין להזמין קרובים או חברים להתקלח או להיכנס למתחם. מי שלא לקח חדר יצטרך לעזוב, ומי שהזמין אותו לא יורשה לחזור'],
-contactLine:'שאלות? כתבו לאביאל בוואטסאפ.',footNote:'הבקשות באתר אינן הזמנה סופית. ההזמנה נסגרת לאחר אישור ותשלום מלא.',
+contactLine:'שאלות? כתבו לנו בוואטסאפ.',footNote:'הבקשות באתר אינן הזמנה סופית. ההזמנה נסגרת לאחר אישור ותשלום מלא.',
 roomTwinAlt:'חדר עם שתי מיטות ושירותים',roomDoubleAlt:'חדר עם מיטה זוגית',porchAlt:'המרפסת המקורה מול החדרים',roomLargeAlt:'חדר במתחם',carOutAlt:'שני הקרוואנים בצל העצים',carBedAlt:'מיטה זוגית בקרוואן',carKitchenAlt:'מטבחון בקרוואן',carSeatAlt:'פינת ישיבה בקרוואן',compoundAlt:'בניין החדרים מעבר לבריכה',lakeBoatAlt:'האגם עם הסירה',lakeAlt:'האגם ביום קיץ',close:'סגירה',prev:'הקודם',next:'הבא'},
 en:{dir:'ltr',title:'Ozora Camp – stay next to OZORA Festival',bookNow:'Book',eyebrow:'OZORA Festival · Hungary',
 heroText:'Lakeside rooms and caravans in a green, quiet spot, a 10–12 minute drive from the festival gate. Sleep close, actually rest.',
@@ -415,7 +423,7 @@ aroundTitle:'What\'s nearby',aroundLead:'Everything you need is close by in the 
 infoTitle:'Good to know',i1t:'Food',i1:'Breakfast, lunch and dinner can be ordered on site for an extra charge, including classic Hungarian dishes and desserts. Food is paid on site.',
 i2t:'Nearby',i2:'A bakery, gas station, restaurant and supermarket are close to the site.',i3t:'Extra services',services:['Help buying camping gear for the festival','Car rental','Caravan rental on the festival grounds'],
 rulesTitle:'Terms',rules:['Full payment upfront confirms the booking','Check-out by 12:00','No cancellations, refunds or transfers to another person','7-night minimum – arriving late or leaving early still counts as at least 7 nights','Guests without a booked room – including relatives, neighbours and friends – may not enter. Whoever invites them will not be allowed back'],
-contactLine:'Questions? Message Aviel on WhatsApp.',footNote:'Requests on this site are not final bookings. A booking is confirmed after approval and full payment.',
+contactLine:'Questions? Message us on WhatsApp.',footNote:'Requests on this site are not final bookings. A booking is confirmed after approval and full payment.',
 roomTwinAlt:'Room with two beds and en-suite toilet',roomDoubleAlt:'Room with a double bed',porchAlt:'The covered porch in front of the rooms',roomLargeAlt:'A room on site',carOutAlt:'The two caravans under the trees',carBedAlt:'Double bed in a caravan',carKitchenAlt:'Caravan kitchenette',carSeatAlt:'Caravan seating corner',compoundAlt:'The rooms building across the pond',lakeBoatAlt:'The lake with the boat',lakeAlt:'The lake on a summer day',close:'Close',prev:'Previous',next:'Next'}
 };
 let lang=(new URLSearchParams(location.search).get('lang'))||(()=>{try{return localStorage.getItem('oc_lang')}catch(e){}})()||((navigator.language||'').startsWith('he')?'he':'en');
