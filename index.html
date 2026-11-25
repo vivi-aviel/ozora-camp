@@ -87,6 +87,10 @@ ul.ticks svg{flex:none;margin-top:4px;color:var(--ok)}
 .rvterms h3{margin:0;font-size:20px}
 .rvterms ul.ticks{padding:0}
 .rvterms ul{margin:0;padding-inline-start:20px;display:grid;gap:4px;font-size:15.5px;color:var(--ink)}
+.rvx{margin-top:18px;background:var(--sage,#4E6B5C);color:#fff;border-radius:var(--r);padding:16px 20px;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px}
+.rvprice b{font-size:28px}
+.rvprice span{opacity:.9;font-size:15px}
+.rvlink{text-decoration:underline;color:var(--ink)}
 .rvcta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:16px}
 .tag{display:inline-block;background:var(--amber-bg);color:var(--amber-2);border-radius:999px;padding:3px 10px;font-size:13px;font-weight:700}
 .vbtn{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:8px 16px;min-height:44px;font-weight:700;color:var(--ink);justify-self:start}
@@ -281,7 +285,7 @@ footer{background:var(--ink);color:#DCE8DF}
     </div>
   </section>
 
-  <section id="rv" hidden>
+  <section id="rv">
     <h2 data-t="rvTitle"></h2>
     <p class="lead" data-t="rvLead"></p>
     <div class="units">
@@ -309,10 +313,40 @@ footer{background:var(--ink);color:#DCE8DF}
       <ul class="ticks" data-list="rvBoth"></ul>
     </div>
     <div class="rvterms">
+      <h3 data-t="rvPayT"></h3>
+      <ul data-list="rvPay"></ul>
+    </div>
+    <div class="rvterms">
       <h3 data-t="rvTermsT"></h3>
       <ul data-list="rvTerms"></ul>
     </div>
-    <div class="rvcta"><a class="cta" id="rvWa" target="_blank" rel="noopener" data-t="rvAsk"></a><span class="hint" data-t="rvPriceNote"></span></div>
+    <div class="book" style="margin-top:18px">
+      <h2 data-t="rvFormT"></h2>
+      <p class="lead" data-t="rvFormLead"></p>
+      <form id="rvf" class="formgrid" novalidate>
+        <div class="full"><div class="fl" style="font-weight:600;margin-bottom:6px" data-t="rvChoose"></div>
+          <div class="types" role="group" id="rvTypes" style="grid-template-columns:1fr 1fr"></div></div>
+        <div class="two full">
+          <label class="fl"><span data-t="rvPickD"></span><input class="in" type="date" name="pd" required></label>
+          <label class="fl"><span data-t="rvRetD"></span><input class="in" type="date" name="rd" required></label>
+        </div>
+        <div class="two full">
+          <label class="fl"><span data-t="rvPickL"></span><select class="in" name="pl" id="rvPl"></select></label>
+          <label class="fl"><span data-t="rvRetL"></span><select class="in" name="rl" id="rvRl"></select></label>
+        </div>
+        <div><div class="fl" style="margin-bottom:6px"><span data-t="guests"></span></div>
+          <div class="stepper"><button type="button" id="rvMinus" aria-label="-">−</button><output id="rvOut" aria-live="polite">2</output><button type="button" id="rvPlus" aria-label="+">+</button></div></div>
+        <div class="full quote" id="rvQuote" hidden></div>
+        <label class="fl"><span data-t="name"></span><input class="in" name="names" autocomplete="name" required maxlength="200"></label>
+        <label class="fl"><span data-t="phone"></span><input class="in" name="phone" type="tel" autocomplete="tel" inputmode="tel" required maxlength="40" dir="ltr"></label>
+        <label class="fl"><span data-t="email"></span><input class="in" name="email" type="email" autocomplete="email" maxlength="200" dir="ltr"></label>
+        <label class="fl"><span data-t="rvNote"></span><textarea class="in" name="note" maxlength="1000"></textarea></label>
+        <label class="chk full"><input type="checkbox" name="agree" required><span><span data-t="rvAgree1"></span> <a href="rv-terms.html" target="_blank" rel="noopener" data-t="rvAgreeLink" style="color:inherit;text-decoration:underline"></a></span></label>
+        <div class="full" id="rvErr" role="alert"></div>
+        <div class="full"><button class="cta submit" type="submit" data-t="rvSend"></button></div>
+      </form>
+    </div>
+
   </section>
 
   <section id="gallery">
@@ -424,11 +458,11 @@ he:{dir:'rtl',title:'Ozora Camp – לינה ליד פסטיבל אוזורה',b
 heroText:'חדרים וקרוואנים על שפת אגם, בירוק ובשקט, \u206610–12\u2069 דקות נסיעה משער הפסטיבל. ישנים קרוב, נחים באמת.',
 checkDates:'בדיקת תאריכים ומחיר',seeRooms:'החדרים והקרוואנים',
 f1t:'\u206610–12\u2069 דקות',f1:'נסיעה מהפסטיבל',f2t:'מים חמים 24/7',f2:'בכל המתחם',f3t:'מאוורר בכל חדר',f3:'אין מזגן, הלילות קרירים',f4t:'מינימום 7 לילות',f4:'תשלום מלא מראש',
-rvTitle:'השכרת קרוואנים (מוטורהום)',rvLead:'רוצים לנסוע עם הבית על גלגלים? יש לנו שני קרוואנים ממונעים להשכרה לפסטיבל – מגיעים מאובזרים ועצמאיים, גם בלי חשמל חיצוני.',
+rvFormT:'בקשה להזמנת קרוואן',rvFormLead:'בחרו קרוואן, תאריכים ומקום איסוף – ונחשב לכם את המחיר הכולל. נחזור אליכם עם אישור תוך 24 שעות.',rvChoose:'איזה קרוואן?',rvBigOpt:'קרוואן גדול',rvSmallOpt:'קרוואן קומפקטי',rvPickD:'תאריך איסוף',rvRetD:'תאריך החזרה',rvPickL:'מקום איסוף',rvRetL:'מקום החזרה',locCamp:'המתחם שלנו',locBud:'בודפשט',locAir:'שדה התעופה',rvNote:'הערות (שעת נחיתה, שאלות…)',rvAgree1:'קראתי ואני מסכים/ה',rvAgreeLink:'להסכם ההשכרה המלא',rvSend:'שליחת בקשה בוואטסאפ',rvDays:'{n} ימים',rvRent:'שכירות',rvClean:'ניקיון',rvGas:'גז ושירותים',rvDeliv:'איסוף והחזרה',rvTotal:'סה״כ',rvNow:'בהזמנה (לשריון)',rvAtPick:'באיסוף, לבעל הקרוואן',rvDep:'+ פיקדון €1,500 באיסוף (חוזר)',rvErrFill:'נא למלא את כל השדות ולאשר את ההסכם.',rvErrDates:'תאריך ההחזרה חייב להיות אחרי תאריך האיסוף.',rvErrPpl:'יותר מדי אנשים לקרוואן הזה.',rvPrice:'€360 ליום',rvPriceSub:'לקרוואן, לכל האנשים, ללא מע״מ נוסף',rvPayT:'מה משלמים ומתי',rvPay:['בהזמנה משלמים לנו מקדמה לשריון הקרוואן – בישראל, בשקלים או ביורו','את היתרה משלמים באיסוף, ישירות לבעל הקרוואן','פיקדון €1,500 – באיסוף, לבעל הקרוואן, חוזר מיד בהחזרה אם אין נזק','אפשר לאסוף ולהחזיר במתחם שלנו, בבודפשט או בשדה התעופה – המחיר מחושב בטופס'],rvTermsLink:'להסכם ההשכרה המלא',rvTitle:'השכרת קרוואנים (מוטורהום)',rvLead:'רוצים לנסוע עם הבית על גלגלים? יש לנו שני קרוואנים ממונעים להשכרה לפסטיבל – מגיעים מאובזרים ועצמאיים, גם בלי חשמל חיצוני.',
 rvBigT:'קרוואן גדול',rvBigTag:'עד 6 אנשים',rvBigTicks:['מקרר שעובד על גז, 12V או 230V','חימום ומים חמים בגז','מטבח עם כיריים גז','מקלחת, שירותים וכיור'],
 rvSmallT:'קרוואן קומפקטי – Citroën Jumper',rvSmallTag:'3 אנשים בנוחות',rvSmallTicks:['מיטה זוגית + מיטה נוספת','מקרר 12V','מיכל מים נקיים 200 ל׳','סדינים, 4 כריות ו־4 שמיכות'],
-rvBothT:'בשני הקרוואנים',rvBoth:['פאנלים סולאריים על הגג','מטבח מאובזר: צלחות, סכו״ם, כוסות, סירים, מחבת ומכונת קפה','סט קמפינג: שולחן ו־4 כיסאות','3 אוהלים נוספים כלולים במחיר','נהיגה ברישיון B רגיל'],
-rvTermsT:'תנאים',rvTerms:['מחיר יומי לפי תאריכים – שלחו בקשה','ניקיון: €150 חד־פעמי','פיקדון: €2,000, משולם במקום וחוזר אם אין נזק','הבאה לקמפ והחזרה: €200 לקרוואן','מקדמה: 50% בהזמנה','מקבלים ומחזירים עם מיכל דלק מלא','ביטול: אפשר להעביר את ההזמנה למישהו אחר ולקבל 100% בחזרה. ביטול בחודש האחרון בלי מחליף – המקדמה לא מוחזרת'],
+rvBothT:'בשני הקרוואנים',rvBoth:['פאנלים סולאריים על הגג','מטבח מאובזר: צלחות, סכו״ם, כוסות, סירים, מחבת ומכונת קפה','סט קמפינג: שולחן ו־4 כיסאות','3 אוהלים נוספים כלולים במחיר','ביטוח מקיף ומדבקת אגרת כביש כלולים','ללא הגבלת קילומטרים (בתוך הונגריה)'],
+rvTermsT:'תנאים עיקריים',rvTerms:['נהג: גיל 25 ומעלה, לפחות 5 שנות רישיון, עד 2 נהגים','מסמכים באיסוף: דרכון ורישיון נהיגה','נסיעה בהונגריה בלבד','דלק: מקבלים מלא ומחזירים מלא','פיקדון: €1,500, משולם לבעל הקרוואן באיסוף וחוזר מיד אם אין נזק','נזק קטן – לפי עלות התיקון בפועל (חשבונית). נזק גדול – עד €1,500 לכל היותר','איסוף והחזרה עד 20:00','ביטול עד חודש לפני האיסוף: מוחזר הכסף בניכוי 25% מסכום ההזמנה. ביטול בחודש האחרון: אין החזר'],
 rvVideo:'צפו בסרטון',rvAsk:'בקשה לקרוואן בוואטסאפ',rvPriceNote:'מספר הקרוואנים מוגבל',rvWaText:'היי, אשמח לפרטים על השכרת קרוואן לפסטיבל. תאריכים: ___ , מספר אנשים: ___',
 rvBigAlt:'הקרוואן הגדול',rvSmallAlt:'הקרוואן הקומפקטי',rvInAlt:'פנים הקרוואן',rvBedAlt:'מיטה בקרוואן',rvKitAlt:'מטבח ומקרר',rvShAlt:'מקלחת ושירותים',
 stayTitle:'איפה ישנים',stayLead:'שני סוגי לינה. המחיר הוא לאדם ללילה, עם מינימום של 7 לילות.',
@@ -458,11 +492,11 @@ en:{dir:'ltr',title:'Ozora Camp – stay next to OZORA Festival',bookNow:'Book',
 heroText:'Lakeside rooms and caravans in a green, quiet spot, a 10–12 minute drive from the festival gate. Sleep close, actually rest.',
 checkDates:'Check dates & price',seeRooms:'Rooms & caravans',
 f1t:'10–12 min',f1:'drive to the festival',f2t:'Hot water 24/7',f2:'across the site',f3t:'Fan in every room',f3:'no A/C – nights are cool',f4t:'7-night minimum',f4:'full payment upfront',
-rvTitle:'Motorhome rental',rvLead:'Want your home on wheels? We have two motorhomes for rent for the festival – fully equipped and self-sufficient, even without outside electricity.',
+rvFormT:'Motorhome booking request',rvFormLead:'Choose a motorhome, dates and pickup place – we will calculate the total. We will reply with a confirmation within 24 hours.',rvChoose:'Which motorhome?',rvBigOpt:'Large motorhome',rvSmallOpt:'Compact motorhome',rvPickD:'Pickup date',rvRetD:'Return date',rvPickL:'Pickup place',rvRetL:'Return place',locCamp:'Our camp',locBud:'Budapest',locAir:'Budapest Airport',rvNote:'Notes (landing time, questions…)',rvAgree1:'I have read and agree to the',rvAgreeLink:'full rental agreement',rvSend:'Send request on WhatsApp',rvDays:'{n} days',rvRent:'Rental',rvClean:'Cleaning',rvGas:'Gas & toilet service',rvDeliv:'Pickup & return',rvTotal:'Total',rvNow:'At booking (to reserve)',rvAtPick:'At pickup, to the owner',rvDep:'+ €1,500 deposit at pickup (refundable)',rvErrFill:'Please fill in all fields and accept the agreement.',rvErrDates:'Return date must be after the pickup date.',rvErrPpl:'Too many people for this motorhome.',rvPrice:'€360 per day',rvPriceSub:'per motorhome, for everyone on board, no extra VAT',rvPayT:'What you pay and when',rvPay:['At booking you pay us an advance to reserve the motorhome','The balance is paid at pickup, directly to the owner','€1,500 deposit – at pickup, to the owner, refunded on return if there is no damage','Pick up and return at our camp, in Budapest or at the airport – the price is calculated in the form'],rvTermsLink:'Full rental agreement',rvTitle:'Motorhome rental',rvLead:'Want your home on wheels? We have two motorhomes for rent for the festival – fully equipped and self-sufficient, even without outside electricity.',
 rvBigT:'Large motorhome',rvBigTag:'Up to 6 people',rvBigTicks:['Fridge runs on gas, 12V or 230V','Gas heating and hot water','Kitchen with gas hob','Shower, toilet and sink'],
 rvSmallT:'Compact motorhome – Citroën Jumper',rvSmallTag:'3 people comfortably',rvSmallTicks:['Double bed + extra bed','12V fridge','200 L fresh water tank','Sheets, 4 pillows and 4 blankets'],
-rvBothT:'In both motorhomes',rvBoth:['Solar panels on the roof','Equipped kitchen: plates, cutlery, glasses, pots, pan and coffee maker','Camping set: table and 4 chairs','3 extra tents included in the price','Regular category B driving licence'],
-rvTermsT:'Terms',rvTerms:['Daily price depends on dates – send a request','Cleaning: €150 one-time','Deposit: €2,000, paid on handover, refunded if there is no damage','Delivery to the camp and return: €200 per motorhome','Advance payment: 50% on booking','Handed over and returned with a full fuel tank','Cancellation: you can pass the booking to someone else and get 100% back. Cancelling in the last month with no replacement – the advance is not refunded'],
+rvBothT:'In both motorhomes',rvBoth:['Solar panels on the roof','Equipped kitchen: plates, cutlery, glasses, pots, pan and coffee maker','Camping set: table and 4 chairs','3 extra tents included in the price','Comprehensive insurance and motorway vignette included','Unlimited kilometres (within Hungary)'],
+rvTermsT:'Main terms',rvTerms:['Driver: age 25+, at least 5 years licensed, up to 2 drivers','Documents at pickup: passport and driving licence','Driving within Hungary only','Fuel: full to full','Deposit: €1,500, paid to the owner at pickup, refunded immediately if there is no damage','Small damage – actual repair cost (invoice). Major damage – €1,500 maximum','Pickup and return until 20:00','Cancellation up to one month before pickup: refund minus 25% of the booking amount. Cancellation in the last month: no refund'],
 rvVideo:'Watch the video',rvAsk:'Ask about a motorhome on WhatsApp',rvPriceNote:'Only a few motorhomes available',rvWaText:'Hi, I would like details about renting a motorhome for the festival. Dates: ___ , people: ___',
 rvBigAlt:'The large motorhome',rvSmallAlt:'The compact motorhome',rvInAlt:'Motorhome interior',rvBedAlt:'Bed in the motorhome',rvKitAlt:'Kitchen and fridge',rvShAlt:'Shower and toilet',
 stayTitle:'Where you sleep',stayLead:'Two ways to stay. Prices are per person per night, with a 7-night minimum.',
@@ -504,9 +538,9 @@ function applyLang(){
   document.querySelectorAll('[data-l]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===lang));
   document.querySelectorAll('[data-t]').forEach(el=>{el.textContent=t(el.dataset.t)});
   document.querySelectorAll('[data-list]').forEach(el=>{el.innerHTML=(t(el.dataset.list)||[]).map(x=>`<li>${el.closest('.ticks')||el.classList.contains('ticks')?TICK:''}<span>${esc(x)}</span></li>`).join('')});
-  renderGalleries();renderTypes();renderQuote();renderAvail();
+  renderGalleries();renderTypes();renderQuote();renderAvail();if(window.rvRender)rvRender();
   const wa=`https://wa.me/${PHONE}`;document.getElementById('footWa').href=wa;
-  document.getElementById('rvWa').href=wa+'?text='+encodeURIComponent(t('rvWaText'));
+  
   document.getElementById('doneWa').href=wa+'?text='+encodeURIComponent(t('waText'));
 }
 function renderGalleries(){
@@ -624,6 +658,35 @@ const close=()=>{v.pause();v.removeAttribute('src');v.load();d.hidden=true};
 document.getElementById('vclose').addEventListener('click',close);
 d.addEventListener('click',e=>{if(e.target===d)close()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!d.hidden)close()});})();
+
+/* motorhome request */
+(function(){const F=document.getElementById('rvf');if(!F)return;
+const RV={big:{max:6},small:{max:3}},DAY=360,NOW=260,LEG={camp:100,bud:200,air:200};
+let rt='big',ppl=2;
+const types=()=>{document.getElementById('rvTypes').innerHTML=['big','small'].map(k=>`<button type="button" data-rv="${k}" aria-pressed="${rt===k}">${t(k==='big'?'rvBigOpt':'rvSmallOpt')}<small>${t('upTo',{n:RV[k].max})}</small></button>`).join('')};
+const locs=()=>['rvPl','rvRl'].forEach(id=>{const el=document.getElementById(id),v=el.value||'camp';el.innerHTML=['camp','bud','air'].map(k=>`<option value="${k}">${t(k==='camp'?'locCamp':k==='bud'?'locBud':'locAir')}</option>`).join('');el.value=v});
+const days=()=>{const a=pd(F.elements.pd.value),b=pd(F.elements.rd.value);return a!=null&&b!=null&&b>a?Math.round((b-a)/864e5):0};
+const eur=n=>'€'+n.toLocaleString('en-US');
+function calc(){const d=days();const q=document.getElementById('rvQuote');document.getElementById('rvOut').textContent=ppl;
+ document.getElementById('rvMinus').disabled=ppl<=1;document.getElementById('rvPlus').disabled=ppl>=RV[rt].max;
+ if(!d){q.hidden=true;return null}
+ const rent=d*DAY,del=LEG[F.elements.pl.value]+LEG[F.elements.rl.value],tot=rent+150+50+del,now=d*NOW,later=tot-now;
+ q.hidden=false;q.innerHTML=`<div class="ln"><span>${t('rvRent')} · ${t('rvDays',{n:d})}</span><span>${eur(rent)}</span></div><div class="ln"><span>${t('rvClean')}</span><span>${eur(150)}</span></div><div class="ln"><span>${t('rvGas')}</span><span>${eur(50)}</span></div><div class="ln"><span>${t('rvDeliv')}</span><span>${eur(del)}</span></div><div class="ln tot"><span>${t('rvTotal')}</span><span>${eur(tot)}</span></div><div class="ln"><span>${t('rvNow')}</span><span>${eur(now)}</span></div><div class="ln"><span>${t('rvAtPick')}</span><span>${eur(later)}</span></div><div class="ln"><span>${t('rvDep')}</span><span></span></div>`;
+ return {d,rent,del,tot,now,later}}
+function render(){types();locs();calc()}
+document.getElementById('rvTypes').addEventListener('click',e=>{const b=e.target.closest('[data-rv]');if(!b)return;rt=b.dataset.rv;if(ppl>RV[rt].max)ppl=RV[rt].max;types();calc()});
+document.getElementById('rvMinus').onclick=()=>{if(ppl>1){ppl--;calc()}};
+document.getElementById('rvPlus').onclick=()=>{if(ppl<RV[rt].max){ppl++;calc()}};
+F.addEventListener('input',calc);F.addEventListener('change',calc);
+F.elements.pd.min=F.elements.rd.min=today();
+F.addEventListener('submit',e=>{e.preventDefault();const err=document.getElementById('rvErr');err.textContent='';
+ const c=calc(),el=F.elements;
+ if(!el.pd.value||!el.rd.value||!el.names.value.trim()||!el.phone.value.trim()||!el.agree.checked){err.textContent=t('rvErrFill');return}
+ if(!c){err.textContent=t('rvErrDates');return}
+ const L=k=>t(k==='camp'?'locCamp':k==='bud'?'locBud':'locAir');
+ const msg=[t('rvFormT'),`${t('rvChoose')} ${t(rt==='big'?'rvBigOpt':'rvSmallOpt')}`,`${t('rvPickD')}: ${el.pd.value} · ${L(el.pl.value)}`,`${t('rvRetD')}: ${el.rd.value} · ${L(el.rl.value)}`,`${t('guests')}: ${ppl}`,`${t('rvTotal')}: ${eur(c.tot)} (${t('rvDays',{n:c.d})})`,`${t('name')}: ${el.names.value.trim()}`,`${t('phone')}: ${el.phone.value.trim()}`,el.email.value.trim()?`${t('email')}: ${el.email.value.trim()}`:'',el.note.value.trim()?`${t('rvNote')}: ${el.note.value.trim()}`:''].filter(Boolean).join('\n');
+ window.open(`https://wa.me/${PHONE}?text=`+encodeURIComponent(msg),'_blank','noopener')});
+window.rvRender=render;render();})();
 </script>
 </body>
 </html>
