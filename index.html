@@ -82,6 +82,18 @@ ul.ticks{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:15.5p
 ul.ticks li{display:flex;gap:8px;align-items:flex-start}
 ul.ticks svg{flex:none;margin-top:4px;color:var(--ok)}
 .hint{font-size:13px;color:var(--muted)}
+/* motorhomes */
+.rvterms{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:18px 20px;margin-top:18px;display:grid;gap:10px}
+.rvterms h3{margin:0;font-size:20px}
+.rvterms ul.ticks{padding:0}
+.rvterms ul{margin:0;padding-inline-start:20px;display:grid;gap:4px;font-size:15.5px;color:var(--ink)}
+.rvcta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:16px}
+.tag{display:inline-block;background:var(--amber-bg);color:var(--amber-2);border-radius:999px;padding:3px 10px;font-size:13px;font-weight:700}
+.vbtn{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:8px 16px;min-height:44px;font-weight:700;color:var(--ink);justify-self:start}
+.vbtn svg{color:var(--amber)}
+.vdlg{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.88);display:flex;align-items:center;justify-content:center;padding:16px}
+.vdlg video{max-width:100%;max-height:86vh;border-radius:12px;background:#000}
+.vdlg .x{position:absolute;top:12px;inset-inline-end:12px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.15);color:#fff;font-size:24px}
 /* gallery */
 .gal{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
 @media(min-width:760px){.gal{grid-template-columns:repeat(4,1fr)}}
@@ -269,6 +281,38 @@ footer{background:var(--ink);color:#DCE8DF}
     </div>
   </section>
 
+  <section id="rv">
+    <h2 data-t="rvTitle"></h2>
+    <p class="lead" data-t="rvLead"></p>
+    <div class="units">
+      <article class="unit">
+        <div class="strip" data-gal="rvBig"></div>
+        <div class="body">
+          <h3 data-t="rvBigT"></h3>
+          <div><span class="tag" data-t="rvBigTag"></span></div>
+          <ul class="ticks" data-list="rvBigTicks"></ul>
+        </div>
+      </article>
+      <article class="unit">
+        <div class="strip" data-gal="rvSmall"></div>
+        <div class="body">
+          <h3 data-t="rvSmallT"></h3>
+          <div><span class="tag" data-t="rvSmallTag"></span></div>
+          <ul class="ticks" data-list="rvSmallTicks"></ul>
+        </div>
+      </article>
+    </div>
+    <div class="rvterms">
+      <h3 data-t="rvBothT"></h3>
+      <ul class="ticks" data-list="rvBoth"></ul>
+    </div>
+    <div class="rvterms">
+      <h3 data-t="rvTermsT"></h3>
+      <ul data-list="rvTerms"></ul>
+    </div>
+    <div class="rvcta"><a class="cta" id="rvWa" target="_blank" rel="noopener" data-t="rvAsk"></a><span class="hint" data-t="rvPriceNote"></span></div>
+  </section>
+
   <section id="gallery">
     <h2 data-t="galTitle"></h2>
     <p class="lead" data-t="galLead"></p>
@@ -356,6 +400,7 @@ footer{background:var(--ink);color:#DCE8DF}
     <p style="font-size:13px;opacity:.75;margin-top:24px" data-t="footNote"></p>
   </div>
 </footer>
+<div class="vdlg" id="vdlg" hidden role="dialog" aria-modal="true"><button type="button" class="x" id="vclose" aria-label="Close">×</button><video id="vplayer" controls playsinline preload="none"></video></div>
 <div class="float" id="float"><a class="cta" href="#book" data-t="checkDates"></a></div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -368,6 +413,8 @@ const sb=window.supabase?window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY)
 const IMG={
   rooms:[['room-twin','roomTwinAlt'],['room-double','roomDoubleAlt'],['porch','porchAlt'],['room-large','roomLargeAlt']],
   caravans:[['caravans','carOutAlt'],['caravan1-bed','carBedAlt'],['caravan2-kitchen','carKitchenAlt'],['caravan2-seat','carSeatAlt'],['caravan1-kitchen','carKitchenAlt']],
+  rvBig:[['rv/big1','rvBigAlt'],['rv/big2','rvBigAlt'],['rv/big3','rvInAlt'],['rv/big4','rvInAlt'],['rv/big5','rvInAlt'],['rv/big6','rvInAlt']],
+  rvSmall:[['rv/small1','rvSmallAlt'],['rv/small2','rvBedAlt'],['rv/small3','rvBedAlt'],['rv/small4','rvInAlt'],['rv/small5','rvKitAlt'],['rv/small6','rvShAlt'],['rv/small7','rvShAlt'],['rv/small8','rvBedAlt']],
   place:[['compound','compoundAlt',1],['lake-boat','lakeBoatAlt'],['porch','porchAlt'],['lake','lakeAlt'],['caravans','carOutAlt'],['room-twin','roomTwinAlt'],['room-double','roomDoubleAlt']]
 };
 const T={
@@ -375,6 +422,13 @@ he:{dir:'rtl',title:'Ozora Camp – לינה ליד פסטיבל אוזורה',b
 heroText:'חדרים וקרוואנים על שפת אגם, בירוק ובשקט, \u206610–12\u2069 דקות נסיעה משער הפסטיבל. ישנים קרוב, נחים באמת.',
 checkDates:'בדיקת תאריכים ומחיר',seeRooms:'החדרים והקרוואנים',
 f1t:'\u206610–12\u2069 דקות',f1:'נסיעה מהפסטיבל',f2t:'מים חמים 24/7',f2:'בכל המתחם',f3t:'מאוורר בכל חדר',f3:'אין מזגן, הלילות קרירים',f4t:'מינימום 7 לילות',f4:'תשלום מלא מראש',
+rvTitle:'השכרת קרוואנים (מוטורהום)',rvLead:'רוצים לנסוע עם הבית על גלגלים? יש לנו שני קרוואנים ממונעים להשכרה לפסטיבל – מגיעים מאובזרים ועצמאיים, גם בלי חשמל חיצוני.',
+rvBigT:'קרוואן גדול',rvBigTag:'עד 6 אנשים',rvBigTicks:['מקרר שעובד על גז, 12V או 230V','חימום ומים חמים בגז','מטבח עם כיריים גז','מקלחת, שירותים וכיור'],
+rvSmallT:'קרוואן קומפקטי – Citroën Jumper',rvSmallTag:'3 אנשים בנוחות',rvSmallTicks:['מיטה זוגית + מיטה נוספת','מקרר 12V','מיכל מים נקיים 200 ל׳','סדינים, 4 כריות ו־4 שמיכות'],
+rvBothT:'בשני הקרוואנים',rvBoth:['פאנלים סולאריים על הגג','מטבח מאובזר: צלחות, סכו״ם, כוסות, סירים, מחבת ומכונת קפה','סט קמפינג: שולחן ו־4 כיסאות','3 אוהלים נוספים כלולים במחיר','נהיגה ברישיון B רגיל'],
+rvTermsT:'תנאים',rvTerms:['מחיר יומי לפי תאריכים – שלחו בקשה','ניקיון: €150 חד־פעמי','פיקדון: €2,000, משולם במקום וחוזר אם אין נזק','הבאה לקמפ והחזרה: €200 לקרוואן','מקדמה: 50% בהזמנה','מקבלים ומחזירים עם מיכל דלק מלא','ביטול: אפשר להעביר את ההזמנה למישהו אחר ולקבל 100% בחזרה. ביטול בחודש האחרון בלי מחליף – המקדמה לא מוחזרת'],
+rvVideo:'צפו בסרטון',rvAsk:'בקשה לקרוואן בוואטסאפ',rvPriceNote:'מספר הקרוואנים מוגבל',rvWaText:'היי, אשמח לפרטים על השכרת קרוואן לפסטיבל. תאריכים: ___ , מספר אנשים: ___',
+rvBigAlt:'הקרוואן הגדול',rvSmallAlt:'הקרוואן הקומפקטי',rvInAlt:'פנים הקרוואן',rvBedAlt:'מיטה בקרוואן',rvKitAlt:'מטבח ומקרר',rvShAlt:'מקלחת ושירותים',
 stayTitle:'איפה ישנים',stayLead:'שני סוגי לינה. המחיר הוא לאדם ללילה, עם מינימום של 7 לילות.',
 rooms:'חדרים',caravans:'קרוואנים',perPersonNight:'לאדם ללילה',
 roomTicks:['חדרים ל־2 או ל־3 אנשים','מאוורר בכל חדר','מים חמים 24/7','מרפסת מקורה משותפת מול הירוק'],
@@ -402,6 +456,13 @@ en:{dir:'ltr',title:'Ozora Camp – stay next to OZORA Festival',bookNow:'Book',
 heroText:'Lakeside rooms and caravans in a green, quiet spot, a 10–12 minute drive from the festival gate. Sleep close, actually rest.',
 checkDates:'Check dates & price',seeRooms:'Rooms & caravans',
 f1t:'10–12 min',f1:'drive to the festival',f2t:'Hot water 24/7',f2:'across the site',f3t:'Fan in every room',f3:'no A/C – nights are cool',f4t:'7-night minimum',f4:'full payment upfront',
+rvTitle:'Motorhome rental',rvLead:'Want your home on wheels? We have two motorhomes for rent for the festival – fully equipped and self-sufficient, even without outside electricity.',
+rvBigT:'Large motorhome',rvBigTag:'Up to 6 people',rvBigTicks:['Fridge runs on gas, 12V or 230V','Gas heating and hot water','Kitchen with gas hob','Shower, toilet and sink'],
+rvSmallT:'Compact motorhome – Citroën Jumper',rvSmallTag:'3 people comfortably',rvSmallTicks:['Double bed + extra bed','12V fridge','200 L fresh water tank','Sheets, 4 pillows and 4 blankets'],
+rvBothT:'In both motorhomes',rvBoth:['Solar panels on the roof','Equipped kitchen: plates, cutlery, glasses, pots, pan and coffee maker','Camping set: table and 4 chairs','3 extra tents included in the price','Regular category B driving licence'],
+rvTermsT:'Terms',rvTerms:['Daily price depends on dates – send a request','Cleaning: €150 one-time','Deposit: €2,000, paid on handover, refunded if there is no damage','Delivery to the camp and return: €200 per motorhome','Advance payment: 50% on booking','Handed over and returned with a full fuel tank','Cancellation: you can pass the booking to someone else and get 100% back. Cancelling in the last month with no replacement – the advance is not refunded'],
+rvVideo:'Watch the video',rvAsk:'Ask about a motorhome on WhatsApp',rvPriceNote:'Only a few motorhomes available',rvWaText:'Hi, I would like details about renting a motorhome for the festival. Dates: ___ , people: ___',
+rvBigAlt:'The large motorhome',rvSmallAlt:'The compact motorhome',rvInAlt:'Motorhome interior',rvBedAlt:'Bed in the motorhome',rvKitAlt:'Kitchen and fridge',rvShAlt:'Shower and toilet',
 stayTitle:'Where you sleep',stayLead:'Two ways to stay. Prices are per person per night, with a 7-night minimum.',
 rooms:'Rooms',caravans:'Caravans',perPersonNight:'per person / night',
 roomTicks:['Rooms for 2 or 3 people','Fan in every room','Hot water 24/7','Shared covered porch facing the green'],
@@ -443,6 +504,7 @@ function applyLang(){
   document.querySelectorAll('[data-list]').forEach(el=>{el.innerHTML=(t(el.dataset.list)||[]).map(x=>`<li>${el.closest('.ticks')||el.classList.contains('ticks')?TICK:''}<span>${esc(x)}</span></li>`).join('')});
   renderGalleries();renderTypes();renderQuote();renderAvail();
   const wa=`https://wa.me/${PHONE}`;document.getElementById('footWa').href=wa;
+  document.getElementById('rvWa').href=wa+'?text='+encodeURIComponent(t('rvWaText'));
   document.getElementById('doneWa').href=wa+'?text='+encodeURIComponent(t('waText'));
 }
 function renderGalleries(){
@@ -552,6 +614,14 @@ applyLang();setGuests(2);onScroll();
   document.getElementById('pRoom').textContent='€'+INFO.priceRoom;document.getElementById('pCar').textContent='€'+INFO.priceCar;
   if(INFO.start&&INFO.start>today()&&!f.elements.in.value){}
   renderQuote()}}catch(e){}})();
+
+/* motorhome videos */
+(function(){const d=document.getElementById('vdlg'),v=document.getElementById('vplayer');
+document.querySelectorAll('[data-video]').forEach(b=>b.addEventListener('click',()=>{const n=b.dataset.video;v.poster='assets/video/'+n+'.jpg';v.src='assets/video/'+n+'.mp4';d.hidden=false;v.play().catch(()=>{})}));
+const close=()=>{v.pause();v.removeAttribute('src');v.load();d.hidden=true};
+document.getElementById('vclose').addEventListener('click',close);
+d.addEventListener('click',e=>{if(e.target===d)close()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!d.hidden)close()});})();
 </script>
 </body>
 </html>
